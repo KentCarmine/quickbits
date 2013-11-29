@@ -11,3 +11,28 @@
  *= require_self
  *= require_tree .
  */
+
+
+.container {
+  width: 70%;
+  border: 1px solid gray;
+  margin: 0 auto;
+  height: 600px;
+}
+
+.drop_zone {
+  width: 40%;
+  border: 1px dashed gray;
+  margin: 30px;
+  height: 200px;
+  background-color: red;
+}
+
+/*#url {
+  width: 30%;
+}*/
+
+
+
+
+
