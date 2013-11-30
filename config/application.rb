@@ -66,5 +66,7 @@ module Quickbits
     config.assets.version = '1.0'
 
     config.force_ssl = false
+
+    config.assets.initialize_on_precompile = false
   end
 end
