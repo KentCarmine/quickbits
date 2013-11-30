@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require peer.min
+//= require FileSaver
 //= require_tree .
