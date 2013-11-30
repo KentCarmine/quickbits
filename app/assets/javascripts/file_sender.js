@@ -121,9 +121,21 @@ $(function(){
     sender.handleConnection();
   });
 
+  $(document).on("dragover", function(event){
+    event.stopPropagation();
+    event.preventDefault();
+  });
+
+  $(document).on("drop", function(event){
+    event.stopPropagation();
+    event.preventDefault();
+  });
+
   $("#copy_link_form").on("submit", function(event){
     event.preventDefault();
   });
+
+
 
 });
 
