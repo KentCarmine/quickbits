@@ -14,6 +14,11 @@
 
 /*require '/vendor/assets/normalize.css'
 */
+
+
+
+/*    phones and tablets   */
+
 @media screen and (max-device-width: 992px){
 body{
     margin: 0 0 0 0;
@@ -81,6 +86,8 @@ body{
 }
 
 
+
+/* Desktop when @ less than 980 */
 
 @media screen and (max-width: 980px) {
 
@@ -155,6 +162,8 @@ body{
 }
 
 
+/*Desktop open to great than 980 px  */
+
 body{
     margin: 0 0 0 0;
     padding: 0;
@@ -200,18 +209,20 @@ body{
 }
 
 .col-2 {
+        padding: 40px;
         float: left;
-        width: 50%;
-        margin-right: 0;
+        width: 60%;
+       
 
 }
 
 #drop_zone {
   border-style: dashed; 
-  width: 90%;
+  width: 480px;
   border: 1px dashed #df775d;
-  margin: 30px;
-  height: 200px;
+  margin: 0px;
+  height: 300px;
+  margin: auto;
   
 }
 
@@ -222,4 +233,35 @@ body{
   margin: 2px 0;
   border: 1px inset #446;
   border-radius: 5px;
+  margin: 0 auto;
 }
+
+
+
+/*  The Button*/
+
+#submit_file {
+
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  height: 40px;
+  width: 100px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  background: #df775d;
+  text-decoration: none;
+}
+
+#submit_file:hover {
+  background: #df775d;
+  background-image: -webkit-linear-gradient(top, #df775d, #db5230);
+  background-image: -moz-linear-gradient(top, #df775d, #db5230);
+  background-image: -ms-linear-gradient(top, #df775d, #db5230);
+  background-image: -o-linear-gradient(top, #df775d, #db5230);
+  background-image: linear-gradient(to bottom, #df775d, #db5230);
+  text-decoration: none;
+}
+
+

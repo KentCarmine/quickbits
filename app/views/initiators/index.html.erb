@@ -4,10 +4,10 @@
 </div>
 <div class="grid">
 	<div class="col-1">
-		<input type="file" id="file_input">
-		<input type="text" name="url" value="" placeholder="http://quickbits.co/red-fox-runs" readonly="readonly" id="url" size="40">
+		<input type="file" id="file_input" id="submit_file">
+		<input type="text" name="url" value="" placeholder="http://quickbits.co/red-fox-runs" readonly="readonly" id="url" size="40" style="display:none">
 		<form id="copy_link_form">
-			<input type="submit" value="Copy Link">
+			<input type="submit" value="Copy Link" id="submit_file" >
 		</form>
 		<%= render "/status" %>
 	</div>
