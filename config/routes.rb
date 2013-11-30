@@ -1,4 +1,5 @@
 Quickbits::Application.routes.draw do
+<<<<<<< HEAD
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -59,6 +60,9 @@ Quickbits::Application.routes.draw do
   get '/send' => "peer_connection#sendTestData"
   get '/receive/:senderPeerId' => "peer_connection#receiveTestData"
 
-
   mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
+
+  get '/:connection_id', :to => 'receivers#show'
+  resources :initiators
+  root to: "initiators#index"
 end
