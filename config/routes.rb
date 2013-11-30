@@ -58,4 +58,7 @@ Quickbits::Application.routes.draw do
 
   get '/send' => "peer_connection#sendTestData"
   get '/receive/:senderPeerId' => "peer_connection#receiveTestData"
+
+
+  mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
 end
