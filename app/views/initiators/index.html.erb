@@ -5,7 +5,9 @@
 
 <input type="file" id="file_input">
 <input type="text" name="url" value="" placeholder="http://quickbits.co/red-fox-runs" readonly="readonly" id="url" size="40">
-<button>Copy link</button>
+<form id="copy_link_form">
+  <input type="submit" value="Copy Link">
+</form>
 
 <%= render "/status" %>
 
