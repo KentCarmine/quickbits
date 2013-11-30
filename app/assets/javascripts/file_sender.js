@@ -108,5 +108,9 @@ $(function(){
     // $("#url").val(sender.getUrl());
   });
 
+  $("#copy_link_form").on("submit", function(event){
+    event.preventDefault();
+  });
+
 });
 
