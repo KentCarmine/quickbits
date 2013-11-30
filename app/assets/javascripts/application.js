@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require peer.min
-// require_tree .
+//= require FileSaver
+// require_tree . //REMEMBER TO REQUIRE THIS LINE AGAIN LATER

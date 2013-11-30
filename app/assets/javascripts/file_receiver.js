@@ -23,9 +23,21 @@ Receiver.prototype.getData = function(){
   console.log("getData called");
   var thisReceiver = this;
   thisReceiver.connection.on("data", function(data){
-    console.log("data received in getData");
-    console.log("GOT: " + data); //tester code
-    thisReceiver.sendData("I got it!"); //tester code
+    // console.log("data received in getData");
+
+    if(data.isFileMetaData){
+      console.log("GOT: " + data); //tester code
+      console.log("GOT: " + data.fileSize);
+    }
+    else if(data.isFile){
+      var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
+      // debugger;
+      console.log(file);
+      console.log(data.arrayBufferFileData);
+      saveAs(file, data.fileName);
+    }
+
+    // thisReceiver.sendData("I got it!"); //tester code
   });
 }
 
