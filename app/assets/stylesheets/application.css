@@ -20,7 +20,7 @@
   height: 600px;
 }
 
-.drop_zone {
+#drop_zone {
   width: 40%;
   border: 1px dashed gray;
   margin: 30px;
