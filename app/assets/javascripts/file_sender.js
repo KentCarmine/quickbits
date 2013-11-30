@@ -6,7 +6,8 @@ function Sender(file){
 
   thisSender.peer.on('open', function(id){
     thisSender.peer_id = id;
-    console.log(thisSender.peer.id);
+    // console.log(thisSender.peer.id);
+    thisSender.setDownloadUrl();
   });
 
   thisSender.file = file;
@@ -92,9 +93,49 @@ Sender.prototype.loadFile = function(callback){
   }
 }
 
-// $(function(){
-//   var sender = new Sender();
+Sender.prototype.setDownloadUrl = function(){
+  // console.log(this);
+  // console.log(this.peer_id);
+  $("#url").val("localhost:3000/" + this.peer_id);
+}
 
-//   sender.handleConnection();
-// });
+$(function(){
+
+  $("#file_input").change(function(event){
+    var file = event.target.files[0];
+    var sender = new Sender(file);
+    sender.handleConnection();
+  });
+
+  $("#drop_zone").on("dragover", function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    event.originalEvent.dataTransfer.dropEffect = "copy";
+  });
+
+  $("#drop_zone").on("drop", function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var file = event.originalEvent.dataTransfer.files[0];
+    var sender = new Sender(file);
+    sender.handleConnection();
+  });
+
+  $(document).on("dragover", function(event){
+    event.stopPropagation();
+    event.preventDefault();
+  });
+
+  $(document).on("drop", function(event){
+    event.stopPropagation();
+    event.preventDefault();
+  });
+
+  $("#copy_link_form").on("submit", function(event){
+    event.preventDefault();
+  });
+
+
+
+});
 

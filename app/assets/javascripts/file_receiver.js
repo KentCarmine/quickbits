@@ -49,8 +49,12 @@ Receiver.prototype.sendData = function(dataToSend){
 
 
 $(function(){
+  // debugger;
+  var splitUrl = window.location.href.split("/");
+  var senderPeerId = splitUrl[splitUrl.length-1];
+  console.log(senderPeerId);
   var receiver = new Receiver();
-  var senderPeerId = $("p").text();
+  // var senderPeerId = $("p").text();
   // console.log(senderPeerId);
   // debugger;
 
