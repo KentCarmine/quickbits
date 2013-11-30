@@ -6,7 +6,8 @@ function Sender(file){
 
   thisSender.peer.on('open', function(id){
     thisSender.peer_id = id;
-    console.log(thisSender.peer.id);
+    // console.log(thisSender.peer.id);
+    thisSender.setDownloadUrl();
   });
 
   thisSender.file = file;
@@ -92,9 +93,20 @@ Sender.prototype.loadFile = function(callback){
   }
 }
 
-// $(function(){
-//   var sender = new Sender();
+Sender.prototype.setDownloadUrl = function(){
+  // console.log(this);
+  // console.log(this.peer_id);
+  $("#url").val("localhost:3000/" + this.peer_id);
+}
 
-//   sender.handleConnection();
-// });
+$(function(){
+
+  $("#file_input").change(function(event){
+    var file = event.target.files[0];
+    var sender = new Sender(file);
+    sender.handleConnection();
+    // $("#url").val(sender.getUrl());
+  });
+
+});
 
