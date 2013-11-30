@@ -105,7 +105,20 @@ $(function(){
     var file = event.target.files[0];
     var sender = new Sender(file);
     sender.handleConnection();
-    // $("#url").val(sender.getUrl());
+  });
+
+  $("#drop_zone").on("dragover", function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    event.originalEvent.dataTransfer.dropEffect = "copy";
+  });
+
+  $("#drop_zone").on("drop", function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var file = event.originalEvent.dataTransfer.files[0];
+    var sender = new Sender(file);
+    sender.handleConnection();
   });
 
   $("#copy_link_form").on("submit", function(event){
