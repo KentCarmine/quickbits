@@ -16,7 +16,7 @@ Sender.prototype.handleConnection = function(){
   var thisSender = this;
   thisSender.peer.on("connection", function(connection){
     thisSender.connection = connection;
-    console.log("Connection established in acceptConnection");
+    // console.log("Connection established in acceptConnection");
 
     thisSender.connection.on("open", function(){
       // thisSender.sendData("Connected! Here's your file metadata.");
@@ -76,8 +76,8 @@ Sender.prototype.sendData = function(dataToSend){
 Sender.prototype.getData = function(){
   // console.log("getData called");
   this.connection.on("data", function(data){
-    console.log("got Data inside getData");
-    console.log("GOT: " + data);
+    // console.log("got Data inside getData");
+    // console.log("GOT: " + data);
   });
 }
 
