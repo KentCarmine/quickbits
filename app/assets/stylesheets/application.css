@@ -39,34 +39,12 @@
   }
 
   .footer  {
-    height: 0;
-    margin: 0 0 0 0;
-    padding: 0;
-    bottom: 0;
-    background-color: #f6f8f8;
-    width: 100%;
-
+   display: none;
   }
 
-
-  .grid {
-
-
-  }
-
-  .col-1 {
-    float: left;
-    min-width: 360px;      
-    height: 360px; 
-
-
-
-  }
 
   .col-2 {
-    float: left;
-    width: 0%;
-    margin-right: 0;
+    display: none;
 
   }
 
@@ -92,7 +70,6 @@
   }
 
   div.fakefile input[type=button] {
-    /* enough width to completely overlap the real hidden file control */
     cursor: pointer;
     width: 100%;
     font-family: 'Montserrat', sans-serif, Arial;
@@ -118,7 +95,7 @@
 
 /* Desktop when @ less than 980 */
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 980px) and (min-device-width: 992px) {
 
   .give_url_hid{
     display: inline;
