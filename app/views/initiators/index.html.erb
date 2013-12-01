@@ -4,7 +4,16 @@
 </div>
 <div class="grid">
 	<div class="col-1">
-		<input type="file" id="file_input" id="submit_file">
+
+  <div class="fileinputs">
+        <input type="file" class="file" id="file_input" />
+
+        <div class="fakefile">
+            <input type="button" value="Upload a File" />
+        </div>
+    </div>
+
+		
 		<input type="text" name="url" value="" placeholder="http://quickbits.co/red-fox-runs" readonly="readonly" id="url" size="40" style="display:none">
 		<form id="copy_link_form">
 			<input type="submit" value="Copy Link" id="submit_file" >

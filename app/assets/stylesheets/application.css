@@ -203,7 +203,6 @@ body{
       float: left;
       min-width: 360px;      
       height: 360px; 
-      background-color: pink;
 
 
 }
@@ -247,7 +246,7 @@ body{
   border-radius: 10px;
   height: 40px;
   width: 100px;
-  font-family: Arial;
+  font-family: 'Montserrat', sans-serif, Arial;
   color: #ffffff;
   font-size: 14px;
   background: #df775d;
@@ -256,12 +255,44 @@ body{
 
 #submit_file:hover {
   background: #df775d;
-  background-image: -webkit-linear-gradient(top, #df775d, #db5230);
-  background-image: -moz-linear-gradient(top, #df775d, #db5230);
-  background-image: -ms-linear-gradient(top, #df775d, #db5230);
-  background-image: -o-linear-gradient(top, #df775d, #db5230);
-  background-image: linear-gradient(to bottom, #df775d, #db5230);
   text-decoration: none;
 }
 
 
+
+/*Styling input fle */
+
+div.fileinputs {
+            position: relative;
+        }
+
+        div.fakefile {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 1;
+        }
+
+        div.fakefile input[type=button] {
+            /* enough width to completely overlap the real hidden file control */
+            cursor: pointer;
+            width: 148px;
+            -webkit-border-radius: 10;
+            -moz-border-radius: 10;
+            border-radius: 10px;
+             height: 40px;
+            font-family: 'Montserrat', sans-serif, Arial;
+            color: #ffffff;
+            font-size: 14px;
+            background: #df775d;
+            text-decoration: none;
+        }
+
+        div.fileinputs input.file {
+            position: relative;
+            text-align: right;
+            -moz-opacity:0 ;
+            filter:alpha(opacity: 0);
+            opacity: 0;
+            z-index: 2;
+        }
