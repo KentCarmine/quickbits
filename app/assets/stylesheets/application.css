@@ -14,21 +14,16 @@
 
 /*require '/vendor/assets/normalize.css'
 */
-.top{width:200px;position:absolute;top:0;left:0;background:#f60;}
-
-.bottom{width:200px;height:50px;position:absolute;bottom:0;left:0;background:#f60;}
-.middle{width:200px;min-height:1px;position:absolute;bottom:50px;top:20px;left:0;background:#06f;}
-
 
 /*    phones and tablets   */
 
 @media screen and (max-device-width: 992px){
-body{
+  body{
     margin: 0 0 0 0;
     padding: 0;
-}
+  }
 
-.header {
+  .header {
     background-color: #f6f8f8;
     width: 100%;
     float: left;
@@ -37,89 +32,86 @@ body{
     height: 90px;
     border-bottom: 1px solid #ced3d5;
 
-}
+  }
 
-.header_image {
-  padding: 10px;
-}
+  .header_image {
+    padding: 10px;
+  }
 
-.footer  {
-          height: 0;
-          margin: 0 0 0 0;
-          padding: 0;
-          bottom: 0;
-          background-color: #f6f8f8;
-           width: 100%;
-           
-}
+  .footer  {
+    height: 0;
+    margin: 0 0 0 0;
+    padding: 0;
+    bottom: 0;
+    background-color: #f6f8f8;
+    width: 100%;
 
-
-.grid {
-      
-              
-}
-
-.col-1 {
-      float: left;
-      min-width: 360px;      
-      height: 360px; 
-      
+  }
 
 
-}
+  .grid {
 
-.col-2 {
-        float: left;
-        width: 0%;
-        margin-right: 0;
 
-}
+  }
 
-.status p {
-  display: block;
-  width: 240px;
-  padding: 2px 5px;
-  margin: 2px 0;
-  border: 1px inset #446;
-  border-radius: 5px;
-}
-
-div.fileinputs {
-            
-            position: relative;
-        }
-
-        div.fakefile {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            z-index: 1;
-        }
-
-        div.fakefile input[type=button] {
-            /* enough width to completely overlap the real hidden file control */
-            cursor: pointer;
-            width: 100%;
-            font-family: 'Montserrat', sans-serif, Arial;
-            color: #ffffff;
-            font-size: 14px;
-            background: #df775d;
-            text-decoration: none;
-
-        }
-
-        div.fileinputs input.file {
-            position: relative;
-            text-align: right;
-            -moz-opacity:0 ;
-            filter:alpha(opacity: 0);
-            opacity: 0;
-            z-index: 2;
-
-        }
+  .col-1 {
+    float: left;
+    min-width: 360px;      
+    height: 360px; 
 
 
 
+  }
+
+  .col-2 {
+    float: left;
+    width: 0%;
+    margin-right: 0;
+
+  }
+
+  .status p {
+    display: block;
+    width: 240px;
+    padding: 2px 5px;
+    margin: 2px 0;
+    border: 1px inset #446;
+    border-radius: 5px;
+  }
+
+  div.fileinputs {
+
+    position: relative;
+  }
+
+  div.fakefile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  div.fakefile input[type=button] {
+    /* enough width to completely overlap the real hidden file control */
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif, Arial;
+    color: #ffffff;
+    font-size: 14px;
+    background: #df775d;
+    text-decoration: none;
+
+  }
+
+  div.fileinputs input.file {
+    position: relative;
+    text-align: right;
+    -moz-opacity:0 ;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+    z-index: 2;
+
+  }
 }
 
 
@@ -128,18 +120,18 @@ div.fileinputs {
 
 @media screen and (max-width: 980px) {
 
-.give_url_hid{
-          display: inline;
-} 
+  .give_url_hid{
+    display: inline;
+  } 
 
-body{
+  body{
     margin: 0 0 0 0;
     padding: 0;
-}
+  }
 
 
 
-.header {
+  .header {
     background-color: #f6f8f8;
     width: 100%;
     float: left;
@@ -148,45 +140,45 @@ body{
     height: 90px;
     border-bottom: 1px solid #ced3d5;
 
-}
+  }
 
-.header_image {
-  padding: 10px;
-}
+  .header_image {
+    padding: 10px;
+  }
 
-.footer  {
-          margin-top: 40px;
-          height: 50px;
-          position: absolute;
-          bottom: 0;
-          background-color: #f6f8f8;
-           width: 100%;
-           border-top: 1px solid #ced3d5;
-}
+  .footer  {
+    margin-top: 40px;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    background-color: #f6f8f8;
+    width: 100%;
+    border-top: 1px solid #ced3d5;
+  }
 
 
-.grid {
-      
-              
-}
+  .grid {
 
-.col-1 {
-      display: none; 
-     
 
-}
+  }
 
-.col-2 {
-         float: left;
-      width: 50%;      
-      height: 360px; 
-      margin: 0 0 0 0;
-        padding: 20;
-        
+  .col-1 {
+    display: none; 
 
-}
 
-#drop_zone {
+  }
+
+  .col-2 {
+   float: left;
+   width: 50%;      
+   height: 360px; 
+   margin: 0 0 0 0;
+   padding: 20;
+
+
+ }
+
+ #drop_zone {
   border-style: dashed; 
   width: 90%;   
   border: 1px dashed #df775d;
@@ -209,27 +201,27 @@ body{
 /*Desktop open to great than 980 px  */
 
 body{
-    margin: 0 0 0 0;
-    padding: 0;
+  margin: 0 0 0 0;
+  padding: 0;
 }
 
 h1 {
-font-size: 48.18181610107422px;
-font-weight: 300;
-height: 116.36363220214844px;
-margin-bottom: 30px;
-margin-left: 0px;
-margin-right: 0px;
-margin-top: 00px;
-text-align: center;
-width: 509.04827880859375px;
+  font-size: 48.18181610107422px;
+  font-weight: 300;
+  height: 116.36363220214844px;
+  margin-bottom: 30px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 00px;
+  text-align: center;
+  width: 509.04827880859375px;
 }
 
 p {
-    font-family: 'Montserrat', Helvetica,  Arial,  sans-serif;
-    font-size: 15px;
-    line-height: 1.65em;
-    font-weight: 400;
+  font-family: 'Montserrat', Helvetica,  Arial,  sans-serif;
+  font-size: 15px;
+  line-height: 1.65em;
+  font-weight: 400;
 }
 
 .text_area {
@@ -238,13 +230,13 @@ p {
 }
 
 .header {
-    background-color: #f6f8f8;
-    width: 100%;
-    float: left;
-    margin-bottom: 40px;
-    padding: 0;
-    height: 90px;
-    border-bottom: 1px solid #ced3d5;
+  background-color: #f6f8f8;
+  width: 100%;
+  float: left;
+  margin-bottom: 40px;
+  padding: 0;
+  height: 90px;
+  border-bottom: 1px solid #ced3d5;
 
 }
 
@@ -254,37 +246,27 @@ p {
 }
 
 .footer  {
-          margin-top: 40px;
-          height: 50px;
-          position: absolute;
-          bottom: 0;
-          background-color: #f6f8f8;
-           width: 100%;
-           border-top: 1px solid #ced3d5;
+  margin-top: 40px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  background-color: #f6f8f8;
+  width: 100%;
+  border-top: 1px solid #ced3d5;
 
 }
 
-
-.grid {
-      
-              
-}
 
 .col-1 {
-      float: left;
-      min-width: 360px;      
-      height: 360px; 
-
-
+  float: left;
+  min-width: 360px;      
+  height: 360px; 
 }
 
 .col-2 {
-        
-        float: left;
-        width: 40%;
 
-       
-
+  float: left;
+  width: 40%;
 }
 
 #drop_zone {
@@ -293,8 +275,6 @@ p {
   border: 1px dashed #df775d;
   margin: 0px;
   padding: 40px;
-  
-  
 }
 
 .status p {
@@ -306,8 +286,6 @@ p {
   border-radius: 5px;
   margin: 0 auto;
 }
-
-
 
 /*  The Button*/
 
@@ -330,80 +308,76 @@ p {
   text-decoration: none;
 }
 
-
-
 /*Styling input fle */
 
 div.fileinputs {
-            margin-left: 260px;
-            position: relative;
-        }
+  margin-left: 260px;
+  position: relative;
+}
 
-        div.fakefile {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            z-index: 1;
-        }
+div.fakefile {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
 
-        div.fakefile input[type=button] {
-            /* enough width to completely overlap the real hidden file control */
-            cursor: pointer;
-            width: 148px;
-            -webkit-border-radius: 10;
-            -moz-border-radius: 10;
-            border-radius: 10px;
-             height: 40px;
-            font-family: 'Montserrat', sans-serif, Arial;
-            color: #ffffff;
-            font-size: 14px;
-            background: #df775d;
-            text-decoration: none;
+div.fakefile input[type=button] {
+  /* enough width to completely overlap the real hidden file control */
+  cursor: pointer;
+  width: 148px;
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  height: 40px;
+  font-family: 'Montserrat', sans-serif, Arial;
+  color: #ffffff;
+  font-size: 14px;
+  background: #df775d;
+  text-decoration: none;
 
-        }
+}
 
-        div.fileinputs input.file {
-            position: relative;
-            text-align: right;
-            height: 40px;
-            width: 148px;
-            -moz-opacity:0 ;
-            filter:alpha(opacity: 0);
-            opacity: 0;
-            z-index: 2;
+div.fileinputs input.file {
+  position: relative;
+  text-align: right;
+  height: 40px;
+  width: 148px;
+  -moz-opacity:0 ;
+  filter:alpha(opacity: 0);
+  opacity: 0;
+  z-index: 2;
 
-        }
+}
 
 
 /*display url box*/
 
 
 .give_url {
-      margin-top: 60px;
-      margin-left: 60px;
-          height: 100px;
-          position: absolute;
-          bottom: 80px;
-           width: 100%;
-      
-
+  margin-top: 60px;
+  margin-left: 60px;
+  height: 100px;
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
 }
 
 
 .give_url input {
-   font-family: 'Montserrat', sans-serif, Arial;
-     font-size: 14px;
-    border: 5px solid white; 
-    -webkit-box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    -moz-box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    padding: 15px;
-    background: rgba(255,255,255,0.5);
-    margin: 0 0 10px 0;
+ font-family: 'Montserrat', sans-serif, Arial;
+ font-size: 14px;
+ border: 5px solid white; 
+ -webkit-box-shadow: 
+ inset 0 0 8px  rgba(0,0,0,0.1),
+ 0 0 16px rgba(0,0,0,0.1); 
+ -moz-box-shadow: 
+ inset 0 0 8px  rgba(0,0,0,0.1),
+ 0 0 16px rgba(0,0,0,0.1); 
+ box-shadow: 
+ inset 0 0 8px  rgba(0,0,0,0.1),
+ 0 0 16px rgba(0,0,0,0.1); 
+ padding: 15px;
+ background: rgba(255,255,255,0.5);
+ margin: 0 0 10px 0;
 }
