@@ -138,16 +138,15 @@ body{
       width: 50%;      
       height: 360px; 
       margin: 0 0 0 0;
-        padding: 0;
+        padding: 20;
         
 
 }
 
 #drop_zone {
   border-style: dashed; 
-  width: 90%;
+  width: 90%;   
   border: 1px dashed #df775d;
-  margin: 0px;
   height: 200px;
   padding: 40px;
 }
@@ -207,6 +206,7 @@ p {
 
 .header img {
   padding: 10px;
+  margin-left: 20px; 
 }
 
 .footer  {
@@ -238,6 +238,7 @@ p {
         
         float: left;
         width: 40%;
+
        
 
 }
@@ -247,8 +248,8 @@ p {
   width: 480px;
   border: 1px dashed #df775d;
   margin: 0px;
-   padding: 40px;
-  margin: auto;
+  padding: 40px;
+  
   
 }
 
