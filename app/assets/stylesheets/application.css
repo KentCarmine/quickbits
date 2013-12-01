@@ -344,7 +344,7 @@ div.fileinputs input.file {
   height: 40px;
   width: 148px;
   -moz-opacity:0 ;
-  filter:alpha(opacity: 0);
+  filter:alpha(opacity=0);
   opacity: 0;
   z-index: 2;
 
