@@ -4,6 +4,9 @@
 </div>
 <div class="grid">
 	<div class="col-1">
+	<div class="value_prop">
+		<h1> Send a friend a file, without the cloud.</h1>
+	</div>
 
   <div class="fileinputs">
         <input type="file" class="file" id="file_input" />
@@ -12,16 +15,25 @@
             <input type="button" value="Upload a File" />
         </div>
     </div>
-
 		
 		<input type="text" name="url" value="" placeholder="http://quickbits.co/red-fox-runs" readonly="readonly" id="url" size="40" style="display:none">
-		<form id="copy_link_form">
+		<form id="copy_link_form" style="display:none">
 			<input type="submit" value="Copy Link" id="submit_file" >
 		</form>
+
+		<div class="status_view" style="display:none" >
 		<%= render "/status" %>
+		</div>
 	</div>
 	<div class="col-2">
-		<div id="drop_zone"></div>
+		<div id="drop_zone">
+		<div class="text_area"> 
+			<p> Just drag a file here. <p>
+			<p>A link will be generated.</p>
+			<p>You share the link with a friend</p>
+			<p>When they visit the link the file</p>  <p>download directly to their device</p>
+		</div>
+		</div>
 	</div>
 </div>
 <div class="footer"></div>

@@ -17,6 +17,55 @@
 
 
 
+/*Reset* /
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+
+
 /*    phones and tablets   */
 
 @media screen and (max-device-width: 992px){
@@ -148,7 +197,7 @@ body{
   border: 1px dashed #df775d;
   margin: 30px;
   height: 200px;
-  
+  padding: 40px;
 }
 
 .status p {
@@ -167,6 +216,30 @@ body{
 body{
     margin: 0 0 0 0;
     padding: 0;
+}
+
+h1 {
+font-size: 48.18181610107422px;
+font-weight: 300;
+height: 116.36363220214844px;
+margin-bottom: 48px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 30px;
+text-align: center;
+width: 509.04827880859375px;
+}
+
+p {
+    font-family: 'Montserrat', Helvetica,  Arial,  sans-serif;
+    font-size: 15px;
+    line-height: 1.65em;
+    font-weight: 400;
+}
+
+.text_area {
+  position: relative;
+  color: #6d767a;
 }
 
 .header {
@@ -210,7 +283,7 @@ body{
 .col-2 {
         padding: 40px;
         float: left;
-        width: 60%;
+        width: 40%;
        
 
 }
@@ -219,8 +292,8 @@ body{
   border-style: dashed; 
   width: 480px;
   border: 1px dashed #df775d;
-  margin: 0px;
-  height: 300px;
+  margin: 20px;
+   padding: 40px;
   margin: auto;
   
 }
@@ -263,6 +336,7 @@ body{
 /*Styling input fle */
 
 div.fileinputs {
+            margin-left: 200px;
             position: relative;
         }
 
@@ -286,6 +360,7 @@ div.fileinputs {
             font-size: 14px;
             background: #df775d;
             text-decoration: none;
+
         }
 
         div.fileinputs input.file {
@@ -295,4 +370,5 @@ div.fileinputs {
             filter:alpha(opacity: 0);
             opacity: 0;
             z-index: 2;
+
         }
