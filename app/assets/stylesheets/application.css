@@ -16,85 +16,6 @@
 */
 
 /*    phones and tablets   */
-
-@media screen and (max-device-width: 992px){
-  body{
-    margin: 0 0 0 0;
-    padding: 0;
-  }
-
-  .header {
-    background-color: #f6f8f8;
-    width: 100%;
-    float: left;
-    margin: 0 0 0 0;
-    padding: 0;
-    height: 90px;
-    border-bottom: 1px solid #ced3d5;
-
-  }
-
-  .header_image {
-    padding: 10px;
-  }
-
-  .footer  {
-   display: none;
-  }
-
-
-  .col-2 {
-    display: none;
-
-  }
-
-  .status p {
-    display: block;
-    width: 240px;
-    padding: 2px 5px;
-    margin: 2px 0;
-    border: 1px inset #446;
-    border-radius: 5px;
-  }
-
-  div.fileinputs {
-
-    position: relative;
-  }
-
-  div.fakefile {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-  }
-
-  div.fakefile input[type=button] {
-    cursor: pointer;
-    width: 100%;
-    font-family: 'Montserrat', sans-serif, Arial;
-    color: #ffffff;
-    font-size: 14px;
-    background: #df775d;
-    text-decoration: none;
-
-  }
-
-  div.fileinputs input.file {
-    position: relative;
-    text-align: right;
-    -moz-opacity:0 ;
-    filter:alpha(opacity: 0);
-    opacity: 0;
-    z-index: 2;
-
-  }
-}
-
-
-
-/* Desktop when @ less than 980 */
-
 @media screen and (max-width: 980px) and (min-device-width: 992px) {
 
   .give_url_hid{
@@ -173,6 +94,86 @@
   border-radius: 5px;
 }
 }
+
+
+@media screen and (max-device-width: 992px){
+  body{
+    margin: 0 0 0 0;
+    padding: 0;
+  }
+
+  .header {
+    background-color: #f6f8f8;
+    width: 100%;
+    float: left;
+    margin: 0 0 0 0;
+    padding: 0;
+    height: 90px;
+    border-bottom: 1px solid #ced3d5;
+
+  }
+
+  .header_image {
+    padding: 10px;
+  }
+
+  .footer  {
+   display: none;
+  }
+
+
+  .col-2 {
+    display: none;
+
+  }
+
+  .status p {
+    display: block;
+    width: 240px;
+    padding: 2px 5px;
+    margin: 2px 0;
+    border: 1px inset #446;
+    border-radius: 5px;
+  }
+
+  div.fileinputs {
+
+    position: relative;
+  }
+
+  div.fakefile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  div.fakefile input[type=button] {
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif, Arial;
+    color: #ffffff;
+    font-size: 14px;
+    background: #df775d;
+    text-decoration: none;
+
+  }
+
+  div.fileinputs input.file {
+    position: relative;
+    text-align: right;
+    -moz-opacity:0 ;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+    z-index: 2;
+
+  }
+}
+
+
+
+
+
 
 
 /*Desktop open to great than 980 px  */
