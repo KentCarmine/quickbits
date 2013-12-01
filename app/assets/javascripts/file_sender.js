@@ -96,7 +96,7 @@ Sender.prototype.loadFile = function(callback){
 Sender.prototype.setDownloadUrl = function(){
   // console.log(this);
   // console.log(this.peer_id);
-  $("#url").val("localhost:3000/" + this.peer_id);
+  $("#url").val(window.location.href + this.peer_id);
 }
 
 $(function(){
