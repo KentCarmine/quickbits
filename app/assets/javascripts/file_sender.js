@@ -6,6 +6,7 @@ function Sender(file){
 
   thisSender.peer.on('open', function(id){
     thisSender.peer_id = id;
+    console.log("This peer reliable?"+thisSender.peer.reliable);
     // console.log(thisSender.peer.id);
     thisSender.setDownloadUrl();
   });
@@ -64,6 +65,7 @@ Sender.prototype.sendFile = function(fileData, thisSender){
     fileType: thisSender.file.type
   }
 
+  console.log("File sent inside sendFile!");
   thisSender.connection.send(fileData);
   // thisSender.getData();
     // });

@@ -23,13 +23,18 @@ Receiver.prototype.getData = function(){
   // console.log("getData called");
   var thisReceiver = this;
   thisReceiver.connection.on("data", function(data){
+    console.log("This peer is reliable? "+ thisReceiver.peer.reliable);
+
     // console.log("data received in getData");
 
     if(data.isFileMetaData){
       // console.log("GOT: " + data); //tester code
       // console.log("GOT: " + data.fileSize);
+      console.log("Got file metadata in data.isFileMetaData");
     }
     else if(data.isFile){
+      console.log("Got file data");
+      console.log(data);
       var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
       thisReceiver.file = file;
       // debugger;
