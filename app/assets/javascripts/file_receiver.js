@@ -31,6 +31,7 @@ Receiver.prototype.getData = function(){
     }
     else if(data.isFile){
       var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
+      thisReceiver.file = file;
       // debugger;
       // console.log(file);
       // console.log(data.arrayBufferFileData);
