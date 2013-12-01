@@ -1,14 +1,45 @@
-<div class="container">
-  <h1> Quick Bits </h1>
-  <div id="drop_zone">
-  </div>
+<div class="header"> 
+<%= link_to image_tag("quickbit-logo.png", :border=>0, :class => 'header_image'), "/" %>
+</div>
+<div class="grid">
+	<div class="col-1">
+	<div class="value_prop">
+		<h1> Send a friend a file, without the cloud.</h1>
+	</div>
+	
+  <div class="fileinputs">
+        <input type="file" class="file" id="file_input" />
 
-<input type="file" id="file_input">
-<input type="text" name="url" value="" placeholder="http://quickbits.co/red-fox-runs" readonly="readonly" id="url" size="40">
-<form id="copy_link_form">
-  <input type="submit" value="Copy Link">
-</form>
+        <div class="fakefile">
+            <input type="button" value="Upload a File" />
+        </div>
+    </div>
+		
 
-<%= render "/status" %>
-
+		<div class="status_view" style="display:none" >
+		<%= render "/status" %>
+		</div>
+	</div>
+	<div class="col-2">
+		<div id="drop_zone">
+		<div class="text_area"> 
+			<p> Just drag a file here. <p>
+			<p>A link will be generated.</p>
+			<p>You share the link with a friend</p>
+			<p>When they visit the link the file</p>  <p>download directly to their device</p>
+			<p>&nbsp</p>
+			<p>&nbsp</p>
+			<p>&nbsp</p>
+		</div>
+		</div>
+	</div>
+</div>
+		</div>
+<div class="give_url">
+		<input type="text" name="url" value="" placeholder="YOUR URL SHOWS UP HERE" readonly="readonly" id="url" size="40" >
+		<form id="copy_link_form" style="display:none">
+			<input type="submit" value="Copy Link" id="submit_file" >
+		</form>
+		</div>
+<div class="footer">
 </div>
