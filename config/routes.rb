@@ -55,6 +55,10 @@ Quickbits::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  
+  
+  # CODE REVIEW: What is the difference in send/recieve and initiators?
+  # Also, get rid of these extra default comments.
 
   get '/send' => "peer_connection#sendTestData"
   get '/receive/:senderPeerId' => "peer_connection#receiveTestData"

@@ -1,5 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
+# CODE REVIEW: If you're not using ActiveRecord, remove it and it will keep you
+#   from having to have a database for your app
+# http://stackoverflow.com/questions/2212709/remove-activerecord-in-rails-3/2212867#2212867
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"
