@@ -76,14 +76,6 @@
 
  }
 
- #drop_zone {
-  border-style: dashed; 
-  width: 90%;   
-  border: 1px dashed #df775d;
-  height: 200px;
-  padding: 40px;
-
-}
 
 .status p {
   display: block;
@@ -184,13 +176,13 @@ body{
 }
 
 h1 {
+  margin-left: auto;
+  margin-right: auto;
   font-size: 48.18181610107422px;
   font-weight: 300;
   height: 116.36363220214844px;
   margin-bottom: 30px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 00px;
+  margin-top: 60px;
   text-align: center;
   width: 509.04827880859375px;
 }
@@ -200,11 +192,6 @@ p {
   font-size: 15px;
   line-height: 1.65em;
   font-weight: 400;
-}
-
-.text_area {
-  position: relative;
-  color: #6d767a;
 }
 
 .header {
@@ -237,23 +224,10 @@ p {
 
 .col-1 {
   float: left;
-  min-width: 360px;      
+  width: 100%;      
   height: 360px; 
 }
 
-.col-2 {
-
-  float: left;
-  width: 40%;
-}
-
-#drop_zone {
-  border-style: dashed; 
-  width: 480px;
-  border: 1px dashed #df775d;
-  margin: 0px;
-  padding: 40px;
-}
 
 .status p {
   display: block;
@@ -288,9 +262,13 @@ p {
 
 /*Styling input fle */
 
+
 div.fileinputs {
-  margin-left: 260px;
+ 
+    margin-right: auto;
+    margin-left: auto;
   position: relative;
+ width: 148px;
 }
 
 div.fakefile {
@@ -314,6 +292,7 @@ div.fakefile input[type=button] {
   background: #df775d;
   text-decoration: none;
 
+
 }
 
 div.fileinputs input.file {
@@ -332,17 +311,25 @@ div.fileinputs input.file {
 /*display url box*/
 
 
+.grid {
+      display: inline-block;
+      width: 100%;
+
+}
+
 .give_url {
-  margin-top: 60px;
-  margin-left: 60px;
   height: 100px;
-  position: absolute;
-  bottom: 80px;
-  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  width: 370px;
+  margin-top: 40px;
 }
 
 
 .give_url input {
+  
+  text-align: center;
+  color: #df775d;
  font-family: 'Montserrat', sans-serif, Arial;
  font-size: 14px;
  border: 5px solid white; 
@@ -357,5 +344,4 @@ div.fileinputs input.file {
  0 0 16px rgba(0,0,0,0.1); 
  padding: 15px;
  background: rgba(255,255,255,0.5);
- margin: 0 0 10px 0;
 }
