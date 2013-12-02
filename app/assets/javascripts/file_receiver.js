@@ -16,19 +16,41 @@ Receiver.prototype.handleConnection = function(){
   });
 }
 
+
 Receiver.prototype.getData = function(){
   var fileArray = [];
   var thisReceiver = this;
+  var chunk_count = 0;
+  var progress = document.querySelector('.percent');
+  var userFileName = document.querySelector('.file_name');
+  var userFileSize = document.querySelector('.file_size');
+
   thisReceiver.connection.on("data", function(data){
 
     if(data.isFileMetaData){
+      // GLOBAL, COME BACK TO THIS
+      file_size = data.fileSize;
+      console.log(data.fileName);
+      userFileName.textContent = data.fileName;
+      size = byteConverter(data.fileSize);
+      console.log(size);
+      userFileSize.textContent = size;
+      console.log(file_size);
+
       console.log("got fileMetaData, should not be here!");
     }
     else if(data.isFile){
+      chunk_count += 1;
+      // console.log(chunk_count);
       // call byteConverter(data.fileSize) to get file size in the appropriate unit
       var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
       thisReceiver.file = file;
       fileArray.push(data.arrayBufferFileData);
+
+
+      var percentLoaded = Math.round((chunk_count / (file_size / 1000) ) * 100);
+      progress.style.width = percentLoaded + '%';
+      progress.textContent = percentLoaded + '%';
 
       //ALTER OR REMOVE TIMEOUT LATER!
       //Maybe by checking if file is complete?

@@ -22,7 +22,7 @@ Sender.prototype.handleConnection = function(){
   });
 }
 
-Sender.prototype.sendFile = function(){
+Sender.prototype.sendFile = function(callback){
   var thisSender = this;
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
@@ -32,7 +32,21 @@ Sender.prototype.sendFile = function(){
     var blob = [];
     var sliceSize = 1000;
 
+    //Setting up variables to display to initiating user
+    var status = document.querySelector('.status_view');
+    var progress = document.querySelector('.percent');
+    var userFileName = document.querySelector('.file_name');
+    var userFileSize = document.querySelector('.file_size');
+
+    status.style.display = 'inline';
+    userFileName.textContent = thisSender.file.name,
+    userFileSize.textContent = byteConverter(thisSender.file.size);
+
     for(var sliceId = 0; sliceId < fileData.byteLength/sliceSize; sliceId++) {
+      var percentLoaded = Math.round((sliceId / (fileData.byteLength/sliceSize) ) * 100);
+      progress.style.width = percentLoaded + '%';
+      progress.textContent = percentLoaded + '%';
+
       if(sliceId >= Math.floor(fileData.byteLength/sliceSize)) {
         var lastStatus = 1;
       }
@@ -48,7 +62,7 @@ Sender.prototype.sendFile = function(){
         fileName: thisSender.file.name,
         fileSize: thisSender.file.size,
         fileType: thisSender.file.type,
-        isLast: lastStatus
+        isLast:   lastStatus
       }
 
       thisSender.connection.send(fileSliceWithMetaData);
@@ -96,4 +110,23 @@ $(function(){
     event.preventDefault();
   });
 });
+
+function byteConverter(bytes){
+  var kilobyte = 1024;
+  var megabyte = kilobyte * 1024;
+  var gigabyte = megabyte * 1024;
+
+  if (Math.floor(bytes/gigabyte) > 0){
+    return (bytes/gigabyte).toFixed(2) + " GB"
+  }
+  else if (Math.floor(bytes/megabyte) > 0){
+    return (bytes/megabyte).toFixed(2) + " MB"
+  }
+  else if (Math.floor(bytes/kilobyte) > 0){
+    return (bytes/kilobyte).toFixed(2) + " kB"
+  }
+  else {
+    return bytes + " B"
+  }
+}
 
