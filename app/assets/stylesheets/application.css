@@ -1,21 +1,23 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the top of the
+* compiled file, but it's generally better to create a new file per style scope.
+*
+*= require_self
+*= require_tree .
+*/
 
 /*require '/vendor/assets/normalize.css'
 */
 
-/*    phones and tablets   */
+/* phones and tablets */
+
+
 
 @media screen and (max-device-width: 992px){
   body{
@@ -38,14 +40,13 @@
     padding: 10px;
   }
 
-  .footer  {
+  .footer {
    display: none;
   }
 
 
   .col-2 {
     display: none;
-
   }
 
   .status p {
@@ -55,6 +56,29 @@
     margin: 2px 0;
     border: 1px inset #446;
     border-radius: 5px;
+  }
+
+  #progress_bar {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid black;
+    font-size: 14px;
+    width: 200px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+  }
+
+  #progress_bar .loading {
+    opacity: 1.0;
+  }
+
+  #progress_bar .percent {
+    background-color: #99ccff;
+    height: auto;
+    width: 0;
   }
 
   div.fileinputs {
@@ -97,7 +121,7 @@
 
 @media screen and (max-width: 980px) and (min-device-width: 992px) {
 div.fileinputs {
- 
+
   position: relative;
  width: 100%;
 }
@@ -133,12 +157,12 @@ div.fileinputs input.file {
   height: 100px;
   width: 100%;
   -moz-opacity:0 ;
-  filter:alpha(opacity: 0);
+  filter:alpha(opacity=0);
   opacity: 0;
   z-index: 2;
 
 }
- 
+
 }
 
 
@@ -160,7 +184,7 @@ h1 {
 }
 
 p {
-  font-family: 'Montserrat', Helvetica,  Arial,  sans-serif;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.65em;
   font-weight: 400;
@@ -179,10 +203,10 @@ p {
 
 .header_image {
   padding: 10px;
-  margin-left: 20px; 
+  margin-left: 20px;
 }
 
-.footer  {
+.footer {
   margin-top: 40px;
   height: 50px;
   position: absolute;
@@ -196,8 +220,8 @@ p {
 
 .col-1 {
   float: left;
-  width: 100%;      
-  height: 360px; 
+  width: 100%;
+  height: 360px;
 }
 
 
@@ -206,12 +230,31 @@ p {
   width: 240px;
   padding: 2px 5px;
   margin: 2px 0;
-  border: 1px inset #446;
-  border-radius: 5px;
+  /*border: 1px inset #446;
+  border-radius: 5px;*/
   margin: 0 auto;
 }
 
-/*  The Button*/
+/*#progress_bar {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid #000;
+    font-size: 14px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+  }
+  #progress_bar.loading {
+    opacity: 1.0;
+  }
+  #progress_bar .percent {
+    background-color: #99ccff;
+    height: auto;
+    width: 0;
+  }*/
+/* The Button*/
 
 #submit_file {
 
@@ -236,7 +279,7 @@ p {
 
 
 div.fileinputs {
- 
+
     margin-right: auto;
     margin-left: auto;
   position: relative;
@@ -299,30 +342,30 @@ div.fileinputs input.file {
 
 
 .give_url input {
-  
+
   text-align: center;
   color: #df775d;
  font-family: 'Montserrat', sans-serif, Arial;
  font-size: 14px;
- border: 5px solid white; 
- -webkit-box-shadow: 
- inset 0 0 8px  rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1); 
- -moz-box-shadow: 
- inset 0 0 8px  rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1); 
- box-shadow: 
- inset 0 0 8px  rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1); 
+ border: 5px solid white;
+ -webkit-box-shadow:
+ inset 0 0 8px rgba(0,0,0,0.1),
+ 0 0 16px rgba(0,0,0,0.1);
+ -moz-box-shadow:
+ inset 0 0 8px rgba(0,0,0,0.1),
+ 0 0 16px rgba(0,0,0,0.1);
+ box-shadow:
+ inset 0 0 8px rgba(0,0,0,0.1),
+ 0 0 16px rgba(0,0,0,0.1);
  padding: 15px;
  background: rgba(255,255,255,0.5);
 }
 
 
-/*    phones and tablets   */
+/* phones and tablets */
 @media screen and (max-width: 980px){
 div.fileinputs {
- 
+
   position: relative;
   width: 400px;
 }
@@ -358,13 +401,13 @@ div.fileinputs input.file {
   height: 400px;
   width: 400px;
   -moz-opacity:0 ;
-  filter:alpha(opacity: 0);
+  filter:alpha(opacity=0);
   opacity: 0;
   z-index: 2;
 
 }
 h1 {
- 
+
   font-size: 64px;
   font-weight: 300;
   height: 200px;
@@ -384,22 +427,53 @@ h1 {
 
 
 .give_url input {
-  
+
   text-align: center;
   color: #df775d;
  font-family: 'Montserrat', sans-serif, Arial;
  font-size: 34px;
- border: 10px solid white; 
- -webkit-box-shadow: 
- inset 0 0 8px  rgba(0,0,0,0.1),
- 0 0 32px rgba(0,0,0,0.1); 
- -moz-box-shadow: 
- inset 0 0 16px  rgba(0,0,0,0.1),
- 0 0 32px rgba(0,0,0,0.1); 
- box-shadow: 
- inset 0 0 16px  rgba(0,0,0,0.1),
- 0 0 32px rgba(0,0,0,0.1); 
+ border: 10px solid white;
+ -webkit-box-shadow:
+ inset 0 0 8px rgba(0,0,0,0.1),
+ 0 0 32px rgba(0,0,0,0.1);
+ -moz-box-shadow:
+ inset 0 0 16px rgba(0,0,0,0.1),
+ 0 0 32px rgba(0,0,0,0.1);
+ box-shadow:
+ inset 0 0 16px rgba(0,0,0,0.1),
+ 0 0 32px rgba(0,0,0,0.1);
  padding: 30px;
  background: rgba(255,255,255,0.5);
 }
 }
+
+#progress_bar {
+    margin: 10px auto 10px auto;
+    padding: 3px;
+    border: 1px solid black;
+    font-size: 14px;
+    width: 25%;
+    /*clear: both;*/
+    /*opacity: 0;*/
+    /*-moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;*/
+  }
+
+  #progress_bar .loading {
+    opacity: 1.0;
+  }
+
+  #progress_bar .percent {
+    font-family: 'Montserrat', sans-serif, Arial;
+    background-color: rgb(223, 119, 93);
+    color: white;
+    height: auto;
+    width: 0;
+    padding: 0 0px 0 -3px;
+    /*margin: 2px;*/
+  }
+
+  .file_name {
+    background-color: #D1E0E0;
+  }
