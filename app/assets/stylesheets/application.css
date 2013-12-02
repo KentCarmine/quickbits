@@ -338,7 +338,7 @@ div.fakefile input[type=button] {
   /* enough width to completely overlap the real hidden file control */
   cursor: pointer;
   width: 400px;
-  height: 400px;
+  height: 260px;
   font-family: 'Montserrat', sans-serif, Arial;
   color: #ffffff;
   font-size: 48px;
