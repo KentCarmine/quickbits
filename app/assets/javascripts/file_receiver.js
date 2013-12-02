@@ -2,7 +2,7 @@
 
 function Receiver(){
   var thisReceiver = this;
-  thisReceiver.peer = new Peer({ key: "njbpaic7tuwstt9" });
+  thisReceiver.peer = new Peer({host: 'ancient-lake-1993.herokuapp.com', port: 80});
 }
 
 Receiver.prototype.establishConnection = function(senderPeerId){
