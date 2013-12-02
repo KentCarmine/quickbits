@@ -26,6 +26,8 @@ Receiver.prototype.getData = function(){
   var thisReceiver = this;
   var chunk_count = 0;
   var progress = document.querySelector('.percent');
+  var userFileName = document.querySelector('.file_name');
+  var userFileSize = document.querySelector('.file_size');
   // var progress = $('.percent');
 
   thisReceiver.connection.on("data", function(data){
@@ -39,7 +41,11 @@ Receiver.prototype.getData = function(){
 
       // GLOBAL, COME BACK TO THIS
       file_size = data.fileSize;
-
+      console.log(data.fileName);
+      userFileName.textContent = data.fileName;
+      size = byteConverter(data.fileSize);
+      console.log(size);
+      userFileSize.textContent = size;
       console.log(file_size);
       console.log("got fileMetaData, should not be here!");
     }

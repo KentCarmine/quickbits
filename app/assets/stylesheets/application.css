@@ -452,7 +452,7 @@ h1 {
     padding: 3px;
     border: 1px solid black;
     font-size: 14px;
-    width: 200px;
+    width: 25%;
     /*clear: both;*/
     /*opacity: 0;*/
     /*-moz-transition: opacity 1s linear;
@@ -472,4 +472,8 @@ h1 {
     width: 0;
     padding: 0 0px 0 -3px;
     /*margin: 2px;*/
+  }
+
+  .file_name {
+    background-color: #D1E0E0;
   }
