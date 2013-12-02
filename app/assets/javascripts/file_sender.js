@@ -1,9 +1,10 @@
 // SENDER SIDE
 function Sender(file){
   var thisSender = this;
-  thisSender.peer = new Peer({ key: "2pmakgfy6gw7mn29" });
+  thisSender.peer = new Peer({ host: "ancient-lake-1993.herokuapp.com", port: 80 });
 
   thisSender.peer.on('open', function(id){
+    console.log("Peer open");
     thisSender.peer_id = id;
     thisSender.setDownloadUrl();
   });
@@ -78,7 +79,10 @@ $(function(){
 
   $("#file_input").change(function(event){
     var file = event.target.files[0];
+    console.log("here");
+    console.log(file);
     var sender = new Sender(file);
+    console.log(sender);
     sender.handleConnection();
   });
 
