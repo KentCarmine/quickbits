@@ -57,12 +57,12 @@ Sender.prototype.handleConnection = function(){
 Sender.prototype.sendFile = function(fileData, thisSender){
   // var thisSender = this;
   // debugger;
-  var fileData = {
-    isFile: true,
-    arrayBufferFileData: fileData,
-    fileName: thisSender.file.name,
-    fileType: thisSender.file.type
-  }
+  // var fileData = {
+  //   isFile: true,
+  //   arrayBufferFileData: fileData,
+  //   fileName: thisSender.file.name,
+  //   fileType: thisSender.file.type
+  // }
 
   thisSender.connection.send(fileData);
   // thisSender.getData();
@@ -88,15 +88,42 @@ Sender.prototype.loadFile = function(callback){
   fileReader.readAsArrayBuffer(thisSender.file);
 
   fileReader.onload = function(){
-    // debugger;
-    callback(fileReader.result, thisSender);
+    var fileData = fileReader.result;
+    var blob = [];
+    var sliceSize = 1000;
+    // console.log(thisSender);
+    // console.log("file data length:");
+    // console.log(fileData.byteLength/sliceSize);
+
+    for(var sliceId = 0; sliceId < fileData.byteLength/sliceSize; sliceId++) {
+      // console.log("Slice ID: "+sliceId);
+      if(sliceId >= Math.floor(fileData.byteLength/sliceSize)) {
+        var lastStatus = 1;
+      }
+      else {
+        var lastStatus = 0;
+      }
+
+      blob = fileData.slice(sliceId * sliceSize, (sliceId + 1) * sliceSize);
+
+      var fileSliceWithMetaData = {
+        isFile: true,
+        arrayBufferFileData: blob,
+        fileName: thisSender.file.name,
+        fileSize: thisSender.file.size,
+        fileType: thisSender.file.type,
+        isLast: lastStatus
+      }
+
+      callback(fileSliceWithMetaData, thisSender);
+    }
   }
 }
 
 Sender.prototype.setDownloadUrl = function(){
   // console.log(this);
   // console.log(this.peer_id);
-  $("#url").val("localhost:3000/" + this.peer_id);
+  $("#url").val(window.location.href + this.peer_id);
 }
 
 $(function(){
@@ -134,8 +161,5 @@ $(function(){
   $("#copy_link_form").on("submit", function(event){
     event.preventDefault();
   });
-
-
-
 });
 
