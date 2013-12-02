@@ -2,9 +2,10 @@
 function Sender(file){
   var thisSender = this;
   // this.thisSender = this;
-  thisSender.peer = new Peer({ key: "ry9t770xq4hx5hfr" });
+  thisSender.peer = new Peer({ key: "njbpaic7tuwstt9" });
 
   thisSender.peer.on('open', function(id){
+    console.log('sender opened!')
     thisSender.peer_id = id;
     // console.log(thisSender.peer.id);
     thisSender.setDownloadUrl();
@@ -123,6 +124,7 @@ Sender.prototype.loadFile = function(callback){
 Sender.prototype.setDownloadUrl = function(){
   // console.log(this);
   // console.log(this.peer_id);
+  console.log('setting the download url');
   $("#url").val(window.location.href + this.peer_id);
 }
 

@@ -2,7 +2,7 @@
 
 function Receiver(){
   var thisReceiver = this;
-  thisReceiver.peer = new Peer({ key: "ry9t770xq4hx5hfr" });
+  thisReceiver.peer = new Peer({ key: "njbpaic7tuwstt9" });
 }
 
 Receiver.prototype.establishConnection = function(senderPeerId){
