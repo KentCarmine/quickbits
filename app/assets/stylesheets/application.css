@@ -17,6 +17,8 @@
 
 /*    phones and tablets   */
 
+
+
 @media screen and (max-device-width: 992px){
   body{
     margin: 0 0 0 0;
@@ -58,7 +60,6 @@
   }
 
   div.fileinputs {
-
     position: relative;
   }
 
@@ -99,7 +100,7 @@
 
   .give_url_hid{
     display: inline;
-  } 
+  }
 
   body{
     margin: 0 0 0 0;
@@ -140,15 +141,15 @@
   }
 
   .col-1 {
-    display: none; 
+    display: none;
 
 
   }
 
   .col-2 {
    float: left;
-   width: 50%;      
-   height: 360px; 
+   width: 50%;
+   height: 360px;
    margin: 0 0 0 0;
    padding: 20;
 
@@ -156,8 +157,8 @@
  }
 
  #drop_zone {
-  border-style: dashed; 
-  width: 90%;   
+  border-style: dashed;
+  width: 90%;
   border: 1px dashed #df775d;
   height: 200px;
   padding: 40px;
@@ -219,7 +220,7 @@ p {
 
 .header_image {
   padding: 10px;
-  margin-left: 20px; 
+  margin-left: 20px;
 }
 
 .footer  {
@@ -236,8 +237,8 @@ p {
 
 .col-1 {
   float: left;
-  min-width: 360px;      
-  height: 360px; 
+  min-width: 360px;
+  height: 360px;
 }
 
 .col-2 {
@@ -247,7 +248,7 @@ p {
 }
 
 #drop_zone {
-  border-style: dashed; 
+  border-style: dashed;
   width: 480px;
   border: 1px dashed #df775d;
   margin: 0px;
@@ -344,17 +345,19 @@ div.fileinputs input.file {
 .give_url input {
  font-family: 'Montserrat', sans-serif, Arial;
  font-size: 14px;
- border: 5px solid white; 
- -webkit-box-shadow: 
+ border: 5px solid white;
+ -webkit-box-shadow:
  inset 0 0 8px  rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1); 
- -moz-box-shadow: 
+ 0 0 16px rgba(0,0,0,0.1);
+ -moz-box-shadow:
  inset 0 0 8px  rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1); 
- box-shadow: 
+ 0 0 16px rgba(0,0,0,0.1);
+ box-shadow:
  inset 0 0 8px  rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1); 
+ 0 0 16px rgba(0,0,0,0.1);
  padding: 15px;
  background: rgba(255,255,255,0.5);
  margin: 0 0 10px 0;
 }
+
+

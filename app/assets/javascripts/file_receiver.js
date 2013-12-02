@@ -19,22 +19,62 @@ Receiver.prototype.handleConnection = function(){
   });
 }
 
+
 Receiver.prototype.getData = function(){
   // console.log("getData called");
   var fileArray = [];
   var thisReceiver = this;
+  var chunk_count = 0;
+  var progress = document.querySelector('.percent');
+  // var progress = $('.percent');
+
   thisReceiver.connection.on("data", function(data){
     // console.log("data received in getData");
 
     if(data.isFileMetaData){
       // console.log("GOT: " + data); //tester code
       // console.log("GOT: " + data.fileSize);
+      // var chunk_count = 0;
+      // var file_size = data.fileSize;
+
+      // GLOBAL, COME BACK TO THIS
+      file_size = data.fileSize;
+
+      console.log(file_size);
       console.log("got fileMetaData, should not be here!");
     }
     else if(data.isFile){
+      chunk_count += 1;
+      // console.log(chunk_count);
       var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
       thisReceiver.file = file;
       fileArray.push(data.arrayBufferFileData);
+      // console.log("file_size");
+      // console.log(file_size);
+      // console.log("chunk count / file size");
+      // console.log(chunk_count / (file_size/1000));
+
+      var percentLoaded = Math.round((chunk_count / (file_size / 1000) ) * 100);
+      // console.log(percentLoaded);
+      // $('.percent').html(percentLoaded + '%');
+      progress.style.width = percentLoaded + '%';
+      progress.textContent = percentLoaded + '%';
+
+      //added progress code, untested
+    // function updateProgress(evt) {
+    //   console.log("inside updateProgress")
+    //   // evt is an ProgressEvent.
+    //   if (evt.lengthComputable) {
+    //     console.log("lengthComputable")
+    //     console.log(lengthComputable)
+    //     var percentLoaded = Math.round((chunk_count/file_size/1000) * 100);
+    //     // Increase the progress bar length.
+    //     if (percentLoaded < 100) {
+    //       progress.style.width = percentLoaded + '%';
+    //       progress.textContent = percentLoaded + '%';
+    //     }
+    //   }
+    // }
 
       //ALTER OR REMOVE TIMEOUT LATER!
       //Maybe by checking if file is complete?
