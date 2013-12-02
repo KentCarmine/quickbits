@@ -1,21 +1,21 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the top of the
+* compiled file, but it's generally better to create a new file per style scope.
+*
+*= require_self
+*= require_tree .
+*/
 
 /*require '/vendor/assets/normalize.css'
 */
 
-/*    phones and tablets   */
+/* phones and tablets */
 
 
 
@@ -40,14 +40,13 @@
     padding: 10px;
   }
 
-  .footer  {
+  .footer {
    display: none;
   }
 
 
   .col-2 {
     display: none;
-
   }
 
   .status p {
@@ -59,7 +58,31 @@
     border-radius: 5px;
   }
 
+  #progress_bar {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid black;
+    font-size: 14px;
+    width: 200px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+  }
+
+  #progress_bar .loading {
+    opacity: 1.0;
+  }
+
+  #progress_bar .percent {
+    background-color: #99ccff;
+    height: auto;
+    width: 0;
+  }
+
   div.fileinputs {
+
     position: relative;
   }
 
@@ -97,86 +120,51 @@
 /* Desktop when @ less than 980 */
 
 @media screen and (max-width: 980px) and (min-device-width: 992px) {
+div.fileinputs {
 
-  .give_url_hid{
-    display: inline;
-  }
+  position: relative;
+ width: 100%;
+}
 
-  body{
-    margin: 0 0 0 0;
-    padding: 0;
-  }
+div.fakefile {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
 
+div.fakefile input[type=button] {
+  /* enough width to completely overlap the real hidden file control */
+  cursor: pointer;
+  width: 100%;
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  height: 100px;
+  font-family: 'Montserrat', sans-serif, Arial;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  background: #df775d;
+  text-decoration: none;
 
-
-  .header {
-    background-color: #f6f8f8;
-    width: 100%;
-    float: left;
-    margin: 0 0 0 0;
-    padding: 0;
-    height: 90px;
-    border-bottom: 1px solid #ced3d5;
-
-  }
-
-  .header_image {
-    padding: 10px;
-  }
-
-  .footer  {
-    margin-top: 40px;
-    height: 50px;
-    position: absolute;
-    bottom: 0;
-    background-color: #f6f8f8;
-    width: 100%;
-    border-top: 1px solid #ced3d5;
-  }
-
-
-  .grid {
-
-
-  }
-
-  .col-1 {
-    display: none;
-
-
-  }
-
-  .col-2 {
-   float: left;
-   width: 50%;
-   height: 360px;
-   margin: 0 0 0 0;
-   padding: 20;
-
-
- }
-
- #drop_zone {
-  border-style: dashed;
-  width: 90%;
-  border: 1px dashed #df775d;
-  height: 200px;
-  padding: 40px;
 
 }
 
-.status p {
-  display: block;
-  width: 240px;
-  padding: 2px 5px;
-  margin: 2px 0;
-  border: 1px inset #446;
-  border-radius: 5px;
-}
+div.fileinputs input.file {
+  position: relative;
+  text-align: right;
+  height: 100px;
+  width: 100%;
+  -moz-opacity:0 ;
+  filter:alpha(opacity=0);
+  opacity: 0;
+  z-index: 2;
+
 }
 
+}
 
-/*Desktop open to great than 980 px  */
 
 body{
   margin: 0 0 0 0;
@@ -184,27 +172,22 @@ body{
 }
 
 h1 {
+  margin-left: auto;
+  margin-right: auto;
   font-size: 48.18181610107422px;
   font-weight: 300;
   height: 116.36363220214844px;
   margin-bottom: 30px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 00px;
+  margin-top: 60px;
   text-align: center;
   width: 509.04827880859375px;
 }
 
 p {
-  font-family: 'Montserrat', Helvetica,  Arial,  sans-serif;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.65em;
   font-weight: 400;
-}
-
-.text_area {
-  position: relative;
-  color: #6d767a;
 }
 
 .header {
@@ -223,7 +206,7 @@ p {
   margin-left: 20px;
 }
 
-.footer  {
+.footer {
   margin-top: 40px;
   height: 50px;
   position: absolute;
@@ -237,35 +220,41 @@ p {
 
 .col-1 {
   float: left;
-  min-width: 360px;
+  width: 100%;
   height: 360px;
 }
 
-.col-2 {
-
-  float: left;
-  width: 40%;
-}
-
-#drop_zone {
-  border-style: dashed;
-  width: 480px;
-  border: 1px dashed #df775d;
-  margin: 0px;
-  padding: 40px;
-}
 
 .status p {
   display: block;
   width: 240px;
   padding: 2px 5px;
   margin: 2px 0;
-  border: 1px inset #446;
-  border-radius: 5px;
+  /*border: 1px inset #446;
+  border-radius: 5px;*/
   margin: 0 auto;
 }
 
-/*  The Button*/
+/*#progress_bar {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid #000;
+    font-size: 14px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+  }
+  #progress_bar.loading {
+    opacity: 1.0;
+  }
+  #progress_bar .percent {
+    background-color: #99ccff;
+    height: auto;
+    width: 0;
+  }*/
+/* The Button*/
 
 #submit_file {
 
@@ -288,9 +277,13 @@ p {
 
 /*Styling input fle */
 
+
 div.fileinputs {
-  margin-left: 260px;
+
+    margin-right: auto;
+    margin-left: auto;
   position: relative;
+ width: 148px;
 }
 
 div.fakefile {
@@ -314,6 +307,7 @@ div.fakefile input[type=button] {
   background: #df775d;
   text-decoration: none;
 
+
 }
 
 div.fileinputs input.file {
@@ -332,32 +326,150 @@ div.fileinputs input.file {
 /*display url box*/
 
 
+.grid {
+      display: inline-block;
+      width: 100%;
+
+}
+
 .give_url {
-  margin-top: 60px;
-  margin-left: 60px;
   height: 100px;
-  position: absolute;
-  bottom: 80px;
-  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  width: 370px;
+  margin-top: 40px;
 }
 
 
 .give_url input {
+
+  text-align: center;
+  color: #df775d;
  font-family: 'Montserrat', sans-serif, Arial;
  font-size: 14px;
  border: 5px solid white;
  -webkit-box-shadow:
- inset 0 0 8px  rgba(0,0,0,0.1),
+ inset 0 0 8px rgba(0,0,0,0.1),
  0 0 16px rgba(0,0,0,0.1);
  -moz-box-shadow:
- inset 0 0 8px  rgba(0,0,0,0.1),
+ inset 0 0 8px rgba(0,0,0,0.1),
  0 0 16px rgba(0,0,0,0.1);
  box-shadow:
- inset 0 0 8px  rgba(0,0,0,0.1),
+ inset 0 0 8px rgba(0,0,0,0.1),
  0 0 16px rgba(0,0,0,0.1);
  padding: 15px;
  background: rgba(255,255,255,0.5);
- margin: 0 0 10px 0;
 }
 
 
+/* phones and tablets */
+@media screen and (max-width: 980px){
+div.fileinputs {
+
+  position: relative;
+  width: 400px;
+}
+
+div.fakefile {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+div.fakefile input[type=button] {
+  /* enough width to completely overlap the real hidden file control */
+  cursor: pointer;
+  width: 400px;
+  height: 400px;
+  font-family: 'Montserrat', sans-serif, Arial;
+  color: #ffffff;
+  font-size: 48px;
+  text-align: center;
+  background: #df775d;
+  text-decoration: none;
+   -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+
+
+}
+
+div.fileinputs input.file {
+  position: relative;
+  text-align: right;
+  height: 400px;
+  width: 400px;
+  -moz-opacity:0 ;
+  filter:alpha(opacity=0);
+  opacity: 0;
+  z-index: 2;
+
+}
+h1 {
+
+  font-size: 64px;
+  font-weight: 300;
+  height: 200px;
+  margin-bottom: 30px;
+  margin-top: 60px;
+  text-align: center;
+  width: 509.04827880859375px;
+}
+
+.give_url {
+  height: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1100px;
+  margin-top: 40px;
+}
+
+
+.give_url input {
+
+  text-align: center;
+  color: #df775d;
+ font-family: 'Montserrat', sans-serif, Arial;
+ font-size: 34px;
+ border: 10px solid white;
+ -webkit-box-shadow:
+ inset 0 0 8px rgba(0,0,0,0.1),
+ 0 0 32px rgba(0,0,0,0.1);
+ -moz-box-shadow:
+ inset 0 0 16px rgba(0,0,0,0.1),
+ 0 0 32px rgba(0,0,0,0.1);
+ box-shadow:
+ inset 0 0 16px rgba(0,0,0,0.1),
+ 0 0 32px rgba(0,0,0,0.1);
+ padding: 30px;
+ background: rgba(255,255,255,0.5);
+}
+}
+
+#progress_bar {
+    margin: 10px auto 10px auto;
+    padding: 3px;
+    border: 1px solid black;
+    font-size: 14px;
+    width: 200px;
+    /*clear: both;*/
+    /*opacity: 0;*/
+    /*-moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;*/
+  }
+
+  #progress_bar .loading {
+    opacity: 1.0;
+  }
+
+  #progress_bar .percent {
+    font-family: 'Montserrat', sans-serif, Arial;
+    background-color: rgb(223, 119, 93);
+    color: white;
+    height: auto;
+    width: 0;
+    padding: 0 0px 0 -3px;
+    /*margin: 2px;*/
+  }

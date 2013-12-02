@@ -110,6 +110,7 @@ Sender.prototype.loadFile = function(callback){
         isFile: true,
         arrayBufferFileData: blob,
         fileName: thisSender.file.name,
+        fileSize: thisSender.file.size,
         fileType: thisSender.file.type,
         isLast: lastStatus
       }
