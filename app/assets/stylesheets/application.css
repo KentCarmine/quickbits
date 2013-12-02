@@ -133,7 +133,7 @@ div.fileinputs input.file {
   height: 100px;
   width: 100%;
   -moz-opacity:0 ;
-  filter:alpha(opacity: 0);
+  filter:alpha(opacity=0);
   opacity: 0;
   z-index: 2;
 
@@ -358,7 +358,7 @@ div.fileinputs input.file {
   height: 400px;
   width: 400px;
   -moz-opacity:0 ;
-  filter:alpha(opacity: 0);
+  filter:alpha(opacity=0);
   opacity: 0;
   z-index: 2;
 
