@@ -47,16 +47,16 @@ function byteConverter(bytes){
   var gigabyte = megabyte * 1024;
 
   if (Math.floor(bytes/gigabyte) > 0){
-    return (bytes/gigabyte).toFixed(2) + " GB"
+    return (bytes/gigabyte).toFixed(2) + " GB";
   }
   else if (Math.floor(bytes/megabyte) > 0){
-    return (bytes/megabyte).toFixed(2) + " MB"
+    return (bytes/megabyte).toFixed(2) + " MB";
   }
   else if (Math.floor(bytes/kilobyte) > 0){
-    return (bytes/kilobyte).toFixed(2) + " kB"
+    return (bytes/kilobyte).toFixed(2) + " kB";
   }
   else {
-    return bytes + " B"
+    return bytes + " B";
   }
 }
 
