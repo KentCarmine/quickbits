@@ -2,8 +2,9 @@
 
 //Detect browser type and revision
 $(document).ready(function(){
+ //Detect browser type and revision
   navigator.sayswho = (function(){
-    var browser = document.querySelector('.alert_Rbrowser');
+    var browser = document.querySelector('.alert_browser');
     var N= navigator.appName, ua= navigator.userAgent, tem;
     var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
     if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
@@ -22,7 +23,7 @@ $(document).ready(function(){
     if(browserName == 'Chrome' && version >= 31){
       browser.innerHTML = '<h3> The size of the file transfer is limited using this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> FireFox. </a></h3>';
     }
-   })();
+  })();
 });
 
 

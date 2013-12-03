@@ -9,7 +9,7 @@ $(document).ready(function(){
     if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
     M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
     var version = parseFloat(M[1]);
-    var browserName = M[0]
+    var browserName = M[0];
 
     if(browserName == 'Firefox' && version >= 23){
       browser.innerHTML = '';
@@ -73,6 +73,11 @@ Receiver.prototype.getData = function(){
 
 
       var percentLoaded = Math.round((chunk_count / (file_size / 1000) ) * 100);
+      if(percentLoaded >= 100){
+        progress.style.width = '100%';
+        progress.textContent = '100%';
+      }
+
       progress.style.width = percentLoaded + '%';
       progress.textContent = percentLoaded + '%';
 
