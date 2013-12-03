@@ -48,7 +48,25 @@ Sender.prototype.handleConnection = function(){
 
     thisSender.connection.on("open", function(){
       thisSender.sendFileAndMetadata();
+      thisSender.updateProgressBar();
     });
+  });
+}
+
+Sender.prototype.updateProgressBar = function(){
+  var progress = document.querySelector('.percent');
+  var thisSender = this;
+  var sliceSize = 1000;
+
+  thisSender.connection.on("data", function(data){
+    if(data.isChunkCount){
+      var chunksReceivedByRemotePeer = parseInt(data.chunksReceived);
+      // console.log(chunksReceivedByRemotePeer);
+      var percentLoaded = Math.round((chunksReceivedByRemotePeer / (thisSender.file.size/sliceSize) ) * 100);
+      progress.style.width = percentLoaded + '%';
+      progress.textContent = percentLoaded + '%';
+    }
+
   });
 }
 
@@ -79,7 +97,7 @@ Sender.prototype.sendFile = function(){
 
     //Setting up variables to display to initiating user
     var status = document.querySelector('.status_view');
-    var progress = document.querySelector('.percent');
+    // var progress = document.querySelector('.percent');
     var userFileName = document.querySelector('.file_name');
     var userFileSize = document.querySelector('.file_size');
 
@@ -88,9 +106,9 @@ Sender.prototype.sendFile = function(){
     userFileSize.textContent = byteConverter(thisSender.file.size);
 
     for(var sliceId = 0; sliceId < fileData.byteLength/sliceSize; sliceId++) {
-      var percentLoaded = Math.round((sliceId / (fileData.byteLength/sliceSize) ) * 100);
-      progress.style.width = percentLoaded + '%';
-      progress.textContent = percentLoaded + '%';
+      // var percentLoaded = Math.round((sliceId / (fileData.byteLength/sliceSize) ) * 100);
+      // progress.style.width = percentLoaded + '%';
+      // progress.textContent = percentLoaded + '%';
 
       if(sliceId >= Math.floor(fileData.byteLength/sliceSize)) {
         var lastStatus = 1;

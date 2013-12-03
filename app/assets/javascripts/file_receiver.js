@@ -73,6 +73,8 @@ Receiver.prototype.getData = function(){
     else if(data.isFile){
       // console.log("in file load");
       chunk_count += 1;
+
+      thisReceiver.connection.send({ isChunkCount: true, chunksReceived: chunk_count });
       // call byteConverter(data.fileSize) to get file size in the appropriate unit
       var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
       thisReceiver.file = file;
