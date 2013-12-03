@@ -1,7 +1,7 @@
 ![quickbits](http://i.imgur.com/ulynnBc.png)
 
 # What is Quickbits
-A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp.com), Quickbits is the USB stick for the 21st century: easy, secure, anonymous, decentralized file transfers in the browser built on WebRTC.
+A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp.com), Quickbits is the USB stick for the 21st century: easy, secure, anonymous, decentralized browser-to-browser file transfer with no signups or plugins.
 
 ## Technologies
 - HTML5 File API
