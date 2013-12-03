@@ -20,24 +20,37 @@ Sender.prototype.handleConnection = function(){
     thisSender.connection.on("open", function(){
       thisSender.sendFileAndMetadata();
       thisSender.updateProgressBar();
+      // thisSender.handleDisconnectionError();
     });
   });
 }
 
 Sender.prototype.updateProgressBar = function(){
   var progress = document.querySelector('.percent');
+  // var errorElement = document.querySelector('#error_message')
+  var errorElement = $("#error_message");
   var thisSender = this;
   var sliceSize = 1000;
 
   thisSender.connection.on("data", function(data){
+
     if(data.isChunkCount){
       var chunksReceivedByRemotePeer = parseInt(data.chunksReceived);
-      // console.log(chunksReceivedByRemotePeer);
       var percentLoaded = Math.round((chunksReceivedByRemotePeer / (thisSender.file.size/sliceSize) ) * 100);
       progress.style.width = percentLoaded + '%';
       progress.textContent = percentLoaded + '%';
-    }
 
+      // Communication heartbeat check
+      if(percentLoaded < 100){
+        clearTimeout(thisSender.timeout);
+        thisSender.timeout = setTimeout(function(){
+          errorElement.append("Connection lost! File transfer aborted!");
+        }, 1000);
+      }
+      else if(percentLoaded >= 100){
+        clearTimeout(thisSender.timeout);
+      }
+    }
   });
 }
 
