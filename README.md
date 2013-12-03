@@ -17,14 +17,17 @@ Millions of people are transferring files everyday.  Services such as Dropbox, B
   for both are available at the respective PeerJS and PeerServer project pages.
 - If you elect to deploy a PeerServer to Heroku, it helps to inlude the
   PeerServer Module. You will also want your Procfile to look something like this
+
 ```
 web: node_modules/.bin/peerjs --port $PORT
 ```
-your server creation (wherever you end up doing that; we did it in a web.js
-file) to look something like this:
+
+your server creation (typically a web.js file) to look something like this:
+
 ```
 var server = new PeerServer({ port: (process.env.PORT || 80) });
 ```
+
 and your peer instantiations in your program logic to be this
 ```
 var peer = new Peer({ host: 'your.domain.com', port: 80 });
