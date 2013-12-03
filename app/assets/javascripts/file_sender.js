@@ -5,7 +5,6 @@ function Sender(file){
   thisSender.peer = new Peer({host: 'ancient-lake-1993.herokuapp.com', port: 80});
 
   thisSender.peer.on('open', function(id){
-    console.log('sender opened!')
     thisSender.peer_id = id;
     // console.log(thisSender.peer.id);
     thisSender.setDownloadUrl();
@@ -124,7 +123,6 @@ Sender.prototype.loadFile = function(callback){
 Sender.prototype.setDownloadUrl = function(){
   // console.log(this);
   // console.log(this.peer_id);
-  console.log('setting the download url');
   $("#url").val(window.location.href + this.peer_id);
 }
 
