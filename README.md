@@ -13,8 +13,7 @@ Millions of people are transferring files everyday.  Services such as Dropbox, B
 - CSS3
 
 ## To run
-- You will need either a PeerJS API key or your own peer server. Instructions
-  for both are available at the respective PeerJS and PeerServer project pages.
+- You will need either a PeerJS API key or your own peer server.
 - If you elect to deploy a PeerServer to Heroku, it helps to inlude the
   PeerServer Module. You will also want your Procfile to look something like this
 
