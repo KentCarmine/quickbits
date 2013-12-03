@@ -1,7 +1,8 @@
 // SENDER SIDE
 function Sender(file){
   var thisSender = this;
-  thisSender.peer = new Peer({ key: "2pmakgfy6gw7mn29" });
+  // this.thisSender = this;
+  thisSender.peer = new Peer({host: 'ancient-lake-1993.herokuapp.com', port: 80});
 
   thisSender.peer.on('open', function(id){
     thisSender.peer_id = id;
