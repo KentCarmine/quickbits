@@ -477,3 +477,16 @@ h1 {
   .file_name {
     background-color: #D1E0E0;
   }
+
+
+.alert_browser h3{
+   margin-left: auto;
+  margin-right: auto;
+  font-size: 28px;
+  font-weight: 300;
+  height: 116.36363220214844px;
+  margin-top: 20px;
+  text-align: center;
+  width: 509.04827880859375px;
+}
+
