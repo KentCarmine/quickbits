@@ -39,7 +39,7 @@ and your peer instantiations in your program logic to be this:
 var peer = new Peer({ host: 'your.domain.com', port: 80 });
 ```
 
-For Rails:
+Rails:
 ```ruby
 bundle install
 ```
