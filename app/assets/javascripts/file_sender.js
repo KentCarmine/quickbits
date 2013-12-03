@@ -1,4 +1,33 @@
 // SENDER SIDE
+
+//Detect browser type and revision
+$(document).ready(function(){
+ //Detect browser type and revision
+  navigator.sayswho = (function(){
+    var browser = document.querySelector('.alert_browser');
+    var N= navigator.appName, ua= navigator.userAgent, tem;
+    var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
+    var version = parseFloat(M[1]);
+    var browserName = M[0]
+
+    if(browserName == 'Firefox' && version >= 23){
+      browser.innerHTML = '';
+    }
+
+    if(browserName == 'Firefox' && version < 23){
+      browser.innerHTML = '<h3> To use this service please upgrade your version of Firefox <a href = http://www.mozilla.org/en-US/firefox/new/> Here </a></h3>';
+    }
+
+    if(browserName == 'Chrome' && version >= 31){
+      browser.innerHTML = '<h3> The size of the file transfer is limited using this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> FireFox. </a></h3>';
+    }
+  })();
+});
+
+
+
 function Sender(file){
   var thisSender = this;
   thisSender.peer = new Peer({ host: "ancient-lake-1993.herokuapp.com", port: 80 });
@@ -41,6 +70,7 @@ Sender.prototype.sendFile = function(){
   var thisSender = this;
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
+
 
   fileReader.onload = function(){
     var fileData = fileReader.result;
