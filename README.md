@@ -40,10 +40,10 @@ var peer = new Peer({ host: 'your.domain.com', port: 80 });
 ```
 
 Rails:
+No database required, just
 ```ruby
 bundle install
 ```
-No database is required.
 
 ## Contributors:
 - Kent Carmine
