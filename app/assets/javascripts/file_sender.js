@@ -18,12 +18,26 @@ Sender.prototype.handleConnection = function(){
     thisSender.connection = connection;
 
     thisSender.connection.on("open", function(){
-      thisSender.sendFile();
+      thisSender.sendFileAndMetadata();
     });
   });
 }
 
-Sender.prototype.sendFile = function(callback){
+Sender.prototype.sendFileAndMetadata = function(){
+  // console.log(this);
+  var thisSender = this;
+
+  var fileMetadata = {
+    isFileMetaData: true,
+    fileSize: thisSender.file.size,
+    fileName: thisSender.file.name
+  }
+  thisSender.connection.send(fileMetadata);
+
+  thisSender.sendFile();
+}
+
+Sender.prototype.sendFile = function(){
   var thisSender = this;
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
@@ -40,7 +54,7 @@ Sender.prototype.sendFile = function(callback){
     var userFileSize = document.querySelector('.file_size');
 
     status.style.display = 'inline';
-    userFileName.textContent = thisSender.file.name,
+    userFileName.textContent = thisSender.file.name;
     userFileSize.textContent = byteConverter(thisSender.file.size);
 
     for(var sliceId = 0; sliceId < fileData.byteLength/sliceSize; sliceId++) {
@@ -57,16 +71,13 @@ Sender.prototype.sendFile = function(callback){
 
       blob = fileData.slice(sliceId * sliceSize, (sliceId + 1) * sliceSize);
 
-      var fileSliceWithMetaData = {
+      var fileSlice = {
         isFile: true,
         arrayBufferFileData: blob,
-        fileName: thisSender.file.name,
-        fileSize: thisSender.file.size,
-        fileType: thisSender.file.type,
         isLast:   lastStatus
       }
 
-      thisSender.connection.send(fileSliceWithMetaData);
+      thisSender.connection.send(fileSlice);
     }
   }
 }
@@ -79,8 +90,6 @@ $(function(){
 
   $("#file_input").change(function(event){
     var file = event.target.files[0];
-    console.log("here");
-    console.log(file);
     var sender = new Sender(file);
     console.log(sender);
     sender.handleConnection();
