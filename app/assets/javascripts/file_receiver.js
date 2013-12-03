@@ -1,4 +1,30 @@
 // RECEIVER SIDE
+
+//Detect browser type and revision
+$(document).ready(function(){
+  navigator.sayswho = (function(){
+    var browser = document.querySelector('.alert_browser');
+    var N= navigator.appName, ua= navigator.userAgent, tem;
+    var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
+    var version = parseFloat(M[1]);
+    var browserName = M[0];
+
+    if(browserName == 'Firefox' && version >= 23){
+      browser.innerHTML = '';
+    }
+
+    if(browserName == 'Firefox' && version < 23){
+      browser.innerHTML = '<h3> To use this service please upgrade your version of Firefox <a href = http://www.mozilla.org/en-US/firefox/new/> Here </a></h3>';
+    }
+
+    if(browserName == 'Chrome' && version >= 31){
+      browser.innerHTML = '<h3> If file does not transfer confirm you are using the same browser type as the sender.</h3>';
+    }
+   })();
+});
+
 function Receiver(){
   var thisReceiver = this;
   thisReceiver.peer = new Peer({ host: "ancient-lake-1993.herokuapp.com", port: 80 });
@@ -54,6 +80,11 @@ Receiver.prototype.getData = function(){
 
 
       var percentLoaded = Math.round((chunk_count / (file_size / 1000) ) * 100);
+      if(percentLoaded >= 100){
+        progress.style.width = '100%';
+        progress.textContent = '100%';
+      }
+
       progress.style.width = percentLoaded + '%';
       progress.textContent = percentLoaded + '%';
 
