@@ -23,17 +23,17 @@ web: node_modules/.bin/peerjs --port $PORT
 
 your server creation (typically a web.js file) to look something like this:
 
-```
+```javascript
 var server = new PeerServer({ port: (process.env.PORT || 80) });
 ```
 
 and your peer instantiations in your program logic to be this
-```
+```javascript
 var peer = new Peer({ host: 'your.domain.com', port: 80 });
 ```
 
 On the Rails side of things:
-```
+```ruby
 bundle install
 ```
 
