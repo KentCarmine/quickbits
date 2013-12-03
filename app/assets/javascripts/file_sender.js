@@ -1,4 +1,33 @@
 // SENDER SIDE
+
+//Detect browser type and revision
+$(document).ready(function(){
+ //Detect browser type and revision
+  navigator.sayswho = (function(){
+    var browser = document.querySelector('.alert_browser');
+    var N= navigator.appName, ua= navigator.userAgent, tem;
+    var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
+    var version = parseFloat(M[1]);
+    var browserName = M[0]
+
+    if(browserName == 'Firefox' && version >= 23){
+      browser.innerHTML = '';
+    }
+
+    if(browserName == 'Firefox' && version < 23){
+      browser.innerHTML = '<h3> To use this service please upgrade your version of Firefox <a href = http://www.mozilla.org/en-US/firefox/new/> Here </a></h3>';
+    }
+
+    if(browserName == 'Chrome' && version >= 31){
+      browser.innerHTML = '<h3> The size of the file transfer is limited using this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> FireFox. </a></h3>';
+    }
+  })();
+});
+
+
+
 function Sender(file){
   var thisSender = this;
   thisSender.peer = new Peer({ host: "ancient-lake-1993.herokuapp.com", port: 80 });
@@ -19,7 +48,38 @@ Sender.prototype.handleConnection = function(){
 
     thisSender.connection.on("open", function(){
       thisSender.sendFileAndMetadata();
+      thisSender.updateProgressBar();
+      // thisSender.handleDisconnectionError();
     });
+  });
+}
+
+Sender.prototype.updateProgressBar = function(){
+  var progress = document.querySelector('.percent');
+  // var errorElement = document.querySelector('#error_message')
+  var errorElement = $("#error_message");
+  var thisSender = this;
+  var sliceSize = 1000;
+
+  thisSender.connection.on("data", function(data){
+
+    if(data.isChunkCount){
+      var chunksReceivedByRemotePeer = parseInt(data.chunksReceived);
+      var percentLoaded = Math.round((chunksReceivedByRemotePeer / (thisSender.file.size/sliceSize) ) * 100);
+      progress.style.width = percentLoaded + '%';
+      progress.textContent = percentLoaded + '%';
+
+      // Communication heartbeat check
+      if(percentLoaded < 100){
+        clearTimeout(thisSender.timeout);
+        thisSender.timeout = setTimeout(function(){
+          errorElement.append("Connection lost! File transfer aborted!");
+        }, 1000);
+      }
+      else if(percentLoaded >= 100){
+        clearTimeout(thisSender.timeout);
+      }
+    }
   });
 }
 
@@ -42,6 +102,7 @@ Sender.prototype.sendFile = function(){
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
 
+
   fileReader.onload = function(){
     var fileData = fileReader.result;
     var blob = [];
@@ -49,7 +110,7 @@ Sender.prototype.sendFile = function(){
 
     //Setting up variables to display to initiating user
     var status = document.querySelector('.status_view');
-    var progress = document.querySelector('.percent');
+    // var progress = document.querySelector('.percent');
     var userFileName = document.querySelector('.file_name');
     var userFileSize = document.querySelector('.file_size');
 
@@ -58,9 +119,9 @@ Sender.prototype.sendFile = function(){
     userFileSize.textContent = byteConverter(thisSender.file.size);
 
     for(var sliceId = 0; sliceId < fileData.byteLength/sliceSize; sliceId++) {
-      var percentLoaded = Math.round((sliceId / (fileData.byteLength/sliceSize) ) * 100);
-      progress.style.width = percentLoaded + '%';
-      progress.textContent = percentLoaded + '%';
+      // var percentLoaded = Math.round((sliceId / (fileData.byteLength/sliceSize) ) * 100);
+      // progress.style.width = percentLoaded + '%';
+      // progress.textContent = percentLoaded + '%';
 
       if(sliceId >= Math.floor(fileData.byteLength/sliceSize)) {
         var lastStatus = 1;
