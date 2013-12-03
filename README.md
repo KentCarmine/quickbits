@@ -1,7 +1,7 @@
 ![quickbits](http://i.imgur.com/ulynnBc.png)
 
 # What is Quickbits
-Quickbits is a browser-based file sharing application that allows a user to easily transfer files from their browser to a friend's browser, in an anonymous, secure way using WebRTC.
+A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp.com), Quickbits is a browser-based file sharing application that allows anyone to easily transfer files from their browser to a friend's browser, in an anonymous, secure, decentralized way using WebRTC.
 
 ## Technologies/dependencies
 - HTML5 File API
@@ -44,10 +44,6 @@ Rails:
 bundle install
 ```
 No database is required.
-
-
-
-
 
 ## Contributors:
 - Kent Carmine
