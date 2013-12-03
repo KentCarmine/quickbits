@@ -24,6 +24,7 @@ Receiver.prototype.getData = function(){
   var progress = document.querySelector('.percent');
   var userFileName = document.querySelector('.file_name');
   var userFileSize = document.querySelector('.file_size');
+  var errorElement = $("#error_message");
 
   thisReceiver.connection.on("data", function(data){
 
@@ -47,10 +48,20 @@ Receiver.prototype.getData = function(){
       thisReceiver.file = file;
       fileArray.push(data.arrayBufferFileData);
 
-
       var percentLoaded = Math.round((chunk_count / (file_size / 1000) ) * 100);
       progress.style.width = percentLoaded + '%';
       progress.textContent = percentLoaded + '%';
+
+      // Communication heartbeat check
+      if(percentLoaded < 100){
+        clearTimeout(thisReceiver.timeout);
+        thisReceiver.timeout = setTimeout(function(){
+          errorElement.append("Connection lost! File transfer aborted!");
+        }, 1000);
+      }
+      else if(percentLoaded >= 100){
+        clearTimeout(thisReceiver.timeout);
+      }
 
       //ALTER OR REMOVE TIMEOUT LATER!
       //Maybe by checking if file is complete?
