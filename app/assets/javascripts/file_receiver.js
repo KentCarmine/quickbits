@@ -7,6 +7,13 @@ function Receiver(){
 Receiver.prototype.establishConnection = function(senderPeerId){
   var thisReceiver = this;
   thisReceiver.connection = thisReceiver.peer.connect(senderPeerId);
+
+  setTimeout(function(){
+    if(thisReceiver.connection.open !== true){
+      $("#error_message").append("Unable to connect to sender! Connection timed out after 10 sec.");
+      return;
+    }
+  }, 10000);
 }
 
 Receiver.prototype.handleConnection = function(){
