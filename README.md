@@ -3,7 +3,7 @@
 # What is Quickbits
 A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp.com), Quickbits is a browser-based file sharing application that allows anyone to easily transfer files from their browser to a friend's browser, in an anonymous, secure, decentralized way using WebRTC.
 
-## Technologies/dependencies
+## Technologies
 - HTML5 File API
 - [PeerJS](https://github.com/peers/peerjs/) to wrap WebRTC
 - [PeerServer](https://github.com/peers/peerjs-server)
