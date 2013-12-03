@@ -16,29 +16,34 @@ Quickbits is a browser-based file sharing application that allows a user to easi
 ## To run
 - You will need either a PeerJS API key or your own peer server.
 - If you elect to deploy a PeerServer to Heroku, it helps to inlude the
-  PeerServer Module. You will also want your Procfile to look something like this
+  PeerServer Module. You will also want your Procfile to look something like this:
 
 ```
 web: node_modules/.bin/peerjs --port $PORT
 ```
 
-your server creation (typically a web.js file) to look something like this:
+your server instantiation (typically a web.js file) to look something like this:
 
 ```javascript
 var server = new PeerServer({ port: (process.env.PORT || 80) });
 ```
 
-and your peer instantiations in your program logic to be this
+your node_modules/peer/server.js to look like this:
+
+```javascript
+var server = new PeerServer({ port: 80 });
+```
+
+and your peer instantiations in your program logic to be this:
 ```javascript
 var peer = new Peer({ host: 'your.domain.com', port: 80 });
 ```
 
-On the Rails side of things:
+For Rails:
 ```ruby
 bundle install
 ```
-
-
+No database is required.
 
 
 
