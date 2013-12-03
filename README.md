@@ -15,8 +15,8 @@ A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp
 
 ## To run:
 - You will need either a PeerJS API key or your own peer server.
-- If you elect to deploy a PeerServer to Heroku, it helps to inlude the
-  PeerServer Module. You will also want your Procfile to look something like this:
+- If you elect to deploy a PeerServer to Heroku, it helps to include the
+  PeerServer node module. You will also want your Procfile to look something like this:
 
 ```
 web: node_modules/.bin/peerjs --port $PORT
