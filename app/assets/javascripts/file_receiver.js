@@ -1,7 +1,7 @@
 // RECEIVER SIDE
 function Receiver(){
   var thisReceiver = this;
-  thisReceiver.peer = new Peer({ key: "2pmakgfy6gw7mn29" });
+  thisReceiver.peer = new Peer({ host: "ancient-lake-1993.herokuapp.com", port: 80 });
 }
 
 Receiver.prototype.establishConnection = function(senderPeerId){
@@ -30,18 +30,16 @@ Receiver.prototype.getData = function(){
     if(data.isFileMetaData){
       // GLOBAL, COME BACK TO THIS
       file_size = data.fileSize;
-      console.log(data.fileName);
+
+      fileName = data.fileName;
       userFileName.textContent = data.fileName;
       size = byteConverter(data.fileSize);
-      console.log(size);
       userFileSize.textContent = size;
-      console.log(file_size);
-
-      console.log("got fileMetaData, should not be here!");
+      // console.log("in file metadata");
     }
     else if(data.isFile){
+      // console.log("in file load");
       chunk_count += 1;
-      // console.log(chunk_count);
       // call byteConverter(data.fileSize) to get file size in the appropriate unit
       var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
       thisReceiver.file = file;
@@ -57,7 +55,7 @@ Receiver.prototype.getData = function(){
       if(data.isLast == 1){
         setTimeout(function(){
         var fileConstruct = new Blob(fileArray);
-        saveAs(fileConstruct, data.fileName);}, 500);
+        saveAs(fileConstruct, fileName);}, 500);
       }
     }
   });
