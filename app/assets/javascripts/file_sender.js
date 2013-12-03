@@ -144,6 +144,14 @@ Sender.prototype.sendFile = function(){
 }
 
 Sender.prototype.setDownloadUrl = function(){
+  // $(".value_prop").update("Share this link to start file transfer")
+  var value_prop = document.querySelector(".value_prop");
+  var button_upload = document.querySelector(".button_upload");
+  var link_field  = document.querySelector(".link_field");
+  value_prop.innerHTML = "<h1>Share this link to start file transfer</h1>";
+  button_upload.style.display = "none";
+  link_field.style.display = "inline";
+
   $("#url").val(window.location.href + this.peer_id);
 }
 
