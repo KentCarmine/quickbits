@@ -1,12 +1,11 @@
 // SENDER SIDE
 function Sender(file){
   var thisSender = this;
-  // this.thisSender = this;
-  thisSender.peer = new Peer({ key: "ry9t770xq4hx5hfr" });
+  thisSender.peer = new Peer({ host: "ancient-lake-1993.herokuapp.com", port: 80 });
 
   thisSender.peer.on('open', function(id){
+    console.log("Peer open");
     thisSender.peer_id = id;
-    // console.log(thisSender.peer.id);
     thisSender.setDownloadUrl();
   });
 
@@ -17,72 +16,28 @@ Sender.prototype.handleConnection = function(){
   var thisSender = this;
   thisSender.peer.on("connection", function(connection){
     thisSender.connection = connection;
-    // console.log("Connection established in acceptConnection");
 
     thisSender.connection.on("open", function(){
-      // thisSender.sendData("Connected! Here's your file metadata.");
-
-      var fileMetaData = {
-        isFileMetaData: true,
-        fileName: thisSender.file.name,
-        fileSize: thisSender.file.size,
-        fileType: thisSender.file.type,
-      }
-
-      thisSender.sendData(fileMetaData);
-
-      thisSender.loadFile(thisSender.sendFile);
-
-    //   var fileData = {
-    //     isFile: true,
-    //     arrayBufferFileData: thisSender.loadFile(),
-    //     fileType: thisSender.file.type
-    //   }
-    //   debugger;
-
-    //   thisSender.sendData(fileData);
-    //   thisSender.getData();
-    // });
-
-    // connection.close();
-    // thisSender.peer.destroy();
+      thisSender.sendFileAndMetadata();
     });
   });
 }
 
-// Sender.prototype.getThisSender = function(){
-//   return this;
-// }
+Sender.prototype.sendFileAndMetadata = function(){
+  // console.log(this);
+  var thisSender = this;
 
-Sender.prototype.sendFile = function(fileData, thisSender){
-  // var thisSender = this;
-  // debugger;
-  // var fileData = {
-  //   isFile: true,
-  //   arrayBufferFileData: fileData,
-  //   fileName: thisSender.file.name,
-  //   fileType: thisSender.file.type
-  // }
+  var fileMetadata = {
+    isFileMetaData: true,
+    fileSize: thisSender.file.size,
+    fileName: thisSender.file.name
+  }
+  thisSender.connection.send(fileMetadata);
 
-  thisSender.connection.send(fileData);
-  // thisSender.getData();
-    // });
+  thisSender.sendFile();
 }
 
-Sender.prototype.sendData = function(dataToSend){
-  // console.log("sendData called");
-  this.connection.send(dataToSend);
-};
-
-Sender.prototype.getData = function(){
-  // console.log("getData called");
-  this.connection.on("data", function(data){
-    // console.log("got Data inside getData");
-    // console.log("GOT: " + data);
-  });
-}
-
-Sender.prototype.loadFile = function(callback){
+Sender.prototype.sendFile = function(){
   var thisSender = this;
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
@@ -91,12 +46,22 @@ Sender.prototype.loadFile = function(callback){
     var fileData = fileReader.result;
     var blob = [];
     var sliceSize = 1000;
-    // console.log(thisSender);
-    // console.log("file data length:");
-    // console.log(fileData.byteLength/sliceSize);
+
+    //Setting up variables to display to initiating user
+    var status = document.querySelector('.status_view');
+    var progress = document.querySelector('.percent');
+    var userFileName = document.querySelector('.file_name');
+    var userFileSize = document.querySelector('.file_size');
+
+    status.style.display = 'inline';
+    userFileName.textContent = thisSender.file.name;
+    userFileSize.textContent = byteConverter(thisSender.file.size);
 
     for(var sliceId = 0; sliceId < fileData.byteLength/sliceSize; sliceId++) {
-      // console.log("Slice ID: "+sliceId);
+      var percentLoaded = Math.round((sliceId / (fileData.byteLength/sliceSize) ) * 100);
+      progress.style.width = percentLoaded + '%';
+      progress.textContent = percentLoaded + '%';
+
       if(sliceId >= Math.floor(fileData.byteLength/sliceSize)) {
         var lastStatus = 1;
       }
@@ -106,23 +71,18 @@ Sender.prototype.loadFile = function(callback){
 
       blob = fileData.slice(sliceId * sliceSize, (sliceId + 1) * sliceSize);
 
-      var fileSliceWithMetaData = {
+      var fileSlice = {
         isFile: true,
         arrayBufferFileData: blob,
-        fileName: thisSender.file.name,
-        fileSize: thisSender.file.size,
-        fileType: thisSender.file.type,
-        isLast: lastStatus
+        isLast:   lastStatus
       }
 
-      callback(fileSliceWithMetaData, thisSender);
+      thisSender.connection.send(fileSlice);
     }
   }
 }
 
 Sender.prototype.setDownloadUrl = function(){
-  // console.log(this);
-  // console.log(this.peer_id);
   $("#url").val(window.location.href + this.peer_id);
 }
 
@@ -131,6 +91,7 @@ $(function(){
   $("#file_input").change(function(event){
     var file = event.target.files[0];
     var sender = new Sender(file);
+    console.log(sender);
     sender.handleConnection();
   });
 
@@ -162,4 +123,23 @@ $(function(){
     event.preventDefault();
   });
 });
+
+function byteConverter(bytes){
+  var kilobyte = 1024;
+  var megabyte = kilobyte * 1024;
+  var gigabyte = megabyte * 1024;
+
+  if (Math.floor(bytes/gigabyte) > 0){
+    return (bytes/gigabyte).toFixed(2) + " GB"
+  }
+  else if (Math.floor(bytes/megabyte) > 0){
+    return (bytes/megabyte).toFixed(2) + " MB"
+  }
+  else if (Math.floor(bytes/kilobyte) > 0){
+    return (bytes/kilobyte).toFixed(2) + " kB"
+  }
+  else {
+    return bytes + " B"
+  }
+}
 
