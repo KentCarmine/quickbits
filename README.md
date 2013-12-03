@@ -5,9 +5,10 @@ Quickbits is a browser-based file sharing application that allows a user to easi
 
 ## Technologies/dependencies
 - HTML5 File API
-- [PeerJS](https://github.com/peers/peerjs/)
+- [PeerJS](https://github.com/peers/peerjs/) to wrap WebRTC
 - [PeerServer](https://github.com/peers/peerjs-server)
 - Heroku
+- Modern web browsers (Firefox 25+ and Chrome 31+)
 - jQuery
 - Rails 3.2, Ruby 1.9.3
 - CSS3
