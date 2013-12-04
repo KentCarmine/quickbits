@@ -34,7 +34,6 @@ function Sender(file){
 
   window.onunload = function(){
       thisSender.peer.destroy();
-
   }
   thisSender.file = file;
 }
@@ -200,6 +199,11 @@ $(function(){
     event.preventDefault();
 
     var n = event.originalEvent.dataTransfer.files[0].size;
+
+    if(n == 0){
+      alert("You cannot transfer a folder");
+      return;
+    }
 
     console.log("number of files");
     console.log(n);
