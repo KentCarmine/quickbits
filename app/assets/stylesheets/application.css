@@ -18,6 +18,7 @@
 
 /*    Default     */
 
+
 body{
   margin: 0 0 0 0;
   padding: 0;
@@ -75,57 +76,20 @@ p {
 
     }
 
-
-
-.status p {
+.alert_browser{
   display: block;
-  width: 240px;
-  padding: 2px 5px;
-  margin: 2px 0;
-  /*border: 1px inset #446;
-  border-radius: 5px;*/
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+
 }
-
-    #progress_bar {
-      margin: 10px auto 10px auto;
-      padding: 3px;
-      border: 1px solid black;
-      font-size: 14px;
-      width: 25%;
-      /*clear: both;*/
-      /*opacity: 0;*/
-    /*-moz-transition: opacity 1s linear;
-    -o-transition: opacity 1s linear;
-    -webkit-transition: opacity 1s linear;*/
-  }
-
-  #progress_bar .loading {
-    opacity: 1.0;
-  }
-
-  #progress_bar .percent {
-    font-family: 'Montserrat', sans-serif, Arial;
-    background-color: rgb(223, 119, 93);
-    color: white;
-    height: auto;
-    width: 0;
-    padding: 0 0px 0 -3px;
-    /*margin: 2px;*/
-  }
-
-  .file_name {
-    background-color: #D1E0E0;
-  }
 
 
   .alert_browser h3{
    margin-left: auto;
    margin-right: auto;
+   margin-top: 0px;
    font-size: 28px;
    font-weight: 300;
-   height: 116.36363220214844px;
-   margin-top: 20px;
    text-align: center;
    width: 509.04827880859375px;
  }
@@ -181,7 +145,7 @@ p {
 
 
 
-  
+
 
      /*display url box*/
 
@@ -305,7 +269,7 @@ p {
 
 
 
- /*    Mobile Phones and Ipads    */
+ /* Mobile Phones and Ipads */
 
 
 
@@ -364,6 +328,16 @@ p {
     filter:alpha(opacity=0);
     opacity: 0;
     z-index: 2;
+  }
+
+#progress_bar {
+    margin: 10px auto 10px auto;
+    /*padding: 3px;*/
+    border: 1px solid rgb(223, 119, 93);
+    font-size: 14px;
+    width: 50%;
+    padding-right: 5px;
+
 
   }
 
@@ -377,6 +351,31 @@ p {
     margin-top: 60px;
     text-align: center;
     width: 509.04827880859375px;
+  }
+
+
+
+  #progress_bar .percent {
+    font-family: 'Montserrat', sans-serif, Arial;
+    background-color: rgb(223, 119, 93);
+    color: white;
+    height: auto;
+    width: 0;
+    padding-left: 5px;
+    font-size: 20px;
+    /*margin: 2px;*/
+  }
+
+  .file_name {
+    color: #767777;
+  }
+
+  .file_size {
+    color: #767777;
+  }
+
+  .error_message {
+    color: #393939;
   }
 
   .give_url {
@@ -410,3 +409,96 @@ p {
 
 }
 
+
+.status p {
+  display: block;
+  width: 240px;
+  padding: 2px 5px;
+  margin: 2px 0;
+  margin: 0 auto;
+}
+.status_view {
+  text-align: center;
+}
+
+#progress_bar {
+  margin: 10px auto 10px auto;
+  border: 1px solid rgb(223, 119, 93);
+  font-size: 14px;
+  width: 50%;
+  padding-right: 5px;
+
+}
+
+  #progress_bar .loading {
+    opacity: 1.0;
+  }
+
+  #progress_bar .percent {
+    font-family: 'Montserrat', sans-serif, Arial;
+    background-color: rgb(223, 119, 93);
+    color: white;
+    height: auto;
+    width: 0;
+    padding-left: 5px;
+    font-size: 20px;
+  }
+
+  .file_name {
+    color: #767777;
+  }
+
+  .file_size {
+    color: #767777;
+  }
+
+  .error_message {
+    color: #393939;
+  }
+
+  .reciever_view {
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+  }
+
+  div.receiver_fakefile {
+    margin: 10px auto 10px auto;
+    padding-left: auto;
+    padding-right: auto;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  a:link{
+    text-decoration: none;
+  }
+
+  div.receiver_fakefile input[type=button] {
+    /* enough width to completely overlap the real hidden file control */
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    width: 148px;
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    height: 40px;
+    font-family: 'Montserrat', sans-serif, Arial;
+    color: #ffffff;
+    font-size: 14px;
+    background: #df775d;
+    text-decoration: none;
+  }
+
+  .faq_list {
+    margin-left: 30px;
+    margin-bottom: 50px;
+  }
+.footer a{
+  color: #767777;
+  padding-left: 50%;
+  font-size: 30px;
+}
