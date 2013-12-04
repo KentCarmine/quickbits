@@ -16,7 +16,7 @@ A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp
 
 ## To run:
 - You will need either a PeerJS API key or your own peer server (if you elect to run your own peerserver instance, we recommend going with AWS EC2/Beanstalk; [Heroku's timeout limitations](https://devcenter.heroku.com/articles/request-timeout) degrade the window in which peers can successfully signal).
-- Rails: No database required, just:
+- Rails: No database required, just
 ```
 bundle install
 ```
