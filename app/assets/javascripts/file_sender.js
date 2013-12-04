@@ -195,6 +195,9 @@ Sender.prototype.setDownloadUrl = function(){
   button_upload.style.display = "none";
   link_field.style.display = "inline";
 
+  // for scope
+  peer_id = this.peer_id;
+
   function randIndex(anArray) {
     return Math.floor(Math.random() * anArray.length);
   }
