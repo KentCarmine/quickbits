@@ -119,7 +119,8 @@ Sender.prototype.sendFile = function(){
 
   window.onbeforeunload = function() {
     return "If you close the window the file will not finish transfer.";
- };
+  };
+
 
 
   fileReader.onload = function(){
@@ -251,10 +252,12 @@ Sender.prototype.setDownloadUrl = function(){
       $("#url").val(window.location.href + path);
     });
 
-    /**
-     *
-     * TODO: COLLISION LOGIC
-     */
+    /* delete the reference from Firebase
+     * when the window closes */
+    window.onunload = function() {
+      url.remove();
+    }
+
   })();
   status.style.display = "none";
   $("#url").select();
