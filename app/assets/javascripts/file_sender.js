@@ -215,6 +215,16 @@ Sender.prototype.setDownloadUrl = function(){
 
     // the combination of the two, a la Heroku
     var path = wordTrio + randomFour;
+
+    // the root Firebase store
+    var urlStore = new Firebase('https://quickbits.firebaseio.com/');
+    // make a local reference to a Firebase key of `path`
+    var url = urlStore.child(path);
+    url.set(peer_id);
+    // on callback, print the url
+    url.on('value', function(snapshot) {
+      $("#url").val(window.location.href + path);
+    });
   })();
 }
 
