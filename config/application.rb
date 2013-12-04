@@ -68,5 +68,7 @@ module Quickbits
     config.force_ssl = false
 
     config.assets.initialize_on_precompile = false
+
+    config.assets.precompile += ['file_sender.js', 'file_receiver.js']
   end
 end
