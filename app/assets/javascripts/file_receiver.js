@@ -86,6 +86,10 @@ Receiver.prototype.getData = function(){
       fileArray.push(data.arrayBufferFileData);
 
       var percentLoaded = Math.round((chunk_count / (file_size / 1000) ) * 100);
+
+      progress.style.width = percentLoaded + '%';
+      progress.textContent = percentLoaded + '%';
+
       if(percentLoaded >= 100){
         progress.style.width = '100%';
         progress.textContent = '100%';
@@ -93,8 +97,7 @@ Receiver.prototype.getData = function(){
         upload_button.style.display = "block";
       }
 
-      progress.style.width = percentLoaded + '%';
-      progress.textContent = percentLoaded + '%';
+
 
       // Communication heartbeat check
       if(percentLoaded < 100){

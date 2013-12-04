@@ -90,6 +90,7 @@ Sender.prototype.updateProgressBar = function(){
         button_upload.style.display = "inline";
         progress.style.display = "none";
         progress_bar.style.display = "none";
+        window.onbeforeunload = null;
       }
     }
   });
@@ -115,6 +116,11 @@ Sender.prototype.sendFile = function(){
   fileReader.readAsArrayBuffer(thisSender.file);
 
 
+  window.onbeforeunload = function() {
+    return "If you close the window the file will not finish transfer.";
+ };
+
+
   fileReader.onload = function(){
     var fileData = fileReader.result;
     var blob = [];
@@ -123,11 +129,14 @@ Sender.prototype.sendFile = function(){
     //Setting up variables to display to initiating user
     var status = document.querySelector('.status_view');
 
-    // var progress = document.querySelector('.percent');
+    var percent = document.querySelector('.percent');
+    var progress_bar = document.querySelector('#progress_bar');
     var userFileName = document.querySelector('.file_name');
     var userFileSize = document.querySelector('.file_size');
 
     status.style.display = 'inline';
+    progress_bar.style.display = '';
+    percent.style.display = '';
     userFileName.textContent = thisSender.file.name;
     userFileSize.textContent = byteConverter(thisSender.file.size);
 
@@ -161,10 +170,12 @@ Sender.prototype.setDownloadUrl = function(){
   var value_prop = document.querySelector(".value_prop");
   var button_upload = document.querySelector(".button_upload");
   var link_field  = document.querySelector(".link_field");
+  var status = document.querySelector('.status_view');
+
   value_prop.innerHTML = "<h1>Share this link to start file transfer</h1>";
   button_upload.style.display = "none";
   link_field.style.display = "inline";
-
+  status.style.display = "none";
   $("#url").val(window.location.href + this.peer_id);
 }
 
