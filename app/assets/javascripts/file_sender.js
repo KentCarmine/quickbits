@@ -90,6 +90,7 @@ Sender.prototype.updateProgressBar = function(){
         button_upload.style.display = "inline";
         progress.style.display = "none";
         progress_bar.style.display = "none";
+        window.onbeforeunload = null;
       }
     }
   });
@@ -113,6 +114,11 @@ Sender.prototype.sendFile = function(){
   var thisSender = this;
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
+
+
+  window.onbeforeunload = function() {
+    return "If you close the window the file will not finish transfer.";
+ };
 
 
   fileReader.onload = function(){
