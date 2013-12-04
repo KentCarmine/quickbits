@@ -75,9 +75,12 @@ p {
 
     }
 
+.alert_browser{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
-
-
+}
 
 
   .alert_browser h3{
@@ -85,8 +88,6 @@ p {
    margin-right: auto;
    font-size: 28px;
    font-weight: 300;
-   height: 116.36363220214844px;
-   margin-top: 20px;
    text-align: center;
    width: 509.04827880859375px;
  }
@@ -371,29 +372,26 @@ p {
 
 }
 
+
 .status p {
   display: block;
   width: 240px;
   padding: 2px 5px;
   margin: 2px 0;
-  /*border: 1px inset #446;
-border-radius: 5px;*/
   margin: 0 auto;
 }
+.status_view {
+  text-align: center;
+}
 
-    #progress_bar {
-      margin: 10px auto 10px auto;
-      /*padding: 3px;*/
-      border: 1px solid rgb(223, 119, 93);
-      font-size: 14px;
-      width: 50%;
-      padding-right: 5px;
-      /*clear: both;*/
-      /*opacity: 0;*/
-    /*-moz-transition: opacity 1s linear;
--o-transition: opacity 1s linear;
--webkit-transition: opacity 1s linear;*/
-  }
+#progress_bar {
+  margin: 10px auto 10px auto;
+  border: 1px solid rgb(223, 119, 93);
+  font-size: 14px;
+  width: 50%;
+  padding-right: 5px;
+
+}
 
   #progress_bar .loading {
     opacity: 1.0;
@@ -423,8 +421,35 @@ border-radius: 5px;*/
 
   .reciever_view {
     margin-top: 60px;
-    margin-left: 100px;
+    margin-left: auto;
     margin-right: auto;
-    float: left;
     width: 75%;
+  }
+
+  div.receiver_fakefile {
+    margin: 10px auto 10px auto;
+    padding-left: auto;
+    padding-right: auto;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  div.receiver_fakefile input[type=button] {
+    /* enough width to completely overlap the real hidden file control */
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    width: 148px;
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    height: 40px;
+    font-family: 'Montserrat', sans-serif, Arial;
+    color: #ffffff;
+    font-size: 14px;
+    background: #df775d;
+    text-decoration: none;
+
+
   }
