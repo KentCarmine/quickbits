@@ -87,6 +87,7 @@ p {
   .alert_browser h3{
    margin-left: auto;
    margin-right: auto;
+   margin-top: 0px;
    font-size: 28px;
    font-weight: 300;
    text-align: center;
