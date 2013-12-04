@@ -435,6 +435,10 @@ p {
     z-index: 1;
   }
 
+  a:link{
+    text-decoration: none;
+  }
+
   div.receiver_fakefile input[type=button] {
     /* enough width to completely overlap the real hidden file control */
     cursor: pointer;

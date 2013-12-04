@@ -59,6 +59,7 @@ Receiver.prototype.getData = function(){
   var userFileSize = document.querySelector('.file_size');
   var alert_browser = document.querySelector('.alert_browser');
   var errorElement = $("#error_message");
+  var upload_button = document.querySelector('.button_upload')
 
   thisReceiver.connection.on("data", function(data){
     alert_browser.innerHTML = "<h3>Your file is being tranferred</h3>";
@@ -89,6 +90,7 @@ Receiver.prototype.getData = function(){
         progress.style.width = '100%';
         progress.textContent = '100%';
         alert_browser.innerHTML = "<h3>File Successfully Transferred</h3>";
+        upload_button.style.display = "block";
       }
 
       progress.style.width = percentLoaded + '%';
