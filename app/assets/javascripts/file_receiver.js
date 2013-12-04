@@ -64,7 +64,7 @@ Receiver.prototype.getData = function(){
   var errorElement = $("#error_message");
   var upload_button = document.querySelector('.button_upload');
   thisReceiver.connection.on("data", function(data){
-  alert_browser.innerHTML = "<h3>Your file is being tranferred</h3>";
+  alert_browser.innerHTML = "<h3>Your file is being transferred</h3>";
   alert_browser.style.display = "inline";
 
     if(data.isFileMetaData){
