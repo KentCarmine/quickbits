@@ -1,7 +1,9 @@
 // RECEIVER SIDE
 
+
 //Detect browser type and revision
 $(document).ready(function(){
+
   navigator.sayswho = (function(){
     var browser = document.querySelector('.alert_browser');
     var N= navigator.appName, ua= navigator.userAgent, tem;
@@ -12,7 +14,7 @@ $(document).ready(function(){
     var browserName = M[0];
 
     if(browserName == 'Firefox' && version >= 23){
-      browser.innerHTML = '';
+      browser.innerHTML = '<h3>  Thanks For Using Quickbits </h3>';
     }
 
     if(browserName == 'Firefox' && version < 23){
@@ -33,6 +35,7 @@ function Receiver(){
 Receiver.prototype.establishConnection = function(senderPeerId){
   var thisReceiver = this;
   thisReceiver.connection = thisReceiver.peer.connect(senderPeerId);
+
 
   setTimeout(function(){
     if(thisReceiver.connection.open !== true){
@@ -59,8 +62,7 @@ Receiver.prototype.getData = function(){
   var userFileSize = document.querySelector('.file_size');
   var alert_browser = document.querySelector('.alert_browser');
   var errorElement = $("#error_message");
-  var upload_button = document.querySelector('.button_upload')
-
+  var upload_button = document.querySelector('.button_upload');
   thisReceiver.connection.on("data", function(data){
     alert_browser.innerHTML = "<h3>Your file is being tranferred</h3>";
     alert_browser.style.display = "inline";
@@ -68,7 +70,6 @@ Receiver.prototype.getData = function(){
     if(data.isFileMetaData){
       // GLOBAL, COME BACK TO THIS
       file_size = data.fileSize;
-
       fileName = data.fileName;
       userFileName.textContent = data.fileName;
       size = byteConverter(data.fileSize);
