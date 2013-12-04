@@ -194,6 +194,11 @@ $(function(){
     $(this).css("background","white");
     event.stopPropagation();
     event.preventDefault();
+
+    var n = event.originalEvent.dataTransfer.files[0].size;
+
+    console.log("number of files");
+    console.log(n);
     var file = event.originalEvent.dataTransfer.files[0];
     var sender = new Sender(file);
     sender.handleConnection();
@@ -207,6 +212,7 @@ $(function(){
   $(document).on("drop", function(event){
     event.stopPropagation();
     event.preventDefault();
+
   });
 
   $("#copy_link_form").on("submit", function(event){
