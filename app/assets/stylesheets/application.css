@@ -491,6 +491,14 @@ p {
     font-size: 14px;
     background: #df775d;
     text-decoration: none;
-
-
   }
+
+  .faq_list {
+    margin-left: 30px;
+    margin-bottom: 50px;
+  }
+.footer a{
+  color: #767777;
+  padding-left: 50%;
+  font-size: 30px;
+}
