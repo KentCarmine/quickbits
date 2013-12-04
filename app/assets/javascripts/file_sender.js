@@ -201,6 +201,10 @@ $(function(){
     event.originalEvent.dataTransfer.dropEffect = "copy";
   });
 
+  $("#drop_zone").on("dragleave", function(event){
+    $(this).css("background", "white");
+  });
+
   $("#drop_zone").on("drop", function(event){
     $(this).css("background","white");
     event.stopPropagation();
