@@ -15,7 +15,12 @@ A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp
 - CSS3
 
 ## To run:
-- You will need either a PeerJS API key or your own peer server (if you elect to run your own peerserver instance, we recommend going with AWS EC2/Beanstalk; [Heroku's timeout limitations](https://devcenter.heroku.com/articles/request-timeout) degrade the window in which peers can successfully signal).
+Things to have: 
+- Either a PeerJS API key or your own peer server to handle signaling (if you elect to run your own peerserver instance, we recommend going with AWS EC2/Beanstalk; [Heroku's timeout limitations](https://devcenter.heroku.com/articles/request-timeout) degrade the window in which peers can successfully signal)
+- A [Firebase](https://www.firebase.com/) store to handle URL exchange
+
+Things to do:
+- Edit Firebase instantiations in ```file_sender.js``` and ```file_receiver.js``` to point to the root of your Firebase account domain.
 - Rails: No database required, just
 ```
 bundle install
