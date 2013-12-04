@@ -16,6 +16,7 @@
 */
 
 
+
 /*    Default     */
 
 body{
@@ -181,7 +182,7 @@ p {
 
 
 
-  
+
 
      /*display url box*/
 
@@ -364,6 +365,15 @@ p {
     filter:alpha(opacity=0);
     opacity: 0;
     z-index: 2;
+  }
+
+#progress_bar {
+    margin: 10px auto 10px auto;
+    /*padding: 3px;*/
+    border: 1px solid rgb(223, 119, 93);
+    font-size: 14px;
+    width: 50%;
+    padding-right: 5px;
 
   }
 
@@ -379,6 +389,30 @@ p {
     width: 509.04827880859375px;
   }
 
+
+  #progress_bar .percent {
+    font-family: 'Montserrat', sans-serif, Arial;
+    background-color: rgb(223, 119, 93);
+    color: white;
+    height: auto;
+    width: 0;
+    padding-left: 5px;
+    font-size: 20px;
+    /*margin: 2px;*/
+  }
+
+  .file_name {
+    color: #767777;
+  }
+
+  .file_size {
+    color: #767777;
+  }
+
+  .error_message {
+    color: #393939;
+  }
+
   .give_url {
     height: 100px;
     margin-right: auto;
@@ -386,6 +420,7 @@ p {
     width: 370px;
     margin-top: 40px;
   }
+
 
 
   .give_url input {
@@ -408,5 +443,13 @@ p {
     background: rgba(255,255,255,0.5);
   }
 
+}
+
+.reciever_view {
+  margin-top: 60px;
+  margin-left: 100px;
+  margin-right: auto;
+  float: left;
+  width: 75%;
 }
 
