@@ -212,6 +212,10 @@ $(function(){
   $("#copy_link_form").on("submit", function(event){
     event.preventDefault();
   });
+
+  window.onunload = function(){
+    sender.peer.destroy();
+  }
 });
 
 function byteConverter(bytes){
