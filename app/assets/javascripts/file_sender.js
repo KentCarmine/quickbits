@@ -178,6 +178,7 @@ Sender.prototype.setDownloadUrl = function(){
   link_field.style.display = "inline";
   status.style.display = "none";
   $("#url").val(window.location.href + this.peer_id);
+  $("#url").select();
 }
 
 $(function(){
@@ -192,10 +193,20 @@ $(function(){
   $("#drop_zone").on("dragover", function(event){
     event.preventDefault();
     event.stopPropagation();
+    $(this).css("background","url(/assets/pMAiU.jpg)");
+    $(this).css("-webkit-background-size","cover");
+    $(this).css(" -moz-background-size","cover");
+    $(this).css("-o-background-size","cover");
+    $(this).css("background-size","cover");
     event.originalEvent.dataTransfer.dropEffect = "copy";
   });
 
+  $("#drop_zone").on("dragleave", function(event){
+    $(this).css("background", "white");
+  });
+
   $("#drop_zone").on("drop", function(event){
+    $(this).css("background","white");
     event.stopPropagation();
     event.preventDefault();
     var file = event.originalEvent.dataTransfer.files[0];
