@@ -4,8 +4,8 @@
 A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp.com), Quickbits is the USB stick for the 21st century: easy, secure, anonymous, decentralized browser-to-browser file transfer with no signups or plugins.
 
 ## Technologies
+- WebRTC via the [PeerJS](https://github.com/peers/peerjs/) library 
 - HTML5 File API
-- [PeerJS](https://github.com/peers/peerjs/) to wrap WebRTC
 - [PeerServer](https://github.com/peers/peerjs-server) (Node.js)
 - Heroku
 - Amazon Web Services
