@@ -55,8 +55,10 @@ Sender.prototype.handleConnection = function(){
 
 Sender.prototype.updateProgressBar = function(){
   var progress = document.querySelector('.percent');
+  var link_field = document.querySelector('.link_field');
   var thisSender = this;
   var sliceSize = 1000;
+  link_field.style.display = "none";
 
   thisSender.connection.on("data", function(data){
     if(data.isChunkCount){
