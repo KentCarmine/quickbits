@@ -72,8 +72,8 @@ Sender.prototype.updateProgressBar = function(){
       if(percentLoaded < 100){
         clearTimeout(thisSender.timeout);
         thisSender.timeout = setTimeout(function(){
-          errorElement.text("Connection lost! File transfer aborted!");
-        }, 1000);
+          errorElement.text("Connection may have failed. File transfer may have aborted.");
+        }, 5000);
       }
       else if(percentLoaded >= 100){
         clearTimeout(thisSender.timeout);
@@ -104,12 +104,6 @@ Sender.prototype.sendFile = function(){
   var thisSender = this;
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
-
-
-  window.onbeforeunload = function() {
-    return "If you close the window the file will not finish transfer.";
- };
-
 
   fileReader.onload = function(){
     var fileData = fileReader.result;
@@ -158,11 +152,17 @@ Sender.prototype.setDownloadUrl = function(){
   var button_upload = document.querySelector(".button_upload");
   var link_field  = document.querySelector(".link_field");
   var status = document.querySelector('.status_view');
+  var window_open = document.querySelector('.window_open');
 
-  value_prop.innerHTML = "<h1>Share this link to start file transfer</h1>";
+
+  value_prop.innerHTML = "<h1>Share this link to start file transfer</h1><br>";
+  window_open.style.display = "inline";
   button_upload.style.display = "none";
   link_field.style.display = "inline";
   status.style.display = "none";
+  window.onbeforeunload = function() {
+    return "If you close the window the file will not finish transfer.";
+  };
   $("#url").val(window.location.href + this.peer_id);
   $("#url").select();
 }
