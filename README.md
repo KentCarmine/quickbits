@@ -32,3 +32,4 @@ bundle install
 - Chirag Tailor
 - Nathan Hadlock
 - Jake Koten
+- Daniel Lu
