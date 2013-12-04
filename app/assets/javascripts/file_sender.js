@@ -32,6 +32,10 @@ function Sender(file){
     thisSender.setDownloadUrl();
   });
 
+  window.onunload = function(){
+      thisSender.peer.destroy();
+
+  }
   thisSender.file = file;
 }
 
@@ -219,9 +223,7 @@ $(function(){
     event.preventDefault();
   });
 
-  window.onunload = function(){
-    sender.peer.destroy();
-  }
+
 });
 
 function byteConverter(bytes){
