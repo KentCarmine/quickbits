@@ -180,10 +180,17 @@ $(function(){
   $("#drop_zone").on("dragover", function(event){
     event.preventDefault();
     event.stopPropagation();
+    console.log(this);
+    $(this).css("background","url(/assets/pMAiU.jpg)");
+    $(this).css("-webkit-background-size","cover");
+    $(this).css(" -moz-background-size","cover");
+    $(this).css("-o-background-size","cover");
+    $(this).css("background-size","cover");
     event.originalEvent.dataTransfer.dropEffect = "copy";
   });
 
   $("#drop_zone").on("drop", function(event){
+    $(this).css("background","white");
     event.stopPropagation();
     event.preventDefault();
     var file = event.originalEvent.dataTransfer.files[0];
