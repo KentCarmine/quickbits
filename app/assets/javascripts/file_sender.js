@@ -144,47 +144,47 @@ Sender.prototype.sendFile = function(){
 }
 
 // url seed words
-var adj = [
-           'red',
-           'slow',
-           'huge',
-           'bashful',
-           'daring',
-           'tired',
-           'joyful',
-           'bright',
-           'shy',
-          ],
-
-    noun = [
-            'fox',
-            'salamander',
-            'coyote',
-            'firefly',
-            'nighthawk',
-            'grasshopper',
-            'olitaur',
-            'dragon',
-            'ent',
-            'squirrel'
+var adjs = [
+            'red',
+            'slow',
+            'huge',
+            'bashful',
+            'daring',
+            'tired',
+            'joyful',
+            'bright',
+            'shy',
            ],
 
-    verb = [
-            'runs',
-            'gallops',
-            'trots',
-            'sleeps',
-            'hunts',
-            'burrows'
-            'drinks',
-            'eats',
-            'codes',
-            'reads',
-            'sews',
-            'swims',
-            'floats',
-            'smells',
-           ]
+    nouns = [
+             'fox',
+             'salamander',
+             'coyote',
+             'firefly',
+             'nighthawk',
+             'grasshopper',
+             'olitaur',
+             'dragon',
+             'ent',
+             'squirrel'
+            ],
+
+    verbs = [
+             'runs',
+             'gallops',
+             'trots',
+             'sleeps',
+             'hunts',
+             'burrows',
+             'drinks',
+             'eats',
+             'codes',
+             'reads',
+             'sews',
+             'swims',
+             'floats',
+             'smells',
+            ]
 
 Sender.prototype.setDownloadUrl = function(){
   // $(".value_prop").update("Share this link to start file transfer")
