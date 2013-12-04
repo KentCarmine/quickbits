@@ -8,7 +8,8 @@ A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp
 - [PeerJS](https://github.com/peers/peerjs/) to wrap WebRTC
 - [PeerServer](https://github.com/peers/peerjs-server) (Node.js)
 - Heroku
-- Modern web browsers (Firefox 25+ and Chrome 31+)
+- Amazon Web Services
+- Modern web browsers (Firefox 25+)
 - jQuery
 - Rails 3.2, Ruby 1.9.3
 - CSS3
