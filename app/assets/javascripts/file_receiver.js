@@ -1,9 +1,5 @@
-// RECEIVER SIDE
-
-
-//Detect browser type and revision
 $(document).ready(function(){
-
+  //Detect browser type and revision
   navigator.sayswho = (function(){
     var browser = document.querySelector('.alert_browser');
     var N= navigator.appName, ua= navigator.userAgent, tem;
@@ -52,7 +48,6 @@ Receiver.prototype.handleConnection = function(){
   });
 }
 
-
 Receiver.prototype.getData = function(){
   var fileArray = [];
   var thisReceiver = this;
@@ -64,7 +59,7 @@ Receiver.prototype.getData = function(){
   var errorElement = $("#error_message");
   var upload_button = document.querySelector('.button_upload');
   thisReceiver.connection.on("data", function(data){
-  alert_browser.innerHTML = "<h3>Your file is being tranferred</h3>";
+  alert_browser.innerHTML = "<h3>Your File is Being Transferred</h3>";
   alert_browser.style.display = "inline";
 
     if(data.isFileMetaData){
@@ -74,14 +69,11 @@ Receiver.prototype.getData = function(){
       userFileName.textContent = data.fileName;
       size = byteConverter(data.fileSize);
       userFileSize.textContent = size;
-      // console.log("in file metadata");
     }
     else if(data.isFile){
-      // console.log("in file load");
       chunk_count += 1;
 
       thisReceiver.connection.send({ isChunkCount: true, chunksReceived: chunk_count });
-      // call byteConverter(data.fileSize) to get file size in the appropriate unit
       var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
       thisReceiver.file = file;
       fileArray.push(data.arrayBufferFileData);
@@ -98,21 +90,17 @@ Receiver.prototype.getData = function(){
         upload_button.style.display = "block";
       }
 
-
-
       // Communication heartbeat check
       if(percentLoaded < 100){
         clearTimeout(thisReceiver.timeout);
         thisReceiver.timeout = setTimeout(function(){
-          errorElement.text("Connection lost! File transfer aborted!");
-        }, 1000);
+          errorElement.text("Connection may have failed. File transfer may have aborted.");
+        }, 5000);
       }
       else if(percentLoaded >= 100){
         clearTimeout(thisReceiver.timeout);
       }
 
-      //ALTER OR REMOVE TIMEOUT LATER!
-      //Maybe by checking if file is complete?
       if(data.isLast == 1){
         setTimeout(function(){
         var fileConstruct = new Blob(fileArray);
@@ -149,4 +137,3 @@ $(function(){
   receiver.establishConnection(senderPeerId);
   receiver.handleConnection();
 });
-

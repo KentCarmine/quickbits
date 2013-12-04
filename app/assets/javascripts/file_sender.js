@@ -1,8 +1,5 @@
-// SENDER SIDE
-
-//Detect browser type and revision
 $(document).ready(function(){
- //Detect browser type and revision
+  //Detect browser type and revision
   navigator.sayswho = (function(){
     var browser = document.querySelector('.alert_browser');
     var N= navigator.appName, ua= navigator.userAgent, tem;
@@ -21,19 +18,16 @@ $(document).ready(function(){
     }
 
     if(browserName == 'Chrome' && version >= 31){
-      browser.innerHTML = '<h3> The size of the file transfer is limited using this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> FireFox. </a></h3>';
+      browser.innerHTML = '<h3> We currently do not support this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> FireFox. </a></h3>';
     }
   })();
 });
-
-
 
 function Sender(file){
   var thisSender = this;
   thisSender.peer = new Peer({ host: "ec2-54-201-154-161.us-west-2.compute.amazonaws.com", port: 9000 });
 
   thisSender.peer.on('open', function(id){
-    console.log("Peer open");
     thisSender.peer_id = id;
     thisSender.setDownloadUrl();
   });
@@ -49,7 +43,6 @@ Sender.prototype.handleConnection = function(){
     thisSender.connection.on("open", function(){
       thisSender.sendFileAndMetadata();
       thisSender.updateProgressBar();
-      // thisSender.handleDisconnectionError();
     });
   });
 }
@@ -60,7 +53,6 @@ Sender.prototype.updateProgressBar = function(){
   var value_prop = document.querySelector(".value_prop");
   var link_field = document.querySelector('.link_field');
   var button_upload = document.querySelector(".button_upload");
-  // var errorElement = document.querySelector('#error_message')
   var errorElement = $("#error_message");
   var thisSender = this;
   var sliceSize = 1000;
@@ -75,15 +67,13 @@ Sender.prototype.updateProgressBar = function(){
       var percentLoaded = Math.round((chunksReceivedByRemotePeer / (thisSender.file.size/sliceSize) ) * 100);
       progress.style.width = percentLoaded + '%';
       progress.textContent = percentLoaded + '%';
-    // }
-
 
       // Communication heartbeat check
       if(percentLoaded < 100){
         clearTimeout(thisSender.timeout);
         thisSender.timeout = setTimeout(function(){
-          errorElement.text("Connection lost! File transfer aborted!");
-        }, 1000);
+          errorElement.text("Connection may have failed. File transfer may have aborted.");
+        }, 5000);
       }
       else if(percentLoaded >= 100){
         clearTimeout(thisSender.timeout);
@@ -98,7 +88,6 @@ Sender.prototype.updateProgressBar = function(){
 }
 
 Sender.prototype.sendFileAndMetadata = function(){
-  // console.log(this);
   var thisSender = this;
 
   var fileMetadata = {
@@ -142,9 +131,6 @@ Sender.prototype.sendFile = function(){
     userFileSize.textContent = byteConverter(thisSender.file.size);
 
     for(var sliceId = 0; sliceId < fileData.byteLength/sliceSize; sliceId++) {
-      // var percentLoaded = Math.round((sliceId / (fileData.byteLength/sliceSize) ) * 100);
-      // progress.style.width = percentLoaded + '%';
-      // progress.textContent = percentLoaded + '%';
 
       if(sliceId >= Math.floor(fileData.byteLength/sliceSize)) {
         var lastStatus = 1;
@@ -167,7 +153,7 @@ Sender.prototype.sendFile = function(){
 }
 
 Sender.prototype.setDownloadUrl = function(){
-  // $(".value_prop").update("Share this link to start file transfer")
+
   var value_prop = document.querySelector(".value_prop");
   var button_upload = document.querySelector(".button_upload");
   var link_field  = document.querySelector(".link_field");
@@ -186,18 +172,17 @@ $(function(){
   $("#file_input").change(function(event){
     var file = event.target.files[0];
     var sender = new Sender(file);
-    console.log(sender);
     sender.handleConnection();
   });
 
   $("#drop_zone").on("dragover", function(event){
     event.preventDefault();
     event.stopPropagation();
-    $(this).css("background","url(/assets/pMAiU.jpg)");
-    $(this).css("-webkit-background-size","cover");
-    $(this).css(" -moz-background-size","cover");
-    $(this).css("-o-background-size","cover");
-    $(this).css("background-size","cover");
+    $(this).css("background","#EBEBEB");
+    // $(this).css("-webkit-background-size","cover");
+    // $(this).css(" -moz-background-size","cover");
+    // $(this).css("-o-background-size","cover");
+    // $(this).css("background-size","cover");
     event.originalEvent.dataTransfer.dropEffect = "copy";
   });
 
@@ -247,4 +232,3 @@ function byteConverter(bytes){
     return bytes + " B"
   }
 }
-
