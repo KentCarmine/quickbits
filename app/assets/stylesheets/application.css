@@ -114,6 +114,10 @@ p {
       z-index: 1;
     }
 
+    #file_input:hover {
+      cursor:pointer;
+    }
+
     div.fakefile input[type=button] {
       /* enough width to completely overlap the real hidden file control */
       cursor: pointer;
