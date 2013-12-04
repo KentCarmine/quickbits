@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 function Sender(file){
   var thisSender = this;
-  thisSender.peer = new Peer({ host: "ancient-lake-1993.herokuapp.com", port: 80 });
+  thisSender.peer = new Peer({ host: "ec2-54-201-154-161.us-west-2.compute.amazonaws.com", port: 9000 });
 
   thisSender.peer.on('open', function(id){
     console.log("Peer open");
