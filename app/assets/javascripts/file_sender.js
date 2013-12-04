@@ -176,7 +176,7 @@ var adjs = [
             'tired',
             'joyful',
             'bright',
-            'shy',
+            'shy'
            ],
 
     nouns = [
@@ -206,7 +206,7 @@ var adjs = [
              'sews',
              'swims',
              'floats',
-             'smells',
+             'smells'
             ]
 
 Sender.prototype.setDownloadUrl = function(){
