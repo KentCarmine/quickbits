@@ -195,7 +195,24 @@ Sender.prototype.setDownloadUrl = function(){
   button_upload.style.display = "none";
   link_field.style.display = "inline";
 
-  $("#url").val(window.location.href + this.peer_id);
+  function randIndex(anArray) {
+    return Math.floor(Math.random() * anArray.length);
+  }
+
+  (function makePath() {
+    // word pair, with dashes
+    var wordTrio = adjs[randIndex(adjs)] + "-"
+                     + nouns[randIndex(nouns)] + "-"
+                     + verbs[randIndex(verbs)] + "-";
+
+    // random four digits
+    var randomFour = [0, 0, 0, 0].map(function(digit) {
+      return Math.floor(Math.random(10) * 10);
+    }).join('');
+
+    // the combination of the two, a la Heroku
+    var path = wordTrio + randomFour;
+  })();
 }
 
 $(function(){
