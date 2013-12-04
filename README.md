@@ -4,8 +4,8 @@
 A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp.com), Quickbits is the USB stick for the 21st century: easy, secure, anonymous, decentralized browser-to-browser file transfer with no signups or plugins.
 
 ## Technologies
+- WebRTC via the [PeerJS](https://github.com/peers/peerjs/) library 
 - HTML5 File API
-- [PeerJS](https://github.com/peers/peerjs/) to wrap WebRTC
 - [PeerServer](https://github.com/peers/peerjs-server) (Node.js)
 - Firebase
 - Heroku
@@ -16,35 +16,14 @@ A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp
 - CSS3
 
 ## To run:
-- You will need either a PeerJS API key or your own peer server.
-- If you elect to deploy a PeerServer to Heroku, it helps to include the
-  PeerServer node module. You will also want your Procfile to look something like this:
+Things to have: 
+- Either a PeerJS API key or your own peer server to handle signaling (if you elect to run your own peerserver instance, we recommend going with AWS EC2/Beanstalk; [Heroku's timeout limitations](https://devcenter.heroku.com/articles/request-timeout) degrade the window in which peers can successfully signal)
+- A [Firebase](https://www.firebase.com/) store to handle URL exchange
 
+Things to do:
+- Edit Firebase instantiations in ```file_sender.js``` and ```file_receiver.js``` to point to the root of your Firebase account domain (ie, ```var myRef = new Firebase('https://$YOUR_DOMAIN.firebaseio.com/');```)
+- Rails: No database required, just
 ```
-web: node_modules/.bin/peerjs --port $PORT
-```
-
-your server instantiation (typically a web.js file) to look something like this:
-
-```javascript
-var server = new PeerServer({ port: (process.env.PORT || 80) });
-```
-
-your node_modules/peer/server.js to look like this:
-
-```javascript
-var server = new PeerServer({ port: 80 });
-```
-
-and your peer instantiations in your program logic to be this:
-```javascript
-var peer = new Peer({ host: 'your.domain.com', port: 80 });
-```
-
-Rails:
-
-No database required, just
-```ruby
 bundle install
 ```
 
@@ -54,3 +33,4 @@ bundle install
 - Chirag Tailor
 - Nathan Hadlock
 - Jake Koten
+- Daniel Lu

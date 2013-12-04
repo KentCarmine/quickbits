@@ -94,8 +94,8 @@ Receiver.prototype.getData = function(){
       if(percentLoaded < 100){
         clearTimeout(thisReceiver.timeout);
         thisReceiver.timeout = setTimeout(function(){
-          errorElement.text("Connection lost! File transfer aborted!");
-        }, 1000);
+          errorElement.text("Connection may have failed. File transfer may have aborted.");
+        }, 5000);
       }
       else if(percentLoaded >= 100){
         clearTimeout(thisReceiver.timeout);
@@ -140,4 +140,8 @@ $(function(){
     receiver.establishConnection(senderPeerId);
     receiver.handleConnection();
   });
+
+  window.onunload = function(){
+    receiver.peer.destroy();
+  }
 });
