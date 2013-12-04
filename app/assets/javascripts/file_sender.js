@@ -49,6 +49,7 @@ Sender.prototype.handleConnection = function(){
     thisSender.connection.on("open", function(){
       thisSender.sendFileAndMetadata();
       thisSender.updateProgressBar();
+      // thisSender.handleDisconnectionError();
     });
   });
 }
@@ -59,27 +60,39 @@ Sender.prototype.updateProgressBar = function(){
   var value_prop = document.querySelector(".value_prop");
   var link_field = document.querySelector('.link_field');
   var button_upload = document.querySelector(".button_upload");
+  // var errorElement = document.querySelector('#error_message')
+  var errorElement = $("#error_message");
+
   var thisSender = this;
   var sliceSize = 1000;
   link_field.style.display = "none";
 
   value_prop.innerHTML = "<h1> File Being Transferred</h1>"
   thisSender.connection.on("data", function(data){
+
     if(data.isChunkCount){
       var chunksReceivedByRemotePeer = parseInt(data.chunksReceived);
-      // console.log(chunksReceivedByRemotePeer);
       var percentLoaded = Math.round((chunksReceivedByRemotePeer / (thisSender.file.size/sliceSize) ) * 100);
       progress.style.width = percentLoaded + '%';
       progress.textContent = percentLoaded + '%';
+    // }
 
-      if(percentLoaded >= 100){
+
+      // Communication heartbeat check
+      if(percentLoaded < 100){
+        clearTimeout(thisSender.timeout);
+        thisSender.timeout = setTimeout(function(){
+          errorElement.append("Connection lost! File transfer aborted!");
+        }, 1000);
+      }
+      else if(percentLoaded >= 100){
+        clearTimeout(thisSender.timeout);
         value_prop.innerHTML = "<h1> File Successfully Transferred</h1>";
         button_upload.style.display = "inline";
         progress.style.display = "none";
         progress_bar.style.display = "none";
       }
     }
-
   });
 }
 
