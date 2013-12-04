@@ -166,6 +166,7 @@ Sender.prototype.setDownloadUrl = function(){
   link_field.style.display = "inline";
 
   $("#url").val(window.location.href + this.peer_id);
+  $("#url").select();
 }
 
 $(function(){
