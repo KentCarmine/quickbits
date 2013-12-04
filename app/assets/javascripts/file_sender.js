@@ -70,6 +70,7 @@ Sender.prototype.updateProgressBar = function(){
   thisSender.connection.on("data", function(data){
 
     if(data.isChunkCount){
+      errorElement.text("");
       var chunksReceivedByRemotePeer = parseInt(data.chunksReceived);
       var percentLoaded = Math.round((chunksReceivedByRemotePeer / (thisSender.file.size/sliceSize) ) * 100);
       progress.style.width = percentLoaded + '%';
@@ -81,7 +82,7 @@ Sender.prototype.updateProgressBar = function(){
       if(percentLoaded < 100){
         clearTimeout(thisSender.timeout);
         thisSender.timeout = setTimeout(function(){
-          errorElement.append("Connection lost! File transfer aborted!");
+          errorElement.text("Connection lost! File transfer aborted!");
         }, 1000);
       }
       else if(percentLoaded >= 100){

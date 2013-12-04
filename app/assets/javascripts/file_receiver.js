@@ -64,8 +64,8 @@ Receiver.prototype.getData = function(){
   var errorElement = $("#error_message");
   var upload_button = document.querySelector('.button_upload');
   thisReceiver.connection.on("data", function(data){
-    alert_browser.innerHTML = "<h3>Your file is being tranferred</h3>";
-    alert_browser.style.display = "inline";
+  alert_browser.innerHTML = "<h3>Your file is being tranferred</h3>";
+  alert_browser.style.display = "inline";
 
     if(data.isFileMetaData){
       // GLOBAL, COME BACK TO THIS
@@ -104,7 +104,7 @@ Receiver.prototype.getData = function(){
       if(percentLoaded < 100){
         clearTimeout(thisReceiver.timeout);
         thisReceiver.timeout = setTimeout(function(){
-          errorElement.append("Connection lost! File transfer aborted!");
+          errorElement.text("Connection lost! File transfer aborted!");
         }, 1000);
       }
       else if(percentLoaded >= 100){
