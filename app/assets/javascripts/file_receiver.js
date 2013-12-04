@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 function Receiver(){
   var thisReceiver = this;
-  thisReceiver.peer = new Peer({ host: "ancient-lake-1993.herokuapp.com", port: 80 });
+  thisReceiver.peer = new Peer({ host: "ec2-54-201-154-161.us-west-2.compute.amazonaws.com", port: 9000 });
 }
 
 Receiver.prototype.establishConnection = function(senderPeerId){
