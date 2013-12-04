@@ -1,9 +1,5 @@
-// RECEIVER SIDE
-
-
-//Detect browser type and revision
 $(document).ready(function(){
-
+  //Detect browser type and revision
   navigator.sayswho = (function(){
     var browser = document.querySelector('.alert_browser');
     var N= navigator.appName, ua= navigator.userAgent, tem;
@@ -52,7 +48,6 @@ Receiver.prototype.handleConnection = function(){
   });
 }
 
-
 Receiver.prototype.getData = function(){
   var fileArray = [];
   var thisReceiver = this;
@@ -74,14 +69,11 @@ Receiver.prototype.getData = function(){
       userFileName.textContent = data.fileName;
       size = byteConverter(data.fileSize);
       userFileSize.textContent = size;
-      // console.log("in file metadata");
     }
     else if(data.isFile){
-      // console.log("in file load");
       chunk_count += 1;
 
       thisReceiver.connection.send({ isChunkCount: true, chunksReceived: chunk_count });
-      // call byteConverter(data.fileSize) to get file size in the appropriate unit
       var file = new Blob([data.arrayBufferFileData], { type: data.fileType });
       thisReceiver.file = file;
       fileArray.push(data.arrayBufferFileData);
@@ -98,8 +90,6 @@ Receiver.prototype.getData = function(){
         upload_button.style.display = "block";
       }
 
-
-
       // Communication heartbeat check
       if(percentLoaded < 100){
         clearTimeout(thisReceiver.timeout);
@@ -111,8 +101,6 @@ Receiver.prototype.getData = function(){
         clearTimeout(thisReceiver.timeout);
       }
 
-      //ALTER OR REMOVE TIMEOUT LATER!
-      //Maybe by checking if file is complete?
       if(data.isLast == 1){
         setTimeout(function(){
         var fileConstruct = new Blob(fileArray);
@@ -149,4 +137,3 @@ $(function(){
   receiver.establishConnection(senderPeerId);
   receiver.handleConnection();
 });
-
