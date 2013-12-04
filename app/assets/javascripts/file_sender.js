@@ -180,7 +180,6 @@ $(function(){
   $("#drop_zone").on("dragover", function(event){
     event.preventDefault();
     event.stopPropagation();
-    console.log(this);
     $(this).css("background","url(/assets/pMAiU.jpg)");
     $(this).css("-webkit-background-size","cover");
     $(this).css(" -moz-background-size","cover");
