@@ -34,8 +34,9 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
+*/
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
+/*article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -101,6 +102,7 @@ p {
 }
 
 .footer {
+  position: fixed;
   margin-top: 40px;
   height: 50px;
   bottom: 0;
@@ -108,6 +110,7 @@ p {
   width: 100%;
   border-top: 1px solid #ced3d5;
   text-align: center;
+  z-index: 2;
 }
 
 .nav{
@@ -301,7 +304,26 @@ div.fileinputs input.file {
   color: #393939;
 }
 
-.reciever_view {
+    #file_input:hover {
+      cursor:pointer;
+    }
+
+    div.fakefile input[type=button] {
+      /* enough width to completely overlap the real hidden file control */
+      cursor: pointer;
+      width: 148px;
+      -webkit-border-radius: 10;
+      -moz-border-radius: 10;
+      border-radius: 10px;
+      height: 40px;
+      font-family: 'Montserrat', sans-serif, Arial;
+      color: #ffffff;
+      font-size: 14px;
+      background: #df775d;
+      text-decoration: none;
+    }
+
+.receiver_view {
   margin-top: 60px;
   margin-left: auto;
   margin-right: auto;

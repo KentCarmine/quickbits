@@ -136,4 +136,8 @@ $(function(){
 
   receiver.establishConnection(senderPeerId);
   receiver.handleConnection();
+
+  window.onunload = function(){
+    receiver.peer.destroy();
+  }
 });
