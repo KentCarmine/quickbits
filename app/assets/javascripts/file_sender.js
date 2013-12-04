@@ -225,6 +225,11 @@ Sender.prototype.setDownloadUrl = function(){
     url.on('value', function(snapshot) {
       $("#url").val(window.location.href + path);
     });
+
+    /**
+     *
+     * TODO: COLLISION LOGIC
+     */
   })();
 }
 
