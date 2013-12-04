@@ -57,8 +57,11 @@ Receiver.prototype.getData = function(){
   var progress = document.querySelector('.percent');
   var userFileName = document.querySelector('.file_name');
   var userFileSize = document.querySelector('.file_size');
+  var alert_browser = document.querySelector('.alert_browser');
 
   thisReceiver.connection.on("data", function(data){
+    alert_browser.innerHTML = "<h3>Your file is being tranferred</h3>";
+    alert_browser.style.display = "inline";
 
     if(data.isFileMetaData){
       // GLOBAL, COME BACK TO THIS
@@ -85,6 +88,7 @@ Receiver.prototype.getData = function(){
       if(percentLoaded >= 100){
         progress.style.width = '100%';
         progress.textContent = '100%';
+        alert_browser.innerHTML = "<h3>File Successfully Transferred</h3>";
       }
 
       progress.style.width = percentLoaded + '%';
