@@ -152,7 +152,8 @@ var adj = [
            'daring',
            'tired',
            'joyful',
-           '
+           'bright',
+           'shy',
           ],
 
     noun = [
@@ -162,6 +163,7 @@ var adj = [
             'firefly',
             'nighthawk',
             'grasshopper',
+            'olitaur',
             'dragon',
             'ent',
             'squirrel'
@@ -174,6 +176,14 @@ var adj = [
             'sleeps',
             'hunts',
             'burrows'
+            'drinks',
+            'eats',
+            'codes',
+            'reads',
+            'sews',
+            'swims',
+            'floats',
+            'smells',
            ]
 
 Sender.prototype.setDownloadUrl = function(){
