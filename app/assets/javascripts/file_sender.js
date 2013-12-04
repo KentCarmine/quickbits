@@ -143,6 +143,39 @@ Sender.prototype.sendFile = function(){
   }
 }
 
+// url seed words
+var adj = [
+           'red',
+           'slow',
+           'huge',
+           'bashful',
+           'daring',
+           'tired',
+           'joyful',
+           '
+          ],
+
+    noun = [
+            'fox',
+            'salamander',
+            'coyote',
+            'firefly',
+            'nighthawk',
+            'grasshopper',
+            'dragon',
+            'ent',
+            'squirrel'
+           ],
+
+    verb = [
+            'runs',
+            'gallops',
+            'trots',
+            'sleeps',
+            'hunts',
+            'burrows'
+           ]
+
 Sender.prototype.setDownloadUrl = function(){
   // $(".value_prop").update("Share this link to start file transfer")
   var value_prop = document.querySelector(".value_prop");
