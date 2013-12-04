@@ -193,11 +193,11 @@ $(function(){
   $("#drop_zone").on("dragover", function(event){
     event.preventDefault();
     event.stopPropagation();
-    $(this).css("background","url(/assets/pMAiU.jpg)");
-    $(this).css("-webkit-background-size","cover");
-    $(this).css(" -moz-background-size","cover");
-    $(this).css("-o-background-size","cover");
-    $(this).css("background-size","cover");
+    $(this).css("background","#EBEBEB");
+    // $(this).css("-webkit-background-size","cover");
+    // $(this).css(" -moz-background-size","cover");
+    // $(this).css("-o-background-size","cover");
+    // $(this).css("background-size","cover");
     event.originalEvent.dataTransfer.dropEffect = "copy";
   });
 
