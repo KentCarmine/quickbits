@@ -9,7 +9,7 @@ A student project created in 9 days at [Dev Bootcamp Chicago](http://devbootcamp
 - [PeerServer](https://github.com/peers/peerjs-server) (Node.js)
 - Heroku
 - Amazon Web Services
-- Modern web browsers (Firefox 25+)
+- Modern web browsers (Firefox 23+)
 - jQuery
 - Rails 3.2, Ruby 1.9.3
 - CSS3
