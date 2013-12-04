@@ -20,7 +20,7 @@ Things to have:
 - A [Firebase](https://www.firebase.com/) store to handle URL exchange
 
 Things to do:
-- Edit Firebase instantiations in ```file_sender.js``` and ```file_receiver.js``` to point to the root of your Firebase account domain.
+- Edit Firebase instantiations in ```file_sender.js``` and ```file_receiver.js``` to point to the root of your Firebase account domain (ie, ```var myRef = new Firebase('https://$YOUR_DOMAIN.firebaseio.com/');```)
 - Rails: No database required, just
 ```
 bundle install
