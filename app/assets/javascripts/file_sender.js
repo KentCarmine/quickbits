@@ -62,7 +62,6 @@ Sender.prototype.updateProgressBar = function(){
   var button_upload = document.querySelector(".button_upload");
   // var errorElement = document.querySelector('#error_message')
   var errorElement = $("#error_message");
-
   var thisSender = this;
   var sliceSize = 1000;
   link_field.style.display = "none";
