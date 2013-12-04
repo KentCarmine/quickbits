@@ -15,156 +15,8 @@
 /*require '/vendor/assets/normalize.css'
 */
 
-/* phones and tablets */
 
-
-
-@media screen and (max-device-width: 992px){
-  body{
-    margin: 0 0 0 0;
-    padding: 0;
-  }
-
-  .header {
-    background-color: #f6f8f8;
-    width: 100%;
-    float: left;
-    margin: 0 0 0 0;
-    padding: 0;
-    height: 90px;
-    border-bottom: 1px solid #ced3d5;
-
-  }
-
-  .header_image {
-    padding: 10px;
-  }
-
-  .footer {
-   display: none;
-  }
-
-
-  .col-2 {
-    display: none;
-  }
-
-  .status p {
-    display: block;
-    width: 240px;
-    padding: 2px 5px;
-    margin: 2px 0;
-    border: 1px inset #446;
-    border-radius: 5px;
-  }
-
-  #progress_bar {
-    margin: 10px 0;
-    padding: 3px;
-    border: 1px solid black;
-    font-size: 14px;
-    width: 200px;
-    clear: both;
-    opacity: 0;
-    -moz-transition: opacity 1s linear;
-    -o-transition: opacity 1s linear;
-    -webkit-transition: opacity 1s linear;
-  }
-
-  #progress_bar .loading {
-    opacity: 1.0;
-  }
-
-  #progress_bar .percent {
-    background-color: #99ccff;
-    height: auto;
-    width: 0;
-  }
-
-  div.fileinputs {
-
-    position: relative;
-  }
-
-  div.fakefile {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-  }
-
-  div.fakefile input[type=button] {
-    cursor: pointer;
-    width: 100%;
-    font-family: 'Montserrat', sans-serif, Arial;
-    color: #ffffff;
-    font-size: 14px;
-    background: #df775d;
-    text-decoration: none;
-
-  }
-
-  div.fileinputs input.file {
-    position: relative;
-    text-align: right;
-    -moz-opacity:0 ;
-    filter:alpha(opacity=0);
-    opacity: 0;
-    z-index: 2;
-
-  }
-}
-
-
-
-/* Desktop when @ less than 980 */
-
-@media screen and (max-width: 980px) and (min-device-width: 992px) {
-div.fileinputs {
-
-  position: relative;
- width: 100%;
-}
-
-div.fakefile {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-}
-
-div.fakefile input[type=button] {
-  /* enough width to completely overlap the real hidden file control */
-  cursor: pointer;
-  width: 100%;
-  -webkit-border-radius: 10;
-  -moz-border-radius: 10;
-  border-radius: 10px;
-  height: 100px;
-  font-family: 'Montserrat', sans-serif, Arial;
-  color: #ffffff;
-  font-size: 14px;
-  text-align: center;
-  background: #df775d;
-  text-decoration: none;
-
-
-}
-
-div.fileinputs input.file {
-  position: relative;
-  text-align: right;
-  height: 100px;
-  width: 100%;
-  -moz-opacity:0 ;
-  filter:alpha(opacity=0);
-  opacity: 0;
-  z-index: 2;
-
-}
-
-}
-
+/*    Default     */
 
 body{
   margin: 0 0 0 0;
@@ -217,12 +69,12 @@ p {
 
 }
 
-
-.col-1 {
-  float: left;
+.grid {
+  display: inline-block;
   width: 100%;
-  height: 360px;
-}
+
+    }
+
 
 
 .status p {
@@ -235,226 +87,14 @@ p {
   margin: 0 auto;
 }
 
-/*#progress_bar {
-    margin: 10px 0;
-    padding: 3px;
-    border: 1px solid #000;
-    font-size: 14px;
-    clear: both;
-    opacity: 0;
-    -moz-transition: opacity 1s linear;
-    -o-transition: opacity 1s linear;
-    -webkit-transition: opacity 1s linear;
-  }
-  #progress_bar.loading {
-    opacity: 1.0;
-  }
-  #progress_bar .percent {
-    background-color: #99ccff;
-    height: auto;
-    width: 0;
-  }*/
-/* The Button*/
-
-#submit_file {
-
-  -webkit-border-radius: 10;
-  -moz-border-radius: 10;
-  border-radius: 10px;
-  height: 40px;
-  width: 100px;
-  font-family: 'Montserrat', sans-serif, Arial;
-  color: #ffffff;
-  font-size: 14px;
-  background: #df775d;
-  text-decoration: none;
-}
-
-#submit_file:hover {
-  background: #df775d;
-  text-decoration: none;
-}
-
-/*Styling input fle */
-
-
-div.fileinputs {
-
-    margin-right: auto;
-    margin-left: auto;
-  position: relative;
- width: 148px;
-}
-
-div.fakefile {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-}
-
-div.fakefile input[type=button] {
-  /* enough width to completely overlap the real hidden file control */
-  cursor: pointer;
-  width: 148px;
-  -webkit-border-radius: 10;
-  -moz-border-radius: 10;
-  border-radius: 10px;
-  height: 40px;
-  font-family: 'Montserrat', sans-serif, Arial;
-  color: #ffffff;
-  font-size: 14px;
-  background: #df775d;
-  text-decoration: none;
-
-
-}
-
-div.fileinputs input.file {
-  position: relative;
-  text-align: right;
-  height: 40px;
-  width: 148px;
-  -moz-opacity:0 ;
-  filter:alpha(opacity=0);
-  opacity: 0;
-  z-index: 2;
-
-}
-
-
-/*display url box*/
-
-
-.grid {
-      display: inline-block;
-      width: 100%;
-
-}
-
-.give_url {
-  height: 100px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 370px;
-  margin-top: 40px;
-}
-
-
-.give_url input {
-
-  text-align: center;
-  color: #df775d;
- font-family: 'Montserrat', sans-serif, Arial;
- font-size: 14px;
- border: 5px solid white;
- -webkit-box-shadow:
- inset 0 0 8px rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1);
- -moz-box-shadow:
- inset 0 0 8px rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1);
- box-shadow:
- inset 0 0 8px rgba(0,0,0,0.1),
- 0 0 16px rgba(0,0,0,0.1);
- padding: 15px;
- background: rgba(255,255,255,0.5);
-}
-
-
-/* phones and tablets */
-@media screen and (max-width: 980px){
-div.fileinputs {
-
-  position: relative;
-  width: 400px;
-}
-
-div.fakefile {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-}
-
-div.fakefile input[type=button] {
-  /* enough width to completely overlap the real hidden file control */
-  cursor: pointer;
-  width: 400px;
-  height: 400px;
-  font-family: 'Montserrat', sans-serif, Arial;
-  color: #ffffff;
-  font-size: 48px;
-  text-align: center;
-  background: #df775d;
-  text-decoration: none;
-   -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
-
-
-}
-
-div.fileinputs input.file {
-  position: relative;
-  text-align: right;
-  height: 400px;
-  width: 400px;
-  -moz-opacity:0 ;
-  filter:alpha(opacity=0);
-  opacity: 0;
-  z-index: 2;
-
-}
-h1 {
-
-  font-size: 64px;
-  font-weight: 300;
-  height: 200px;
-  margin-bottom: 30px;
-  margin-top: 60px;
-  text-align: center;
-  width: 509.04827880859375px;
-}
-
-.give_url {
-  height: 100px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 1100px;
-  margin-top: 40px;
-}
-
-
-.give_url input {
-
-  text-align: center;
-  color: #df775d;
- font-family: 'Montserrat', sans-serif, Arial;
- font-size: 34px;
- border: 10px solid white;
- -webkit-box-shadow:
- inset 0 0 8px rgba(0,0,0,0.1),
- 0 0 32px rgba(0,0,0,0.1);
- -moz-box-shadow:
- inset 0 0 16px rgba(0,0,0,0.1),
- 0 0 32px rgba(0,0,0,0.1);
- box-shadow:
- inset 0 0 16px rgba(0,0,0,0.1),
- 0 0 32px rgba(0,0,0,0.1);
- padding: 30px;
- background: rgba(255,255,255,0.5);
-}
-}
-
-#progress_bar {
-    margin: 10px auto 10px auto;
-    padding: 3px;
-    border: 1px solid black;
-    font-size: 14px;
-    width: 25%;
-    /*clear: both;*/
-    /*opacity: 0;*/
+    #progress_bar {
+      margin: 10px auto 10px auto;
+      padding: 3px;
+      border: 1px solid black;
+      font-size: 14px;
+      width: 25%;
+      /*clear: both;*/
+      /*opacity: 0;*/
     /*-moz-transition: opacity 1s linear;
     -o-transition: opacity 1s linear;
     -webkit-transition: opacity 1s linear;*/
@@ -479,14 +119,294 @@ h1 {
   }
 
 
-.alert_browser h3{
+  .alert_browser h3{
    margin-left: auto;
-  margin-right: auto;
-  font-size: 28px;
-  font-weight: 300;
-  height: 116.36363220214844px;
-  margin-top: 20px;
-  text-align: center;
-  width: 509.04827880859375px;
+   margin-right: auto;
+   font-size: 28px;
+   font-weight: 300;
+   height: 116.36363220214844px;
+   margin-top: 20px;
+   text-align: center;
+   width: 509.04827880859375px;
+ }
+
+
+    /*Styling input fle button */
+
+
+    div.fileinputs {
+
+      margin-right: auto;
+      margin-left: auto;
+      position: relative;
+      width: 148px;
+    }
+
+    div.fakefile {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 1;
+    }
+
+    div.fakefile input[type=button] {
+      /* enough width to completely overlap the real hidden file control */
+      cursor: pointer;
+      width: 148px;
+      -webkit-border-radius: 10;
+      -moz-border-radius: 10;
+      border-radius: 10px;
+      height: 40px;
+      font-family: 'Montserrat', sans-serif, Arial;
+      color: #ffffff;
+      font-size: 14px;
+      background: #df775d;
+      text-decoration: none;
+
+
+    }
+
+    div.fileinputs input.file {
+      position: relative;
+      text-align: right;
+      height: 40px;
+      width: 148px;
+      -moz-opacity:0 ;
+      filter:alpha(opacity=0);
+      opacity: 0;
+      z-index: 2;
+
+    }
+
+
+
+
+  
+
+     /*display url box*/
+
+
+    .give_url {
+      height: 100px;
+      margin-right: auto;
+      margin-left: auto;
+      width: 370px;
+      margin-top: 40px;
+    }
+
+
+    .give_url input {
+
+      text-align: center;
+      color: #df775d;
+      font-family: 'Montserrat', sans-serif, Arial;
+      font-size: 14px;
+      border: 5px solid white;
+      -webkit-box-shadow:
+      inset 0 0 8px rgba(0,0,0,0.1),
+      0 0 16px rgba(0,0,0,0.1);
+      -moz-box-shadow:
+      inset 0 0 8px rgba(0,0,0,0.1),
+      0 0 16px rgba(0,0,0,0.1);
+      box-shadow:
+      inset 0 0 8px rgba(0,0,0,0.1),
+      0 0 16px rgba(0,0,0,0.1);
+      padding: 15px;
+      background: rgba(255,255,255,0.5);
+    }
+
+
+    /* phones and tablets */
+
+
+    @media screen and (max-width: 980px){
+      div.fileinputs {
+
+        position: relative;
+        width: 400px;
+      }
+
+      div.fakefile {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+      }
+
+      div.fakefile input[type=button] {
+        /* enough width to completely overlap the real hidden file control */
+        cursor: pointer;
+        width: 400px;
+        height: 260px;
+        font-family: 'Montserrat', sans-serif, Arial;
+        color: #ffffff;
+        font-size: 48px;
+        text-align: center;
+        background: #df775d;
+        text-decoration: none;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+
+
+      }
+
+      div.fileinputs input.file {
+        position: relative;
+        text-align: right;
+        height: 400px;
+        width: 400px;
+        -moz-opacity:0 ;
+        filter:alpha(opacity=0);
+        opacity: 0;
+        z-index: 2;
+
+      }
+      h1 {
+
+        font-size: 64px;
+        font-weight: 300;
+        height: 200px;
+        margin-bottom: 30px;
+        margin-top: 60px;
+        text-align: center;
+        width: 509.04827880859375px;
+      }
+
+      .give_url {
+        height: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 1100px;
+        margin-top: 40px;
+      }
+
+
+      .give_url input {
+
+        text-align: center;
+        color: #df775d;
+        font-family: 'Montserrat', sans-serif, Arial;
+        font-size: 34px;
+        border: 10px solid white;
+        -webkit-box-shadow:
+        inset 0 0 8px rgba(0,0,0,0.1),
+        0 0 32px rgba(0,0,0,0.1);
+        -moz-box-shadow:
+        inset 0 0 16px rgba(0,0,0,0.1),
+        0 0 32px rgba(0,0,0,0.1);
+        box-shadow:
+        inset 0 0 16px rgba(0,0,0,0.1),
+        0 0 32px rgba(0,0,0,0.1);
+        padding: 30px;
+        background: rgba(255,255,255,0.5);
+      }
+    }
+
+
+
+ /*    Mobile Phones and Ipads    */
+
+
+
+
+
+/* Desktop when @ less than 980 */
+
+@media screen and (max-width: 980px) and (min-device-width: 992px) {
+  body{
+    margin: 0 0 0 0;
+    padding: 0;
+  }
+
+
+  /*Styling input fle */
+
+
+  div.fileinputs {
+
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    width: 148px;
+  }
+
+  div.fakefile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  div.fakefile input[type=button] {
+    /* enough width to completely overlap the real hidden file control */
+    cursor: pointer;
+    width: 148px;
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    height: 40px;
+    font-family: 'Montserrat', sans-serif, Arial;
+    color: #ffffff;
+    font-size: 14px;
+    background: #df775d;
+    text-decoration: none;
+
+
+  }
+
+  div.fileinputs input.file {
+    position: relative;
+    text-align: right;
+    height: 40px;
+    width: 148px;
+    -moz-opacity:0 ;
+    filter:alpha(opacity=0);
+    opacity: 0;
+    z-index: 2;
+
+  }
+
+  h1 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 48.18181610107422px;
+    font-weight: 300;
+    height: 116.36363220214844px;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    text-align: center;
+    width: 509.04827880859375px;
+  }
+
+  .give_url {
+    height: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 370px;
+    margin-top: 40px;
+  }
+
+
+  .give_url input {
+
+    text-align: center;
+    color: #df775d;
+    font-family: 'Montserrat', sans-serif, Arial;
+    font-size: 14px;
+    border: 5px solid white;
+    -webkit-box-shadow:
+    inset 0 0 8px rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+    -moz-box-shadow:
+    inset 0 0 8px rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+    box-shadow:
+    inset 0 0 8px rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+  }
+
 }
 
