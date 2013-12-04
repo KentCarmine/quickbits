@@ -498,6 +498,10 @@ p {
     margin-bottom: 50px;
   }
 
+  .faq_list p {
+    margin-top: 0px;
+  }
+
 .footer a{
   color: #767777;
   font-size: 30px;
