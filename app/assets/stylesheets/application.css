@@ -15,133 +15,8 @@
 /*require '/vendor/assets/normalize.css'
 */
 
-/* phones and tablets */
 
-@media screen and (max-device-width: 992px){
-  body{
-    margin: 0 0 0 0;
-    padding: 0;
-  }
-
-  .header {
-    background-color: #f6f8f8;
-    width: 100%;
-    float: left;
-    margin: 0 0 0 0;
-    padding: 0;
-    height: 90px;
-    border-bottom: 1px solid #ced3d5;
-
-  }
-
-  .header_image {
-    padding: 10px;
-  }
-
-  .footer {
-   display: none;
-  }
-
-
-  .col-2 {
-    display: none;
-  }
-
-  .status p {
-    display: block;
-    width: 240px;
-    padding: 2px 5px;
-    margin: 2px 0;
-    border: 1px inset #446;
-    border-radius: 5px;
-  }
-
-
-  div.fileinputs {
-
-    position: relative;
-  }
-
-  div.fakefile {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-  }
-
-  div.fakefile input[type=button] {
-    cursor: pointer;
-    width: 100%;
-    font-family: 'Montserrat', sans-serif, Arial;
-    color: #ffffff;
-    font-size: 14px;
-    background: #df775d;
-    text-decoration: none;
-
-  }
-
-  div.fileinputs input.file {
-    position: relative;
-    text-align: right;
-    -moz-opacity:0 ;
-    filter:alpha(opacity=0);
-    opacity: 0;
-    z-index: 2;
-
-  }
-}
-
-
-
-/* Desktop when @ less than 980 */
-
-@media screen and (max-width: 980px) and (min-device-width: 992px) {
-div.fileinputs {
-
-  position: relative;
- width: 100%;
-}
-
-div.fakefile {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-}
-
-div.fakefile input[type=button] {
-  /* enough width to completely overlap the real hidden file control */
-  cursor: pointer;
-  width: 100%;
-  -webkit-border-radius: 10;
-  -moz-border-radius: 10;
-  border-radius: 10px;
-  height: 100px;
-  font-family: 'Montserrat', sans-serif, Arial;
-  color: #ffffff;
-  font-size: 14px;
-  text-align: center;
-  background: #df775d;
-  text-decoration: none;
-
-
-}
-
-div.fileinputs input.file {
-  position: relative;
-  text-align: right;
-  height: 100px;
-  width: 100%;
-  -moz-opacity:0 ;
-  filter:alpha(opacity=0);
-  opacity: 0;
-  z-index: 2;
-
-}
-
-}
-
-/*    Default     */
+/* Default */
 
 body{
   margin: 0 0 0 0;
@@ -202,46 +77,7 @@ p {
 
 
 
-.status p {
-  display: block;
-  width: 240px;
-  padding: 2px 5px;
-  margin: 2px 0;
-  /*border: 1px inset #446;
-  border-radius: 5px;*/
-  margin: 0 auto;
-}
 
-    #progress_bar {
-      margin: 10px auto 10px auto;
-      padding: 3px;
-      border: 1px solid black;
-      font-size: 14px;
-      width: 25%;
-      /*clear: both;*/
-      /*opacity: 0;*/
-    /*-moz-transition: opacity 1s linear;
-    -o-transition: opacity 1s linear;
-    -webkit-transition: opacity 1s linear;*/
-  }
-
-  #progress_bar .loading {
-    opacity: 1.0;
-  }
-
-  #progress_bar .percent {
-    font-family: 'Montserrat', sans-serif, Arial;
-    background-color: rgb(223, 119, 93);
-    color: white;
-    height: auto;
-    width: 0;
-    padding: 0 0px 0 -3px;
-    /*margin: 2px;*/
-  }
-
-  .file_name {
-    background-color: #D1E0E0;
-  }
 
 
   .alert_browser h3{
@@ -302,6 +138,11 @@ p {
       z-index: 2;
 
     }
+
+
+
+
+
 
      /*display url box*/
 
@@ -425,7 +266,7 @@ p {
 
 
 
- /*    Mobile Phones and Ipads    */
+ /* Mobile Phones and Ipads */
 
 
 
@@ -485,14 +326,6 @@ p {
     opacity: 0;
     z-index: 2;
 
-
-#progress_bar {
-    margin: 10px auto 10px auto;
-    border: 1px solid rgb(223, 119, 93);
-    font-size: 14px;
-    width: 50%;
-    padding-right: 5px;
-
   }
 
   h1 {
@@ -505,30 +338,6 @@ p {
     margin-top: 60px;
     text-align: center;
     width: 509.04827880859375px;
-  }
-
-
-  #progress_bar .percent {
-    font-family: 'Montserrat', sans-serif, Arial;
-    background-color: rgb(223, 119, 93);
-    color: white;
-    height: auto;
-    width: 0;
-    padding-left: 5px;
-    font-size: 20px;
-    /*margin: 2px;*/
-  }
-
-  .file_name {
-    color: #767777;
-  }
-
-  .file_size {
-    color: #767777;
-  }
-
-  .error_message {
-    color: #393939;
   }
 
   .give_url {
@@ -562,11 +371,60 @@ p {
 
 }
 
-.reciever_view {
-  margin-top: 60px;
-  margin-left: 100px;
-  margin-right: auto;
-  float: left;
-  width: 75%;
+.status p {
+  display: block;
+  width: 240px;
+  padding: 2px 5px;
+  margin: 2px 0;
+  /*border: 1px inset #446;
+border-radius: 5px;*/
+  margin: 0 auto;
 }
 
+    #progress_bar {
+      margin: 10px auto 10px auto;
+      /*padding: 3px;*/
+      border: 1px solid rgb(223, 119, 93);
+      font-size: 14px;
+      width: 50%;
+      padding-right: 5px;
+      /*clear: both;*/
+      /*opacity: 0;*/
+    /*-moz-transition: opacity 1s linear;
+-o-transition: opacity 1s linear;
+-webkit-transition: opacity 1s linear;*/
+  }
+
+  #progress_bar .loading {
+    opacity: 1.0;
+  }
+
+  #progress_bar .percent {
+    font-family: 'Montserrat', sans-serif, Arial;
+    background-color: rgb(223, 119, 93);
+    color: white;
+    height: auto;
+    width: 0;
+    padding-left: 5px;
+    font-size: 20px;
+  }
+
+  .file_name {
+    color: #767777;
+  }
+
+  .file_size {
+    color: #767777;
+  }
+
+  .error_message {
+    color: #393939;
+  }
+
+  .reciever_view {
+    margin-top: 60px;
+    margin-left: 100px;
+    margin-right: auto;
+    float: left;
+    width: 75%;
+  }
