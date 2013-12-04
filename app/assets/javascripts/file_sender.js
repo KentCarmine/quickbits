@@ -163,7 +163,20 @@ var adjs = [
             'tired',
             'joyful',
             'bright',
-            'shy'
+            'shy',
+            'dreamy',
+            'quiet',
+            'blue',
+            'sweet',
+            'funny',
+            'tiny',
+            'manic',
+            'evil',
+            'smart',
+            'brave',
+            'cunning',
+            'tricky',
+            'hungry'
            ],
 
     nouns = [
@@ -176,7 +189,23 @@ var adjs = [
              'olitaur',
              'dragon',
              'ent',
-             'squirrel'
+             'squirrel',
+             'rhino',
+             'monkey',
+             'dog',
+             'wolf',
+             'cat',
+             'ant',
+             'kitten',
+             'fly',
+             'eagle'
+             'gopher',
+             'woodchuck',
+             'meerkat',
+             'tiger',
+             'leopard',
+             'whale',
+             'penguin'
             ],
 
     verbs = [
@@ -193,7 +222,9 @@ var adjs = [
              'sews',
              'swims',
              'floats',
-             'smells'
+             'smells',
+             'smiles',
+             'grins'
             ]
 
 Sender.prototype.setDownloadUrl = function(){
