@@ -1,13 +1,28 @@
 <div class="header">
-
   <%= link_to image_tag("quickbits_logo.svg", :border=>0, :class => 'header_image', :size => "253x61"), "/" %>
  </div>
  <div class="alert_browser">
     <h3> We currently do not support this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> Firefox.</a></h3>
 </div>
 
+<noscript>
+    <style type="text/css">
+      .main_container {
+        display: none;
+      }
+      .header {
+        float: none;
+      }
+    </style>
+  <h1>You have Javascript disabled. Please enable it to use this site.</h1>
+</noscript>
 
+<div class="main_container">
+  <div class="alert_browser">
+    <h3> We do not support your browser at this time </h3>
+  </div>
 
+<<<<<<< HEAD
 <div class="receiver_view">
   <div class="status_view" >
     <%= render '/status' %>
@@ -16,5 +31,16 @@
   <div class="footer">
     <div class="nav"><ul> <li>© 2013 Team Quickbits </li> <li>|</li><li><a href="/faq">FAQ</a><li>|</li><li><a href="https://github.com/Surram/quickbits">GitHub</a></li></ul>
     </div>
+=======
+  <div class="reciever_view">
+    <div class="status_view" >
+      <%= render '/status' %>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="/faq"> FAQ </a>
+>>>>>>> ef661ae9f78b0f8d0308286e71d9132d70b57a66
 </div>
 <%= javascript_include_tag "file_receiver" %>

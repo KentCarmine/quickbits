@@ -2,7 +2,19 @@
   <%= link_to image_tag("quickbits_logo.svg", :border=>0, :class => 'header_image', :size => "253x61"), "/" %>
 </div>
 <div id="drop_zone">
-  <div class="grid">
+  <noscript>
+    <style type="text/css">
+      .main_container {
+        display: none;
+      }
+      .header {
+        float: none;
+      }
+    </style>
+    <h1>You have Javascript disabled. Please enable it to use this site.</h1>
+  </noscript>
+
+  <div class="grid main_container">
     <div class="alert_browser">
       <h3> We currently do not support this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> Firefox.</a> </h3>
     </div>
