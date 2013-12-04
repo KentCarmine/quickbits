@@ -55,11 +55,15 @@ Sender.prototype.handleConnection = function(){
 
 Sender.prototype.updateProgressBar = function(){
   var progress = document.querySelector('.percent');
+  var progress_bar = document.querySelector('#progress_bar')
+  var value_prop = document.querySelector(".value_prop");
   var link_field = document.querySelector('.link_field');
+  var button_upload = document.querySelector(".button_upload");
   var thisSender = this;
   var sliceSize = 1000;
   link_field.style.display = "none";
 
+  value_prop.innerHTML = "<h1> File Being Transferred</h1>"
   thisSender.connection.on("data", function(data){
     if(data.isChunkCount){
       var chunksReceivedByRemotePeer = parseInt(data.chunksReceived);
@@ -67,6 +71,13 @@ Sender.prototype.updateProgressBar = function(){
       var percentLoaded = Math.round((chunksReceivedByRemotePeer / (thisSender.file.size/sliceSize) ) * 100);
       progress.style.width = percentLoaded + '%';
       progress.textContent = percentLoaded + '%';
+
+      if(percentLoaded >= 100){
+        value_prop.innerHTML = "<h1> File Successfully Transferred</h1>";
+        button_upload.style.display = "inline";
+        progress.style.display = "none";
+        progress_bar.style.display = "none";
+      }
     }
 
   });
@@ -99,6 +110,7 @@ Sender.prototype.sendFile = function(){
 
     //Setting up variables to display to initiating user
     var status = document.querySelector('.status_view');
+
     // var progress = document.querySelector('.percent');
     var userFileName = document.querySelector('.file_name');
     var userFileSize = document.querySelector('.file_size');
