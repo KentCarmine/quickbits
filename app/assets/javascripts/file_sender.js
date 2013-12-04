@@ -32,6 +32,10 @@ function Sender(file){
     thisSender.setDownloadUrl();
   });
 
+  window.onunload = function(){
+    thisSender.peer.destroy();
+  }
+
   thisSender.file = file;
 }
 
@@ -212,10 +216,6 @@ $(function(){
   $("#copy_link_form").on("submit", function(event){
     event.preventDefault();
   });
-
-  window.onunload = function(){
-    sender.peer.destroy();
-  }
 });
 
 function byteConverter(bytes){
