@@ -344,11 +344,6 @@ $(function(){
   $("#copy_link_form").on("submit", function(event){
     event.preventDefault();
   });
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dbbdaf93d51119843f093546daa1721d49edad61
 });
 
 function byteConverter(bytes){
