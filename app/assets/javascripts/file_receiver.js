@@ -35,7 +35,7 @@ Receiver.prototype.establishConnection = function(senderPeerId){
   setTimeout(function(){
     var isDone = ($.trim($('.percent').get()[0].innerHTML) == "100%");
     if((thisReceiver.connection.open !== true) && (!isDone)){
-      $("#error_message").innerHTML("Unable to connect to sender! Connection timed out after 10 sec.");
+      $("#error_message").text("Unable to connect to sender! Connection timed out after 10 sec.");
       return;
     }
   }, 10000);
