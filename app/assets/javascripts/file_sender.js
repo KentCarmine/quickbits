@@ -76,7 +76,7 @@ Sender.prototype.updateProgressBar = function(){
         clearTimeout(thisSender.timeout);
         thisSender.timeout = setTimeout(function(){
           errorElement.text("Connection may have failed. File transfer may have aborted.");
-        }, 5000);
+        }, 15000);
       }
       else if(percentLoaded >= 100){
         clearTimeout(thisSender.timeout);
