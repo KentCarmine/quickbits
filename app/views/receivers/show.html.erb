@@ -1,9 +1,6 @@
 <div class="header">
   <%= link_to image_tag("quickbits_logo.svg", :border=>0, :class => 'header_image', :size => "253x61"), "/" %>
  </div>
- <div class="alert_browser">
-    <h3> We currently do not support this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> Firefox.</a></h3>
-</div>
 
 <noscript>
     <style type="text/css">
@@ -19,12 +16,13 @@
 
 <div class="main_container">
   <div class="alert_browser">
-    <h3> We do not support your browser at this time </h3>
+    <h3> We currently do not support this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> Firefox. </h3>
   </div>
 
-<div class="receiver_view">
-  <div class="status_view" >
-    <%= render '/status' %>
+  <div class="receiver_view">
+    <div class="status_view" >
+      <%= render '/status' %>
+    </div>
   </div>
 </div>
   <div class="footer">

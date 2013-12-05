@@ -33,9 +33,8 @@ function Sender(file){
   });
 
   window.onunload = function(){
-    thisSender.peer.destroy();
+      thisSender.peer.destroy();
   }
-
   thisSender.file = file;
 }
 
@@ -316,6 +315,16 @@ $(function(){
     $(this).css("background","white");
     event.stopPropagation();
     event.preventDefault();
+
+    var n = event.originalEvent.dataTransfer.files[0].size;
+
+    if(n == 0){
+      alert("You cannot transfer a folder");
+      return;
+    }
+
+    console.log("number of files");
+    console.log(n);
     var file = event.originalEvent.dataTransfer.files[0];
     var sender = new Sender(file);
     sender.handleConnection();
@@ -329,11 +338,17 @@ $(function(){
   $(document).on("drop", function(event){
     event.stopPropagation();
     event.preventDefault();
+
   });
 
   $("#copy_link_form").on("submit", function(event){
     event.preventDefault();
   });
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> dbbdaf93d51119843f093546daa1721d49edad61
 });
 
 function byteConverter(bytes){
