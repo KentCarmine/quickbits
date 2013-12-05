@@ -273,6 +273,7 @@ Sender.prototype.setDownloadUrl = function(){
     // on callback, print the url
     url.on('value', function(snapshot) {
       $("#url").val(window.location.href + path);
+      $("#url").select();
     });
 
     var countRef = new Firebase('https://quickbits.firebaseio.com/total-links');
@@ -290,7 +291,6 @@ Sender.prototype.setDownloadUrl = function(){
     return "If you close the window the file will not finish transfer.";
   };
 
-  $("#url").select();
 }
 
 $(function(){

@@ -59,7 +59,7 @@ Receiver.prototype.getData = function(){
   var errorElement = $("#error_message");
   var upload_button = document.querySelector('.button_upload');
   thisReceiver.connection.on("data", function(data){
-  alert_browser.innerHTML = "<h3>Your File is Being Transferred</h3>";
+  alert_browser.innerHTML = "<h2>Your File is Being Transferred</h2>";
   alert_browser.style.display = "inline";
 
     if(data.isFileMetaData){
@@ -86,7 +86,7 @@ Receiver.prototype.getData = function(){
       if(percentLoaded >= 100){
         progress.style.width = '100%';
         progress.textContent = '100%';
-        alert_browser.innerHTML = "<h3>File Successfully Transferred</h3>";
+        alert_browser.innerHTML = "<h2>File Successfully Transferred</h2>";
         upload_button.style.display = "block";
       }
 
