@@ -199,7 +199,7 @@ var adjs = [
              'ant',
              'kitten',
              'fly',
-             'eagle'
+             'eagle',
              'gopher',
              'woodchuck',
              'meerkat',
