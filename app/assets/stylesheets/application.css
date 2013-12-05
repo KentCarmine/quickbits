@@ -235,6 +235,8 @@ div.fileinputs input.file {
 
 .give_url input {
 
+  margin: 0 -5.5%;
+  width: 100%;
   text-align: center;
   color: #df775d;
   font-family: 'Montserrat', sans-serif, Arial;
