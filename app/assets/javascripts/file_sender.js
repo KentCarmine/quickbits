@@ -109,16 +109,10 @@ Sender.prototype.sendFile = function(){
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
 
-<<<<<<< HEAD
-
   window.onbeforeunload = function() {
     return "If you close the window the file will not finish transfer.";
   };
 
-
-
-=======
->>>>>>> master
   fileReader.onload = function(){
     var fileData = fileReader.result;
     var blob = [];
@@ -205,7 +199,7 @@ var adjs = [
              'ant',
              'kitten',
              'fly',
-             'eagle'
+             'eagle',
              'gopher',
              'woodchuck',
              'meerkat',
