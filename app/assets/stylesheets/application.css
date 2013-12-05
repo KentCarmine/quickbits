@@ -69,13 +69,23 @@ body{
 h1 {
   margin-left: auto;
   margin-right: auto;
-  font-size: 48.18181610107422px;
+  font-size: 48px;
   font-weight: 300;
-  height: 116.36363220214844px;
+  height: 118px;
   margin-bottom: 30px;
   margin-top: 60px;
   text-align: center;
-  width: 509.04827880859375px;
+  width: 500px;
+}
+
+h2 {
+
+   font-size: 32px;
+  font-weight: 400;
+  color: #ced3d5;
+
+
+
 }
 
 p {
@@ -139,6 +149,10 @@ font-family: sans-serif;
 
 }
 
+.alert_browser h2{
+  margin-left: auto;
+ margin-right: auto;
+}
 
 .alert_browser h3{
  margin-left: auto;
@@ -147,7 +161,7 @@ font-family: sans-serif;
  font-size: 28px;
  font-weight: 300;
  text-align: center;
- width: 509.04827880859375px;
+ width: 500px;
  color: #df775d;
  text-decoration: underline;
 }
@@ -247,18 +261,22 @@ div.fileinputs input.file {
   margin: 0 auto;
 }
 .status_view {
+  margin-top: 20px;
   text-align: center;
 }
 
 #progress_bar {
-  margin: 10px auto 10px auto;
+  margin: 20px auto 10px auto;
   border: 1px solid rgb(223, 119, 93);
   font-size: 14px;
   width: 50%;
   padding-right: 5px;
-
 }
 
+.percent{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 
 #progress_bar .loading {
   opacity: 1.0;
@@ -539,13 +557,13 @@ div.receiver_fakefile input[type=button] {
   h1 {
     margin-left: auto;
     margin-right: auto;
-    font-size: 48.18181610107422px;
+    font-size: 48px;
     font-weight: 300;
-    height: 116.36363220214844px;
+    height: 118px;
     margin-bottom: 30px;
     margin-top: 60px;
     text-align: center;
-    width: 509.04827880859375px;
+    width: 500px;
   }
 
 
