@@ -148,6 +148,8 @@ font-family: sans-serif;
  font-weight: 300;
  text-align: center;
  width: 509.04827880859375px;
+ color: #df775d;
+ text-decoration: underline;
 }
 
 
@@ -224,13 +226,13 @@ div.fileinputs input.file {
   border: 5px solid white;
   -webkit-box-shadow:
   inset 0 0 8px rgba(0,0,0,0.1),
-  0 0 16px rgba(0,0,0,0.1);
+  0 0 32px rgba(0,0,0,0.3);
   -moz-box-shadow:
   inset 0 0 8px rgba(0,0,0,0.1),
-  0 0 16px rgba(0,0,0,0.1);
+  0 0 32px rgba(0,0,0,0.3);
   box-shadow:
   inset 0 0 8px rgba(0,0,0,0.1),
-  0 0 16px rgba(0,0,0,0.1);
+  0 0 32px rgba(0,0,0,0.3);
   padding: 15px;
   background: rgba(255,255,255,0.5);
 }
@@ -272,13 +274,15 @@ div.fileinputs input.file {
    margin-left: auto;
    margin-right: auto;
    margin-top: 0px;
-   padding: 3px;
+   padding: 6px;
    font-size: 20px;
    font-weight: 300;
    text-align: center;
    width: 420px;
-   border: 1px solid red;
- }
+   color: white;
+   background: #df775d;
+/*   border: 4px solid #df775d;
+*/ }
 
 
 
