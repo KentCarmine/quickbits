@@ -151,7 +151,9 @@ font-family: sans-serif;
 
 .alert_browser h2{
   margin-left: auto;
- margin-right: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 0px;
 }
 
 .alert_browser h3{
