@@ -95,7 +95,7 @@ Receiver.prototype.getData = function(){
         clearTimeout(thisReceiver.timeout);
         thisReceiver.timeout = setTimeout(function(){
           errorElement.text("Connection may have failed. File transfer may have aborted.");
-        }, 5000);
+        }, 15000);
       }
       else if(percentLoaded >= 100){
         clearTimeout(thisReceiver.timeout);
