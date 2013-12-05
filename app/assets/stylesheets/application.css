@@ -18,6 +18,7 @@
 body{
   margin: 0 0 0 0;
   padding: 0;
+  border: 0;
 }
 
 h1 {
@@ -123,6 +124,8 @@ div.fakefile {
   z-index: 1;
 }
 
+
+
 div.fakefile input[type=button] {
   cursor: pointer;
   width: 148px;
@@ -149,6 +152,7 @@ div.fileinputs input.file {
   z-index: 2;
 
 }
+
 
 
 /*display url box*/
@@ -201,6 +205,12 @@ div.fileinputs input.file {
 
 .file_name {
   color: #767777;
+}
+
+p.file_name{
+
+  margin-left: 0;
+  margin-right:0;
 }
 
 .file_size {
@@ -286,6 +296,21 @@ div.receiver_fakefile input[type=button] {
   margin-left: auto;
   margin-right: auto;
 
+}
+
+input.button_upload {
+   cursor: pointer;
+  width: 148px;
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  height: 40px;
+  font-family: 'Montserrat', sans-serif, Arial;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 14px;
+  background: #df775d;
+  text-decoration: none;
 }
 
                 /*  FAQ   */

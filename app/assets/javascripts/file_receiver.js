@@ -66,9 +66,8 @@ Receiver.prototype.getData = function(){
       // GLOBAL, COME BACK TO THIS
       file_size = data.fileSize;
       fileName = data.fileName;
-      userFileName.textContent = data.fileName;
       size = byteConverter(data.fileSize);
-      userFileSize.textContent = size;
+      userFileSize.textContent = "" + data.fileName + "  " + size;
     }
     else if(data.isFile){
       chunk_count += 1;
