@@ -131,11 +131,15 @@ function byteConverter(bytes){
 
 $(function(){
   var splitUrl = window.location.href.split("/");
-  var senderPeerId = splitUrl[splitUrl.length-1];
-  var receiver = new Receiver();
+  var phoneticUrl = splitUrl[splitUrl.length-1];
+  var urlStore = new Firebase('https://quickbits.firebaseio.com/' + phoneticUrl);
 
-  receiver.establishConnection(senderPeerId);
-  receiver.handleConnection();
+  urlStore.on('value', function(snapshot) {
+    var senderPeerId = snapshot.val();
+    var receiver = new Receiver();
+    receiver.establishConnection(senderPeerId);
+    receiver.handleConnection();
+  });
 
   window.onunload = function(){
     receiver.peer.destroy();

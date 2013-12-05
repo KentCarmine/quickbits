@@ -109,6 +109,16 @@ Sender.prototype.sendFile = function(){
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
 
+<<<<<<< HEAD
+
+  window.onbeforeunload = function() {
+    return "If you close the window the file will not finish transfer.";
+  };
+
+
+
+=======
+>>>>>>> master
   fileReader.onload = function(){
     var fileData = fileReader.result;
     var blob = [];
@@ -150,6 +160,80 @@ Sender.prototype.sendFile = function(){
   }
 }
 
+// url seed words
+var adjs = [
+            'red',
+            'slow',
+            'huge',
+            'bashful',
+            'daring',
+            'tired',
+            'joyful',
+            'bright',
+            'shy',
+            'dreamy',
+            'quiet',
+            'blue',
+            'sweet',
+            'funny',
+            'tiny',
+            'manic',
+            'evil',
+            'smart',
+            'brave',
+            'cunning',
+            'tricky',
+            'hungry'
+           ],
+
+    nouns = [
+             'fox',
+             'salamander',
+             'coyote',
+             'firefly',
+             'nighthawk',
+             'grasshopper',
+             'olitaur',
+             'dragon',
+             'ent',
+             'squirrel',
+             'rhino',
+             'monkey',
+             'dog',
+             'wolf',
+             'cat',
+             'ant',
+             'kitten',
+             'fly',
+             'eagle'
+             'gopher',
+             'woodchuck',
+             'meerkat',
+             'tiger',
+             'leopard',
+             'whale',
+             'penguin'
+            ],
+
+    verbs = [
+             'runs',
+             'gallops',
+             'trots',
+             'sleeps',
+             'hunts',
+             'burrows',
+             'drinks',
+             'eats',
+             'codes',
+             'reads',
+             'sews',
+             'swims',
+             'floats',
+             'smells',
+             'smiles',
+             'grins'
+            ]
+
 Sender.prototype.setDownloadUrl = function(){
 
   var value_prop = document.querySelector(".value_prop");
@@ -163,11 +247,51 @@ Sender.prototype.setDownloadUrl = function(){
   window_open.style.display = "inline";
   button_upload.style.display = "none";
   link_field.style.display = "inline";
+
+  // for scope
+  peer_id = this.peer_id;
+
+  function randIndex(anArray) {
+    return Math.floor(Math.random() * anArray.length);
+  }
+
+  (function makePath() {
+    // word pair, with dashes
+    var wordTrio = adjs[randIndex(adjs)] + "-"
+                     + nouns[randIndex(nouns)] + "-"
+                     + verbs[randIndex(verbs)] + "-";
+
+    // random four digits
+    var randomFour = [0, 0, 0, 0].map(function(digit) {
+      return Math.floor(Math.random(10) * 10);
+    }).join('');
+
+    // the combination of the two, a la Heroku
+    var path = wordTrio + randomFour;
+
+    // the root Firebase store
+    var urlStore = new Firebase('https://quickbits.firebaseio.com/');
+    // make a local reference to a Firebase key of `path`
+    var url = urlStore.child(path);
+    url.set(peer_id);
+    // on callback, print the url
+    url.on('value', function(snapshot) {
+      $("#url").val(window.location.href + path);
+    });
+
+    /* delete the reference from Firebase
+     * when the window closes */
+    window.onunload = function() {
+      url.remove();
+    }
+
+  })();
+
   status.style.display = "none";
   window.onbeforeunload = function() {
     return "If you close the window the file will not finish transfer.";
   };
-  $("#url").val(window.location.href + this.peer_id);
+
   $("#url").select();
 }
 
