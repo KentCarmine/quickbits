@@ -133,10 +133,10 @@ $(function(){
   var splitUrl = window.location.href.split("/");
   var phoneticUrl = splitUrl[splitUrl.length-1];
   var urlStore = new Firebase('https://quickbits.firebaseio.com/' + phoneticUrl);
+  var receiver = new Receiver();
 
   urlStore.on('value', function(snapshot) {
     var senderPeerId = snapshot.val();
-    var receiver = new Receiver();
     receiver.establishConnection(senderPeerId);
     receiver.handleConnection();
   });
