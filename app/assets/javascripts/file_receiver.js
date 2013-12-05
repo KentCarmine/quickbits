@@ -10,7 +10,7 @@ $(document).ready(function(){
     var browserName = M[0];
 
     if(browserName == 'Firefox' && version >= 23){
-      browser.innerHTML = '<h3>  Thanks For Using Quickbits </h3>';
+      browser.innerHTML = '<h2>  Thanks For Using Quickbits </h2>';
     }
 
     if(browserName == 'Firefox' && version < 23){
