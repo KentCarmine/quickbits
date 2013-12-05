@@ -275,6 +275,11 @@ Sender.prototype.setDownloadUrl = function(){
       $("#url").val(window.location.href + path);
     });
 
+    var countRef = new Firebase('https://quickbits.firebaseio.com/total-links');
+      countRef.transaction(function(current_value){
+        return current_value + 1;
+      });
+
     /* delete the reference from Firebase
      * when the window closes */
     url.onDisconnect().remove();
