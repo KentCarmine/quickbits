@@ -273,6 +273,7 @@ Sender.prototype.setDownloadUrl = function(){
     // on callback, print the url
     url.on('value', function(snapshot) {
       $("#url").val(window.location.href + path);
+      $("#url").select();
     });
 
     /* delete the reference from Firebase
@@ -285,7 +286,6 @@ Sender.prototype.setDownloadUrl = function(){
     return "If you close the window the file will not finish transfer.";
   };
 
-  $("#url").select();
 }
 
 $(function(){
