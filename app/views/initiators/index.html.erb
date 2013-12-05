@@ -12,7 +12,12 @@
           float: none;
         }
       </style>
-      <h1>You have Javascript disabled. Please enable it to use this site.</h1>
+      <h3>
+      <%= link_to image_tag("alert.svg", :border=>0, :class => 'alert_image', :size => "22x22"), "/" %>
+      You have Javascript disabled. Please <%= link_to image_tag("alert.svg", :border=>0, :class => 'alert_image', :size => "22x22"), "/" %>  enable it to use this site.
+       
+    </h3>
+
     </div>
   </noscript>
 
