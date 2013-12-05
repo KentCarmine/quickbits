@@ -104,6 +104,9 @@ Sender.prototype.sendFileAndMetadata = function(){
 }
 
 Sender.prototype.sendFile = function(){
+  var window_open = document.querySelector('.window_open');
+  $(window_open).fadeOut(1000);
+
   var thisSender = this;
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
@@ -237,7 +240,7 @@ Sender.prototype.setDownloadUrl = function(){
 
 
   value_prop.innerHTML = "<h1>Share this link to start file transfer</h1><br>";
-  window_open.style.display = "inline";
+  $(window_open).fadeIn(1000);
   button_upload.style.display = "none";
   link_field.style.display = "inline";
 
