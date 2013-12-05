@@ -32,6 +32,9 @@ function Sender(file){
     thisSender.setDownloadUrl();
   });
 
+  window.onunload = function(){
+      thisSender.peer.destroy();
+  }
   thisSender.file = file;
 }
 
@@ -101,15 +104,16 @@ Sender.prototype.sendFileAndMetadata = function(){
 }
 
 Sender.prototype.sendFile = function(){
+  var window_open = document.querySelector('.window_open');
+  $(window_open).fadeOut(1000);
+
   var thisSender = this;
   var fileReader = new FileReader();
   fileReader.readAsArrayBuffer(thisSender.file);
 
-
   window.onbeforeunload = function() {
     return "If you close the window the file will not finish transfer.";
- };
-
+  };
 
   fileReader.onload = function(){
     var fileData = fileReader.result;
@@ -152,19 +156,141 @@ Sender.prototype.sendFile = function(){
   }
 }
 
+// url seed words
+var adjs = [
+            'red',
+            'slow',
+            'huge',
+            'bashful',
+            'daring',
+            'tired',
+            'joyful',
+            'bright',
+            'shy',
+            'dreamy',
+            'quiet',
+            'blue',
+            'sweet',
+            'funny',
+            'tiny',
+            'manic',
+            'evil',
+            'smart',
+            'brave',
+            'cunning',
+            'tricky',
+            'hungry'
+           ],
+
+    nouns = [
+             'fox',
+             'salamander',
+             'coyote',
+             'firefly',
+             'nighthawk',
+             'grasshopper',
+             'olitaur',
+             'dragon',
+             'ent',
+             'squirrel',
+             'rhino',
+             'monkey',
+             'dog',
+             'wolf',
+             'cat',
+             'ant',
+             'kitten',
+             'fly',
+             'eagle',
+             'gopher',
+             'woodchuck',
+             'meerkat',
+             'tiger',
+             'leopard',
+             'whale',
+             'penguin'
+            ],
+
+    verbs = [
+             'runs',
+             'gallops',
+             'trots',
+             'sleeps',
+             'hunts',
+             'burrows',
+             'drinks',
+             'eats',
+             'codes',
+             'reads',
+             'sews',
+             'swims',
+             'floats',
+             'smells',
+             'smiles',
+             'grins'
+            ]
+
 Sender.prototype.setDownloadUrl = function(){
 
   var value_prop = document.querySelector(".value_prop");
   var button_upload = document.querySelector(".button_upload");
   var link_field  = document.querySelector(".link_field");
   var status = document.querySelector('.status_view');
+  var window_open = document.querySelector('.window_open');
 
-  value_prop.innerHTML = "<h1>Share this link to start file transfer</h1>";
+
+  value_prop.innerHTML = "<h1>Share this link to start file transfer</h1><br>";
+  $(window_open).fadeIn(1000);
   button_upload.style.display = "none";
   link_field.style.display = "inline";
+
+  // for scope
+  peer_id = this.peer_id;
+
+  function randIndex(anArray) {
+    return Math.floor(Math.random() * anArray.length);
+  }
+
+  (function makePath() {
+    // word pair, with dashes
+    var wordTrio = adjs[randIndex(adjs)] + "-"
+                     + nouns[randIndex(nouns)] + "-"
+                     + verbs[randIndex(verbs)] + "-";
+
+    // random four digits
+    var randomFour = [0, 0, 0, 0].map(function(digit) {
+      return Math.floor(Math.random(10) * 10);
+    }).join('');
+
+    // the combination of the two, a la Heroku
+    var path = wordTrio + randomFour;
+
+    // the root Firebase store
+    var urlStore = new Firebase('https://quickbits.firebaseio.com/');
+    // make a local reference to a Firebase key of `path`
+    var url = urlStore.child(path);
+    url.set(peer_id);
+    // on callback, print the url
+    url.on('value', function(snapshot) {
+      $("#url").val(window.location.href + path);
+      $("#url").select();
+    });
+
+    var countRef = new Firebase('https://quickbits.firebaseio.com/total-links');
+      countRef.transaction(function(current_value){
+        return current_value + 1;
+      });
+
+    /* delete the reference from Firebase
+     * when the window closes */
+    url.onDisconnect().remove();
+  })();
+
   status.style.display = "none";
-  $("#url").val(window.location.href + this.peer_id);
-  $("#url").select();
+  window.onbeforeunload = function() {
+    return "If you close the window the file will not finish transfer.";
+  };
+
 }
 
 $(function(){
@@ -194,6 +320,16 @@ $(function(){
     $(this).css("background","white");
     event.stopPropagation();
     event.preventDefault();
+
+    var n = event.originalEvent.dataTransfer.files[0].size;
+
+    if(n == 0){
+      alert("You cannot transfer a folder");
+      return;
+    }
+
+    console.log("number of files");
+    console.log(n);
     var file = event.originalEvent.dataTransfer.files[0];
     var sender = new Sender(file);
     sender.handleConnection();
@@ -207,6 +343,7 @@ $(function(){
   $(document).on("drop", function(event){
     event.stopPropagation();
     event.preventDefault();
+
   });
 
   $("#copy_link_form").on("submit", function(event){

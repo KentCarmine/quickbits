@@ -1,22 +1,43 @@
 <div class="header">
   <%= link_to image_tag("quickbits_logo.svg", :border=>0, :class => 'header_image', :size => "253x61"), "/" %>
-
 </div>
 <div id="drop_zone">
-  <div class="grid">
+  <noscript>
     <div class="alert_browser">
-      <h3> We do not support your browser at this time </h3>
+      <style type="text/css">
+        .main_container {
+          display: none;
+        }
+        .header {
+          float: none;
+        }
+      </style>
+      <h3>
+      <%= link_to image_tag("alert.svg", :border=>0, :class => 'alert_image', :size => "22x22"), "/" %>
+      You have Javascript disabled. Please <%= link_to image_tag("alert.svg", :border=>0, :class => 'alert_image', :size => "22x22"), "/" %>  enable it to use this site.
+       
+    </h3>
+
+    </div>
+  </noscript>
+
+  <div class="grid main_container">
+    <div class="alert_browser">
+      <h3> We currently do not support this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> Firefox.</a> </h3>
     </div>
 
     <div class="value_prop">
       <h1> Send a friend a file, without the cloud.</h1>
+    </div>
+    <div class="window_open" style="display:none">
+      <h3>Keep Window Open Until Transfer is Complete</h3>
     </div>
     <div class="upload_button" >
       <div class="fileinputs" >
         <input type="file" class="file" id="file_input" />
 
         <div class="fakefile" >
-          <input type="button" value="Upload a File" class="button_upload"/>
+          <input type="button" value="Send a File" class="button_upload"/>
         </div>
       </div>
 
@@ -31,7 +52,7 @@
 
       <div class="give_url">
 
-        <input type="text" name="url" value="" class="link_field" style="display:none" readonly="readonly" id="url" size="40" >
+        <input type="text" name="url" value="" onClick="this.select();" class="link_field" style="display:none" readonly="readonly" id="url" size="40" >
 
         <form id="copy_link_form" style="display:none">
           <input type="submit" value="Copy Link" id="submit_file" >
@@ -39,8 +60,7 @@
       </div>
     </div>
   </div>
-  <div class="footer">
-    <a href="/faq"> FAQ </a>
-  </div>
   
-  <%= javascript_include_tag "sender_manifest" %>
+<div class="nav"><ul> <li>© 2013 Team Quickbits </li> <li>|</li><li><a href="/faq">FAQ</a><li>|</li><li><a href="https://github.com/Surram/quickbits">GitHub</a></li></ul>
+</div>
+<%= javascript_include_tag "sender_manifest" %>

@@ -10,7 +10,7 @@ $(document).ready(function(){
     var browserName = M[0];
 
     if(browserName == 'Firefox' && version >= 23){
-      browser.innerHTML = '<h3>  Thanks For Using Quickbits </h3>';
+      browser.innerHTML = '<h2>  Thanks For Using Quickbits </h2>';
     }
 
     if(browserName == 'Firefox' && version < 23){
@@ -59,7 +59,7 @@ Receiver.prototype.getData = function(){
   var errorElement = $("#error_message");
   var upload_button = document.querySelector('.button_upload');
   thisReceiver.connection.on("data", function(data){
-  alert_browser.innerHTML = "<h3>Your File is Being Transferred</h3>";
+  alert_browser.innerHTML = "<h2>Your File is Being Transferred</h2>";
   alert_browser.style.display = "inline";
 
     if(data.isFileMetaData){
@@ -86,7 +86,7 @@ Receiver.prototype.getData = function(){
       if(percentLoaded >= 100){
         progress.style.width = '100%';
         progress.textContent = '100%';
-        alert_browser.innerHTML = "<h3>File Successfully Transferred</h3>";
+        alert_browser.innerHTML = "<h2>File Successfully Transferred</h2>";
         upload_button.style.display = "block";
       }
 
@@ -131,9 +131,17 @@ function byteConverter(bytes){
 
 $(function(){
   var splitUrl = window.location.href.split("/");
-  var senderPeerId = splitUrl[splitUrl.length-1];
+  var phoneticUrl = splitUrl[splitUrl.length-1];
+  var urlStore = new Firebase('https://quickbits.firebaseio.com/' + phoneticUrl);
   var receiver = new Receiver();
 
-  receiver.establishConnection(senderPeerId);
-  receiver.handleConnection();
+  urlStore.on('value', function(snapshot) {
+    var senderPeerId = snapshot.val();
+    receiver.establishConnection(senderPeerId);
+    receiver.handleConnection();
+  });
+
+  window.onunload = function(){
+    receiver.peer.destroy();
+  }
 });
