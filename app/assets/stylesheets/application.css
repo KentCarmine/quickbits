@@ -85,7 +85,6 @@ h2 {
   color: #ced3d5;
 
 
-
 }
 
 p {
@@ -125,6 +124,10 @@ p {
 
 .nav{
   margin-top: 10px;
+}
+
+.nav ul {
+  padding: 0;
 }
 
 .nav ul li {
