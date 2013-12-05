@@ -275,10 +275,7 @@ Sender.prototype.setDownloadUrl = function(){
 
     /* delete the reference from Firebase
      * when the window closes */
-    window.onunload = function() {
-      url.remove();
-    }
-
+    url.onDisconnect().remove();
   })();
 
   status.style.display = "none";
