@@ -35,7 +35,7 @@ Receiver.prototype.establishConnection = function(senderPeerId){
   setTimeout(function(){
     var isDone = ($.trim($('.percent').get()[0].innerHTML) == "100%");
     if((thisReceiver.connection.open !== true) && (!isDone)){
-      $("#error_message").append("Unable to connect to sender! Connection timed out after 10 sec.");
+      $("#error_message").innerHTML("Unable to connect to sender! Connection timed out after 10 sec.");
       return;
     }
   }, 10000);
@@ -95,7 +95,7 @@ Receiver.prototype.getData = function(){
         clearTimeout(thisReceiver.timeout);
         thisReceiver.timeout = setTimeout(function(){
           errorElement.text("Connection may have failed. File transfer may have aborted.");
-        }, 5000);
+        }, 15000);
       }
       else if(percentLoaded >= 100){
         clearTimeout(thisReceiver.timeout);
