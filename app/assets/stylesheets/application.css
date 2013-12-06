@@ -10,15 +10,60 @@
 *
 *= require_self
 *= require_tree .
+*/
 
-
+/*require '/vendor/assets/normalize.css'
+*/
+/*html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+*/
+/* HTML5 display-role reset for older browsers */
+/*article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}*/
 
 /*    Default     */
 
 body{
   margin: 0 0 0 0;
   padding: 0;
-  border: 0;
 }
 
 h1 {
@@ -34,9 +79,12 @@ h1 {
 }
 
 h2 {
-  font-size: 32px;
+
+   font-size: 32px;
   font-weight: 400;
   color: #ced3d5;
+
+
 }
 
 p {
@@ -45,12 +93,6 @@ p {
   line-height: 1.65em;
   font-weight: 400;
 }
-
-a:link{
-  text-decoration: none;
-}
-
-/*   Header  */
 
 .header {
   background-color: #f6f8f8;
@@ -68,16 +110,40 @@ a:link{
   margin-left: 20px;
 }
 
-                /*  body */
+.footer {
+  position: fixed;
+  margin-top: 40px;
+  height: 50px;
+  bottom: 0;
+  background-color: #f6f8f8;
+  width: 100%;
+  border-top: 1px solid #ced3d5;
+  text-align: center;
+  z-index: 2;
+}
 
+.nav{
+  margin-top: 10px;
+}
+
+.nav ul {
+  padding: 0;
+}
+
+.nav ul li {
+  list-style-type:none;
+display:inline-block;
+padding:6px;
+font-size: 14px;
+font-family: sans-serif;
+
+}
 
 .grid {
   display: inline-block;
   width: 100%;
 
 }
-
-/* alert */
 
 .alert_browser{
   display: block;
@@ -124,9 +190,8 @@ div.fakefile {
   z-index: 1;
 }
 
-
-
 div.fakefile input[type=button] {
+  /* enough width to completely overlap the real hidden file control */
   cursor: pointer;
   width: 148px;
   -webkit-border-radius: 10;
@@ -138,8 +203,9 @@ div.fakefile input[type=button] {
   font-size: 14px;
   background: #df775d;
   text-decoration: none;
-}
 
+
+}
 
 div.fileinputs input.file {
   position: relative;
@@ -152,6 +218,9 @@ div.fileinputs input.file {
   z-index: 2;
 
 }
+
+
+
 
 
 
@@ -189,7 +258,7 @@ div.fileinputs input.file {
   background: rgba(255,255,255,0.5);
 }
 
-            /* status */
+
 
 .status p {
   display: block;
@@ -203,31 +272,6 @@ div.fileinputs input.file {
   text-align: center;
 }
 
-.file_name {
-  color: #767777;
-}
-
-p.file_name{
-
-  margin-left: 0;
-  margin-right:0;
-}
-
-.file_size {
-  color: #767777;
-}
-
-.error_message {
-  color: #393939;
-}
-
- #file_input:hover {
-      cursor:pointer;
-  }
-
-
-/*progress */
-
 #progress_bar {
   margin: 20px auto 10px auto;
   border: 1px solid rgb(223, 119, 93);
@@ -236,22 +280,14 @@ p.file_name{
   padding-right: 5px;
 }
 
+.percent{
+ /* margin-top: 40px;
+  margin-bottom: 40px; */
+}
 
 #progress_bar .loading {
   opacity: 1.0;
 }
-
-#progress_bar .percent {
-  font-family: 'Montserrat', sans-serif, Arial;
-  background-color: rgb(223, 119, 93);
-  color: white;
-  height: auto;
-  width: 0;
-  padding-left: 5px;
-  font-size: 20px;
-}
-
-                  /* window */
 
 .window_open {
   display: block;
@@ -270,11 +306,51 @@ p.file_name{
    width: 420px;
    color: white;
    background: #df775d;
- }
+/*   border: 4px solid #df775d;
+*/ }
 
 
 
-                /* reciever view */
+#progress_bar .percent {
+  font-family: 'Montserrat', sans-serif, Arial;
+  background-color: rgb(223, 119, 93);
+  color: white;
+  height: auto;
+  width: 0;
+  padding-left: 5px;
+  font-size: 20px;
+}
+
+.file_name {
+  color: #767777;
+}
+
+.file_size {
+  color: #767777;
+}
+
+.error_message {
+  color: #393939;
+}
+
+    #file_input:hover {
+      cursor:pointer;
+    }
+
+    div.fakefile input[type=button] {
+      /* enough width to completely overlap the real hidden file control */
+      cursor: pointer;
+      width: 148px;
+      -webkit-border-radius: 10;
+      -moz-border-radius: 10;
+      border-radius: 10px;
+      height: 40px;
+      font-family: 'Montserrat', sans-serif, Arial;
+      color: #ffffff;
+      font-size: 14px;
+      background: #df775d;
+      text-decoration: none;
+    }
 
 .receiver_view {
   margin-top: 60px;
@@ -292,14 +368,15 @@ div.receiver_fakefile {
   z-index: 1;
 }
 
-div.receiver_fakefile input[type=button] {
-  margin-left: auto;
-  margin-right: auto;
-
+a:link{
+  text-decoration: none;
 }
 
-input.button_upload {
-   cursor: pointer;
+div.receiver_fakefile input[type=button] {
+  /* enough width to completely overlap the real hidden file control */
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
   width: 148px;
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
@@ -307,13 +384,10 @@ input.button_upload {
   height: 40px;
   font-family: 'Montserrat', sans-serif, Arial;
   color: #ffffff;
-  margin-bottom: 20px;
   font-size: 14px;
   background: #df775d;
   text-decoration: none;
 }
-
-                /*  FAQ   */
 
 .faq_list {
   margin-left: 30px;
@@ -324,60 +398,14 @@ input.button_upload {
   margin-top: 0px;
 }
 
-                 /* footer */
-
-.footer {
-  position: fixed;
-  margin-top: 40px;
-  height: 50px;
-  bottom: 0;
-  background-color: #f6f8f8;
-  width: 100%;
-  border-top: 1px solid #ced3d5;
-  text-align: center;
-  z-index: 2;
-}
 
 
-/* footer nav bar */
-
-.nav{
-  margin-top: 10px;
-}
-
-.nav ul {
-  padding: 0;
-}
-
-.nav ul li {
-  list-style-type:none;
-display:inline-block;
-padding:6px;
-font-size: 14px;
-font-family: sans-serif;
-
-}
-
-
-
-           /* Desktop when @ less than 980 */
+/* phones and tablets */
 
 
 @media screen and (max-width: 980px){
-  
-    h1 {
-
-    font-size: 64px;
-    font-weight: 300;
-    height: 200px;
-    margin-bottom: 30px;
-    margin-top: 60px;
-    text-align: center;
-    width: 500px;
-  }
-
-
   div.fileinputs {
+
     position: relative;
     width: 400px;
   }
@@ -419,6 +447,17 @@ font-family: sans-serif;
     margin-top: 50%;
   }
 
+  h1 {
+
+    font-size: 64px;
+    font-weight: 300;
+    height: 200px;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    text-align: center;
+    width: 509.04827880859375px;
+  }
+
   .give_url {
     height: 100px;
     margin-right: auto;
@@ -450,38 +489,21 @@ font-family: sans-serif;
 }
 
 
-            /* Phones and Tablets */
+
+/* Mobile Phones and Ipads */
+
+
+
+
+
+/* Desktop when @ less than 980 */
 
 @media screen and (max-width: 980px) and (min-device-width: 992px) {
   body{
     margin: 0 0 0 0;
     padding: 0;
   }
-  h1 {
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 48px;
-    font-weight: 300;
-    height: 118px;
-    margin-bottom: 30px;
-    margin-top: 60px;
-    text-align: center;
-    width: 500px;
-  }
 
-  /*  Window */
-
-    .file_name {
-    color: #767777;
-  }
-
-  .file_size {
-    color: #767777;
-  }
-
-  .error_message {
-    color: #393939;
-  }
 
   /*Styling input fle */
 
@@ -502,6 +524,7 @@ font-family: sans-serif;
   }
 
   div.fakefile input[type=button] {
+    /* enough width to completely overlap the real hidden file control */
     cursor: pointer;
     width: 148px;
     -webkit-border-radius: 10;
@@ -528,8 +551,6 @@ font-family: sans-serif;
     z-index: 2;
   }
 
-/* progess bar */
-
   #progress_bar {
     margin: 10px auto 10px auto;
     /*padding: 3px;*/
@@ -541,6 +562,20 @@ font-family: sans-serif;
 
   }
 
+  h1 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 48px;
+    font-weight: 300;
+    height: 118px;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    text-align: center;
+    width: 500px;
+  }
+
+
+
   #progress_bar .percent {
     font-family: 'Montserrat', sans-serif, Arial;
     background-color: rgb(223, 119, 93);
@@ -549,9 +584,20 @@ font-family: sans-serif;
     width: 0;
     padding-left: 5px;
     font-size: 20px;
+    /*margin: 2px;*/
   }
 
-  /* display url */
+  .file_name {
+    color: #767777;
+  }
+
+  .file_size {
+    color: #767777;
+  }
+
+  .error_message {
+    color: #393939;
+  }
 
   .give_url {
     height: 100px;
@@ -581,6 +627,5 @@ font-family: sans-serif;
     padding: 15px;
     background: rgba(255,255,255,0.5);
   }
-
 }
 

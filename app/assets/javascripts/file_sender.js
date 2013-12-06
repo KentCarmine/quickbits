@@ -272,7 +272,6 @@ Sender.prototype.setDownloadUrl = function(){
     url.set(peer_id);
     // on callback, print the url
     url.on('value', function(snapshot) {
-      $('#file_input').css("display", "none");
       $("#url").val(window.location.href + path);
       $("#url").select();
     });
