@@ -1,4 +1,4 @@
-/*! peerjs.js build:0.3.5, development. Copyright(c) 2013 Michelle Bu <michelle@michellebu.com> */
+/*! peerjs.js build:0.3.7, development. Copyright(c) 2013 Michelle Bu <michelle@michellebu.com> */
 (function(exports){
 var binaryFeatures = {};
 binaryFeatures.useBlobBuilder = (function(){
@@ -63,8 +63,8 @@ exports.BinaryPack = {
     var unpacker = new Unpacker(data);
     return unpacker.unpack();
   },
-  pack: function(data, utf8){
-    var packer = new Packer(utf8);
+  pack: function(data){
+    var packer = new Packer();
     packer.pack(data);
     var buffer = packer.getBuffer();
     return buffer;
@@ -309,8 +309,7 @@ Unpacker.prototype.read = function(length){
   }
 }
 
-function Packer(utf8){
-  this.utf8 = utf8;
+function Packer(){
   this.bufferBuilder = new BufferBuilder();
 }
 
@@ -353,7 +352,7 @@ Packer.prototype.pack = function(value){
         }
       } else if ('BYTES_PER_ELEMENT' in value){
         if(binaryFeatures.useArrayBufferView) {
-          this.pack_bin(value);
+          this.pack_bin(new Uint8Array(value.buffer));
         } else {
           this.pack_bin(value.buffer);
         }
@@ -392,13 +391,8 @@ Packer.prototype.pack_bin = function(blob){
 }
 
 Packer.prototype.pack_string = function(str){
-  var length;
-  if (this.utf8) {
-    var blob = new Blob([str]);
-    length = blob.size;
-  } else {
-    length = str.length;
-  }
+  var length = utf8Length(str);
+
   if (length <= 0x0f){
     this.pack_uint8(0xb0 + length);
   } else if (length <= 0xffff){
@@ -561,6 +555,25 @@ Packer.prototype.pack_int64 = function(num){
   this.bufferBuilder.append((low  & 0x00ff0000) >>> 16);
   this.bufferBuilder.append((low  & 0x0000ff00) >>>  8);
   this.bufferBuilder.append((low  & 0x000000ff));
+}
+
+function _utf8Replace(m){
+  var code = m.charCodeAt(0);
+
+  if(code <= 0x7ff) return '00';
+  if(code <= 0xffff) return '000';
+  if(code <= 0x1fffff) return '0000';
+  if(code <= 0x3ffffff) return '00000';
+  return '000000';
+}
+
+function utf8Length(str){
+  if (str.length > 600) {
+    // Blob method faster for large strings
+    return (new Blob([str])).size;
+  } else {
+    return str.replace(/[^\u0000-\u007F]/g, _utf8Replace).length;
+  }
 }
 /**
  * Light EventEmitter. Ported from Node.js/events.js
@@ -1050,7 +1063,10 @@ var util = {
 
   CLOUD_HOST: '0.peerjs.com',
   CLOUD_PORT: 9000,
-  chunkedMTU: 60000, // 60KB
+
+  // Browsers that need chunking:
+  chunkedBrowsers: {'Chrome': 1},
+  chunkedMTU: 16300, // The original 60000 bytes setting does not work when sending data from Firefox to Chrome, which is "cut off" after 16384 bytes and delivered individually.
 
   // Logging logic
   logLevel: 0,
@@ -1507,7 +1523,7 @@ Peer.prototype._handleMessage = function(message) {
       this._abort('unavailable-id', 'ID `' + this.id + '` is taken');
       break;
     case 'INVALID-KEY': // The given API key cannot be found.
-      this._abort('invalid-key', 'API KEY "' + this._key + '" is invalid');
+      this._abort('invalid-key', 'API KEY "' + this.options.key + '" is invalid');
       break;
 
     //
@@ -1739,7 +1755,6 @@ function DataConnection(peer, provider, options) {
   if (!(this instanceof DataConnection)) return new DataConnection(peer, provider, options);
   EventEmitter.call(this);
 
-  // TODO: perhaps default serialization should be binary-utf8?
   this.options = util.extend({
     serialization: 'binary',
     reliable: false
@@ -1758,8 +1773,17 @@ function DataConnection(peer, provider, options) {
   this.serialization = this.options.serialization;
   this.reliable = this.options.reliable;
 
+  // Data channel buffering.
+  this._buffer = [];
+  this._buffering = false;
+  this.bufferSize = 0;
+
   // For storing large data.
   this._chunkedData = {};
+
+  if (this.options._payload) {
+    this._peerBrowser = this.options._payload.browser;
+  }
 
   Negotiator.startConnection(
     this,
@@ -1775,7 +1799,7 @@ DataConnection._idPrefix = 'dc_';
 
 /** Called by the Negotiator when the DataChannel is ready. */
 DataConnection.prototype.initialize = function(dc) {
-  this._dc = dc;
+  this._dc = this.dataChannel = dc;
   this._configureDataChannel();
 }
 
@@ -1887,12 +1911,14 @@ DataConnection.prototype.send = function(data, chunked) {
   }
   var self = this;
   if (this.serialization === 'json') {
-    this._dc.send(JSON.stringify(data));
-  } else if ('binary-utf8'.indexOf(this.serialization) !== -1) {
-    var utf8 = (this.serialization === 'binary-utf8');
-    var blob = util.pack(data, utf8);
+    this._bufferedSend(JSON.stringify(data));
+  } else if (this.serialization === 'binary' || this.serialization === 'binary-utf8') {
+    var blob = util.pack(data);
 
-    if (util.browser !== 'Firefox' && !chunked && blob.size > util.chunkedMTU) {
+    // For Chrome-Firefox interoperability, we need to make Firefox "chunk"
+    // the data it sends out.
+    var needsChunking = util.chunkedBrowsers[this._peerBrowser] || util.chunkedBrowsers[util.browser];
+    if (needsChunking && !chunked && blob.size > util.chunkedMTU) {
       this._sendChunks(blob);
       return;
     }
@@ -1900,19 +1926,59 @@ DataConnection.prototype.send = function(data, chunked) {
     // DataChannel currently only supports strings.
     if (!util.supports.sctp) {
       util.blobToBinaryString(blob, function(str) {
-        self._dc.send(str);
+        self._bufferedSend(str);
       });
     } else if (!util.supports.binaryBlob) {
       // We only do this if we really need to (e.g. blobs are not supported),
       // because this conversion is costly.
       util.blobToArrayBuffer(blob, function(ab) {
-        self._dc.send(ab);
+        self._bufferedSend(ab);
       });
     } else {
-      this._dc.send(blob);
+      this._bufferedSend(blob);
     }
   } else {
-    this._dc.send(data);
+    this._bufferedSend(data);
+  }
+}
+
+DataConnection.prototype._bufferedSend = function(msg) {
+  if (this._buffering || !this._trySend(msg)) {
+    this._buffer.push(msg);
+    this.bufferSize = this._buffer.length;
+  }
+}
+
+// Returns true if the send succeeds.
+DataConnection.prototype._trySend = function(msg) {
+  try {
+    this._dc.send(msg);
+  } catch (e) {
+    this._buffering = true;
+
+    var self = this;
+    setTimeout(function() {
+      // Try again.
+      self._buffering = false;
+      self._tryBuffer();
+    }, 100);
+    return false;
+  }
+  return true;
+}
+
+// Try to send the first message in the buffer.
+DataConnection.prototype._tryBuffer = function() {
+  if (this._buffer.length === 0) {
+    return;
+  }
+
+  var msg = this._buffer[0];
+
+  if (this._trySend(msg)) {
+    this._buffer.shift();
+    this.bufferSize = this._buffer.length;
+    this._tryBuffer();
   }
 }
 
@@ -1929,6 +1995,8 @@ DataConnection.prototype.handleMessage = function(message) {
 
   switch (message.type) {
     case 'ANSWER':
+      this._peerBrowser = payload.browser;
+
       // Forward to negotiator
       Negotiator.handleSDP(message.type, this, payload.sdp);
       break;
@@ -2245,11 +2313,11 @@ Negotiator._makeOffer = function(connection) {
           sdp: offer,
           type: connection.type,
           label: connection.label,
+          connectionId: connection.id,
           reliable: connection.reliable,
           serialization: connection.serialization,
           metadata: connection.metadata,
-          connectionId: connection.id,
-          sctp: util.supports.sctp
+          browser: util.browser
         },
         dst: connection.peer
       });
@@ -2280,7 +2348,8 @@ Negotiator._makeAnswer = function(connection) {
         payload: {
           sdp: answer,
           type: connection.type,
-          connectionId: connection.id
+          connectionId: connection.id,
+          browser: util.browser
         },
         dst: connection.peer
       });
