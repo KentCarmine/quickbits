@@ -78,7 +78,7 @@ Receiver.prototype.getData = function(){
       thisReceiver.file = file;
       fileArray.push(data.arrayBufferFileData);
 
-      var percentLoaded = Math.round((chunk_count / (file_size / 1000) ) * 100);
+      var percentLoaded = Math.round((chunk_count / (file_size / 56000) ) * 100);
 
       progress.style.width = percentLoaded + '%';
       progress.textContent = percentLoaded + '%';

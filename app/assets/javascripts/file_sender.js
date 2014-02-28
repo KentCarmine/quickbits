@@ -58,7 +58,7 @@ Sender.prototype.updateProgressBar = function(){
   var button_upload = document.querySelector(".button_upload");
   var errorElement = $("#error_message");
   var thisSender = this;
-  var sliceSize = 1000;
+  var sliceSize = 56000;
   link_field.style.display = "none";
 
   value_prop.innerHTML = "<h1> File Being Transferred</h1>"
@@ -118,7 +118,7 @@ Sender.prototype.sendFile = function(){
   fileReader.onload = function(){
     var fileData = fileReader.result;
     var blob = [];
-    var sliceSize = 1000;
+    var sliceSize = 56000;
 
     //Setting up variables to display to initiating user
     var status = document.querySelector('.status_view');
