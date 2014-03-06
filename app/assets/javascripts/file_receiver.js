@@ -18,7 +18,7 @@ $(document).ready(function(){
     }
 
     if(browserName == 'Chrome' && version >= 31){
-      browser.innerHTML = '<h3> If file does not transfer confirm you are using the same browser type as the sender.</h3>';
+      browser.innerHTML = '<p> If file does not transfer confirm you may have been sent a file to large for Chrome to handle. Try <a href = http://www.mozilla.org/en-US/firefox/new/> Firefox </a>.</p>';
     }
    })();
 });

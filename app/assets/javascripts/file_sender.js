@@ -18,7 +18,7 @@ $(document).ready(function(){
     }
 
     if(browserName == 'Chrome' && version >= 31){
-      browser.innerHTML = '<h3> We currently do not support this browser.  We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> FireFox. </a></h3>';
+      browser.innerHTML = '<p> We currently only support files upto 160mb with this browser. We recommend using <a href = http://www.mozilla.org/en-US/firefox/new/> FireFox. </a></p>';
     }
   })();
 });
