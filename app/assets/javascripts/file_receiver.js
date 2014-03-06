@@ -18,7 +18,7 @@ $(document).ready(function(){
     }
 
     if(browserName == 'Chrome' && version >= 31){
-      browser.innerHTML = '<p> If file does not transfer confirm you may have been sent a file to large for Chrome to handle. Try <a href = http://www.mozilla.org/en-US/firefox/new/> Firefox </a>.</p>';
+      browser.innerHTML = '<p> If file does not transfer confirm may have been sent a file too large for Chrome to handle. Try <a href = http://www.mozilla.org/en-US/firefox/new/>Firefox</a>.</p>';
     }
    })();
 });
